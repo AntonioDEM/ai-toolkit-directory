@@ -2,7 +2,7 @@
 
 > Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/84636012-1f20-4c50-ab7a-665b323a16e3/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f5fa92f3-4ea9-48b3-9977-f4109d0159ed/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/AntonioDEM/ai-toolkit-directory.svg)](https://github.com/AntonioDEM/ai-toolkit-directory/stargazers)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)](https://web.dev/progressive-web-apps/)
