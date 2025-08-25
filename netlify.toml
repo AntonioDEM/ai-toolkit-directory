@@ -1,0 +1,463 @@
+# netlify.toml - Configurazione completa per il deploy su Netlify
+
+[build]
+  publish = "."
+  command = ""
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# ===== HEADERS PER PERFORMANCE E SICUREZZA =====
+
+# Headers generali per tutte le pagine
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Sicurezza
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    
+    # PWA e Performance
+    X-Robots-Tag = "index, follow"
+    Vary = "Accept-Encoding"
+
+# Cache ottimizzata per CSS
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+# Cache ottimizzata per JavaScript  
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Cache per dati JSON
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    Content-Type = "application/json; charset=utf-8"
+
+# Cache per icone PWA
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers per il Service Worker
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Headers per il Manifest PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+# Headers specifici per HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "text/html; charset=utf-8"
+
+# Headers per immagini
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml"
+
+# ===== REDIRECTS PER SEO E UX =====
+
+# Redirects per compatibilità e SEO
+[[redirects]]
+  from = "/tools"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/tools/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# Redirect per versioni con trailing slash
+[[redirects]]
+  from = "/suggest-tool/"
+  to = "/suggest-tool.html"
+  status = 301
+
+# Shortcuts per filtri rapidi
+[[redirects]]
+  from = "/free"
+  to = "/?filter=free"
+  status = 302
+
+[[redirects]]
+  from = "/chat"
+  to = "/?category=🤖%20Chat/Agents"
+  status = 302
+
+[[redirects]]
+  from = "/image"
+  to = "/?category=🖼️%20Image"
+  status = 302
+
+[[redirects]]
+  from = "/dev"
+  to = "/?category=💻%20Dev%20Tools"
+  status = 302
+
+# ===== FORM HANDLING =====
+
+# Gestione form suggerimenti (Netlify Forms)
+[[redirects]]
+  from = "/api/suggest-tool"
+  to = "/.netlify/functions/suggest-tool"
+  status = 200
+
+# ===== ERROR PAGES =====
+
+# 404 personalizzato
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# ===== EDGE FUNCTIONS (se necessario) =====
+
+# Funzione per analytics server-side
+# [[edge_functions]]
+#   function = "analytics"
+#   path = "/api/analytics"
+
+# ===== PLUGIN CONFIGURATIONS =====
+
+# Plugin per ottimizzazioni automatiche
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs.audits]
+    performance = true
+    accessibility = true
+    best-practices = true
+    seo = true
+    pwa = true
+
+# Plugin per compressione immagini
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+
+# ===== ENVIRONMENT VARIABLES =====
+
+# Configurazioni per diversi ambienti
+[context.production]
+  [context.production.environment]
+    NODE_ENV = "production"
+    ANALYTICS_ENABLED = "true"
+    PWA_ENABLED = "true"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    NODE_ENV = "staging"
+    ANALYTICS_ENABLED = "false"
+    PWA_ENABLED = "true"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    NODE_ENV = "development"
+    ANALYTICS_ENABLED = "false"
+    PWA_ENABLED = "false"
+
+# ===== SPLIT TESTING (A/B Testing) =====
+
+# Test per nuove funzionalità
+# [[splits]]
+#   path = "/*"
+#   branches = [
+#     {branch = "main", percentage = 90},
+#     {branch = "feature-new-design", percentage = 10}
+#   ]
+
+# ===== BUILD HOOKS =====
+
+# Configurazione per build automatici
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# ===== FEATURE FLAGS =====
+
+[template.environment]
+  FEATURE_PWA = "true"
+  FEATURE_ANALYTICS = "true"
+  FEATURE_ADVANCED_FILTERS = "true"
+  FEATURE_BOOKMARKS = "true"
+  FEATURE_SUGGESTIONS = "true"
+
+# ===== CUSTOM DOMAINS E SSL =====
+
+# Configurazione per domini personalizzati
+# [context.production]
+#   environment = { SITE_URL = "https://ai-toolkit.com" }
+
+# ===== NETLIFY FUNCTIONS =====
+
+# Configurazione per serverless functions
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ===== PRERENDER =====
+
+# Pre-rendering per SEO
+# [build]
+#   command = "npm run build && npm run prerender"
+
+## netlify.toml - Configurazione completa per il deploy su Netlify
+
+[build]
+  publish = "."
+  command = ""
+  
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# ===== HEADERS PER PERFORMANCE E SICUREZZA =====
+
+# Headers generali per tutte le pagine
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Sicurezza
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    
+    # PWA e Performance
+    X-Robots-Tag = "index, follow"
+    Vary = "Accept-Encoding"
+
+# Cache ottimizzata per CSS
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+
+# Cache ottimizzata per JavaScript  
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Cache per dati JSON
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    Content-Type = "application/json; charset=utf-8"
+
+# Cache per icone PWA
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers per il Service Worker
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/javascript; charset=utf-8"
+
+# Headers per il Manifest PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+# Headers specifici per HTML
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "text/html; charset=utf-8"
+
+# Headers per immagini
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml"
+
+# ===== REDIRECTS PER SEO E UX =====
+
+# Redirects per compatibilità e SEO
+[[redirects]]
+  from = "/tools"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/tools/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+# Redirect per versioni con trailing slash
+[[redirects]]
+  from = "/suggest-tool/"
+  to = "/suggest-tool.html"
+  status = 301
+
+# Shortcuts per filtri rapidi
+[[redirects]]
+  from = "/free"
+  to = "/?filter=free"
+  status = 302
+
+[[redirects]]
+  from = "/chat"
+  to = "/?category=🤖%20Chat/Agents"
+  status = 302
+
+[[redirects]]
+  from = "/image"
+  to = "/?category=🖼️%20Image"
+  status = 302
+
+[[redirects]]
+  from = "/dev"
+  to = "/?category=💻%20Dev%20Tools"
+  status = 302
+
+# ===== ERROR PAGES =====
+
+# Fallback per SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ===== PLUGIN CONFIGURATIONS =====
+
+# Plugin per ottimizzazioni automatiche
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [plugins.inputs.audits]
+    performance = true
+    accessibility = true
+    best-practices = true
+    seo = true
+    pwa = true
+
+# ===== ENVIRONMENT VARIABLES =====
+
+# Configurazioni per diversi ambienti
+[context.production]
+  [context.production.environment]
+    NODE_ENV = "production"
+    ANALYTICS_ENABLED = "true"
+    PWA_ENABLED = "true"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    NODE_ENV = "staging"
+    ANALYTICS_ENABLED = "false"
+    PWA_ENABLED = "true"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    NODE_ENV = "development"
+    ANALYTICS_ENABLED = "false"
+    PWA_ENABLED = "false"
+
+# ===== BUILD PROCESSING =====
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = false
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# ===== FEATURE FLAGS =====
+
+[template.environment]
+  FEATURE_PWA = "true"
+  FEATURE_ANALYTICS = "true"
+  FEATURE_ADVANCED_FILTERS = "true"
+  FEATURE_BOOKMARKS = "true"
+  FEATURE_SUGGESTIONS = "true"

@@ -1,0 +1,566 @@
+{
+  "meta": {
+    "version": "1.2.0",
+    "lastUpdated": "2025-08-25T00:00:00Z",
+    "totalTools": 31,
+    "categories": 10
+  },
+  "tools": [
+    {
+      "id": 1,
+      "name": "ChatGPT",
+      "category": "🤖 Chat/Agents",
+      "description": "Conversational AI con accesso GPT-4o mini illimitato, ricerca web, analisi immagini e GPT personalizzati",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://chat.openai.com",
+      "domain": "openai.com",
+      "tags": ["conversazione", "codice", "ricerca", "immagini", "gpts"],
+      "featured": true,
+      "dateAdded": "2025-01-15"
+    },
+    {
+      "id": 2,
+      "name": "Claude",
+      "category": "🤖 Chat/Agents",
+      "description": "AI avanzata per scrittura long-context, analisi e ragionamento con capacità superiori",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://claude.ai",
+      "domain": "anthropic.com",
+      "tags": ["conversazione", "analisi", "codice", "scrittura", "ragionamento"],
+      "featured": true,
+      "dateAdded": "2025-02-01"
+    },
+    {
+      "id": 3,
+      "name": "Leonardo AI",
+      "category": "🖼️ Image",
+      "description": "Generazione immagini AI con vari stili artistici e crediti giornalieri gratuiti",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://leonardo.ai",
+      "domain": "leonardo.ai",
+      "tags": ["immagini", "arte", "design", "creatività"],
+      "featured": false,
+      "dateAdded": "2025-01-20"
+    },
+    {
+      "id": 4,
+      "name": "Midjourney",
+      "category": "🖼️ Image",
+      "description": "Generatore di immagini AI di altissima qualità artistica tramite Discord",
+      "plan": "Paid",
+      "rating": 5,
+      "url": "https://midjourney.com",
+      "domain": "midjourney.com",
+      "tags": ["immagini", "arte", "premium", "discord"],
+      "featured": true,
+      "dateAdded": "2025-01-10"
+    },
+    {
+      "id": 5,
+      "name": "Perplexity AI",
+      "category": "📊 Data/Analytics",
+      "description": "Motore di ricerca AI con citazioni e fonti verificate in tempo reale",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://perplexity.ai",
+      "domain": "perplexity.ai",
+      "tags": ["ricerca", "citazioni", "fonti", "analisi"],
+      "featured": true,
+      "dateAdded": "2025-01-25"
+    },
+    {
+      "id": 6,
+      "name": "GitHub Copilot",
+      "category": "💻 Dev Tools",
+      "description": "Assistente AI per codice in tempo reale, gratuito per studenti e progetti OSS",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://github.com/features/copilot",
+      "domain": "github.com",
+      "tags": ["codice", "programmazione", "AI", "sviluppo"],
+      "featured": true,
+      "dateAdded": "2025-01-05"
+    },
+    {
+      "id": 7,
+      "name": "NotebookLM",
+      "category": "⚡ Productivity",
+      "description": "Analizza documenti caricati, genera riassunti e risponde a domande basate sui contenuti",
+      "plan": "Free",
+      "rating": 5,
+      "url": "https://notebooklm.google.com",
+      "domain": "google.com",
+      "tags": ["note-taking", "analisi", "google", "documenti"],
+      "featured": false,
+      "dateAdded": "2025-02-10"
+    },
+    {
+      "id": 8,
+      "name": "Whisper",
+      "category": "🎵 Audio/Voice",
+      "description": "Modello open-source per trascrizione e traduzione audio multilingua",
+      "plan": "Free",
+      "rating": 5,
+      "url": "https://github.com/openai/whisper",
+      "domain": "openai.com",
+      "tags": ["trascrizione", "audio", "open-source", "multilingua"],
+      "featured": false,
+      "dateAdded": "2025-01-08"
+    },
+    {
+      "id": 9,
+      "name": "Stable Diffusion",
+      "category": "🖼️ Image",
+      "description": "Modello open-source per generazione immagini con interfacce web gratuite",
+      "plan": "Free",
+      "rating": 4,
+      "url": "https://stablediffusionweb.com",
+      "domain": "stability.ai",
+      "tags": ["immagini", "open-source", "generazione", "gratis"],
+      "featured": false,
+      "dateAdded": "2025-01-12"
+    },
+    {
+      "id": 10,
+      "name": "Grammarly",
+      "category": "📝 Content",
+      "description": "Controllo avanzato grammatica, spelling e suggerimenti per migliorare la scrittura",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://grammarly.com",
+      "domain": "grammarly.com",
+      "tags": ["grammatica", "scrittura", "correzione", "inglese"],
+      "featured": false,
+      "dateAdded": "2025-01-15"
+    },
+    {
+      "id": 11,
+      "name": "Elicit",
+      "category": "📊 Data/Analytics",
+      "description": "Ricerca accademica su 125M+ articoli con riassunti e estrazione dati PDF",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://elicit.com",
+      "domain": "elicit.com",
+      "tags": ["ricerca", "accademico", "PDF", "scienza"],
+      "featured": false,
+      "dateAdded": "2025-02-05"
+    },
+    {
+      "id": 12,
+      "name": "Otter.ai",
+      "category": "⚡ Productivity",
+      "description": "Trascrizione meeting in tempo reale con riassunti automatici intelligenti",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://otter.ai",
+      "domain": "otter.ai",
+      "tags": ["trascrizione", "meeting", "produttività", "business"],
+      "featured": false,
+      "dateAdded": "2025-01-30"
+    },
+    {
+      "id": 13,
+      "name": "Suno AI",
+      "category": "🎵 Audio/Voice",
+      "description": "Creazione canzoni complete con voce e strumenti da prompt testuali",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://suno.ai",
+      "domain": "suno.ai",
+      "tags": ["musica", "canzoni", "generazione", "creatività"],
+      "featured": false,
+      "dateAdded": "2025-02-15"
+    },
+    {
+      "id": 14,
+      "name": "Phind",
+      "category": "💻 Dev Tools",
+      "description": "Motore di ricerca specializzato per sviluppatori con esempi di codice",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://phind.com",
+      "domain": "phind.com",
+      "tags": ["programmazione", "ricerca", "codice", "sviluppatori"],
+      "featured": false,
+      "dateAdded": "2025-01-22"
+    },
+    {
+      "id": 15,
+      "name": "Quizlet",
+      "category": "🎓 Education",
+      "description": "Piattaforma studio con flashcard, test e tutor AI personalizzato",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://quizlet.com",
+      "domain": "quizlet.com",
+      "tags": ["studio", "flashcard", "educazione", "apprendimento"],
+      "featured": false,
+      "dateAdded": "2025-01-18"
+    },
+    {
+      "id": 16,
+      "name": "DeepL Write",
+      "category": "📝 Content",
+      "description": "Miglioramento professionale di chiarezza, stile e grammatica dei testi",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://deepl.com/write",
+      "domain": "deepl.com",
+      "tags": ["scrittura", "correzione", "stile", "multilingua"],
+      "featured": false,
+      "dateAdded": "2025-01-28"
+    },
+    {
+      "id": 17,
+      "name": "Consensus",
+      "category": "📊 Data/Analytics",
+      "description": "Ricerca scientifica AI con indicatori qualità e analisi articoli peer-reviewed",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://consensus.app",
+      "domain": "consensus.app",
+      "tags": ["ricerca", "scientifico", "analisi", "accademico"],
+      "featured": false,
+      "dateAdded": "2025-02-08"
+    },
+    {
+      "id": 18,
+      "name": "Poe",
+      "category": "🤖 Chat/Agents",
+      "description": "Accesso a multipli modelli AI (GPT, Claude) con creazione bot personalizzati",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://poe.com",
+      "domain": "poe.com",
+      "tags": ["multi-modello", "bot", "conversazione", "personalizzazione"],
+      "featured": false,
+      "dateAdded": "2025-01-26"
+    },
+    {
+      "id": 19,
+      "name": "Google Gemini",
+      "category": "🤖 Chat/Agents",
+      "description": "Modello Gemini Pro per conversazione, codice, analisi e integrazione Google",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://gemini.google.com",
+      "domain": "google.com",
+      "tags": ["google", "conversazione", "integrazione", "multimodale"],
+      "featured": false,
+      "dateAdded": "2025-02-12"
+    },
+    {
+      "id": 20,
+      "name": "Rytr",
+      "category": "📝 Content",
+      "description": "Assistente scrittura AI per email, blog, social media con 40+ use case",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://rytr.me",
+      "domain": "rytr.me",
+      "tags": ["scrittura", "blog", "social", "marketing"],
+      "featured": false,
+      "dateAdded": "2025-01-14"
+    },
+    {
+      "id": 21,
+      "name": "Buffer",
+      "category": "📢 Marketing",
+      "description": "Pianificazione post social media con AI Assistant e analytics integrate",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://buffer.com",
+      "domain": "buffer.com",
+      "tags": ["social media", "marketing", "pianificazione", "analytics"],
+      "featured": false,
+      "dateAdded": "2025-01-21"
+    },
+    {
+      "id": 22,
+      "name": "Character AI",
+      "category": "🤖 Chat/Agents",
+      "description": "Chat con personaggi AI (reali, finzione, custom) con messaggi illimitati",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://character.ai",
+      "domain": "character.ai",
+      "tags": ["personaggi", "roleplay", "intrattenimento", "creatività"],
+      "featured": false,
+      "dateAdded": "2025-01-17"
+    },
+    {
+      "id": 23,
+      "name": "Replit",
+      "category": "💻 Dev Tools",
+      "description": "IDE online con Ghostwriter AI per generazione, debug e completamento codice",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://replit.com",
+      "domain": "replit.com",
+      "tags": ["IDE", "codice", "online", "collaborazione"],
+      "featured": false,
+      "dateAdded": "2025-01-19"
+    },
+    {
+      "id": 24,
+      "name": "Microsoft Copilot",
+      "category": "🤖 Chat/Agents",
+      "description": "AI integrata Windows/Office con GPT-4, ricerca web e generazione immagini",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://copilot.microsoft.com",
+      "domain": "microsoft.com",
+      "tags": ["microsoft", "office", "integrazione", "produttività"],
+      "featured": false,
+      "dateAdded": "2025-02-01"
+    },
+    {
+      "id": 25,
+      "name": "Notion AI",
+      "category": "⚡ Productivity",
+      "description": "AI integrata in Notion per riassunti, traduzioni, brainstorming e scrittura",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://notion.so/ai",
+      "domain": "notion.so",
+      "tags": ["notion", "produttività", "scrittura", "organizzazione"],
+      "featured": false,
+      "dateAdded": "2025-01-24"
+    },
+    {
+      "id": 26,
+      "name": "Blackbox AI",
+      "category": "💻 Dev Tools",
+      "description": "Generazione e spiegazione codice da testo, immagini e video",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://useblackbox.io",
+      "domain": "blackbox.ai",
+      "tags": ["codice", "generazione", "AI", "spiegazione"],
+      "featured": false,
+      "dateAdded": "2025-01-16"
+    },
+    {
+      "id": 27,
+      "name": "Canva Magic Write",
+      "category": "📝 Content",
+      "description": "Generazione testi integrata in Canva per design, presentazioni e social",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://canva.com/magic-write",
+      "domain": "canva.com",
+      "tags": ["design", "canva", "testi", "creatività"],
+      "featured": false,
+      "dateAdded": "2025-01-29"
+    },
+    {
+      "id": 28,
+      "name": "AIVA",
+      "category": "🎵 Audio/Voice",
+      "description": "Compositore AI per colonne sonore e musica strumentale professionale",
+      "plan": "Freemium",
+      "rating": 3,
+      "url": "https://aiva.ai",
+      "domain": "aiva.ai",
+      "tags": ["composizione", "musica", "strumentale", "professionale"],
+      "featured": false,
+      "dateAdded": "2025-01-11"
+    },
+    {
+      "id": 29,
+      "name": "Khanmigo",
+      "category": "🎓 Education",
+      "description": "Tutor AI personalizzato per matematica, scienze e discipline umanistiche",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://khanacademy.org/khan-labs",
+      "domain": "khanacademy.org",
+      "tags": ["tutoraggio", "matematica", "educazione", "personalizzato"],
+      "featured": false,
+      "dateAdded": "2025-02-03"
+    },
+    {
+      "id": 30,
+      "name": "WebMD Symptom Checker",
+      "category": "📊 Data/Analytics",
+      "description": "Analisi sintomi e informazioni mediche preliminari (non sostituisce il medico)",
+      "plan": "Free",
+      "rating": 3,
+      "url": "https://symptoms.webmd.com",
+      "domain": "webmd.com",
+      "tags": ["salute", "sintomi", "medico", "diagnostica"],
+      "featured": false,
+      "dateAdded": "2025-01-13"
+    },
+    {
+      "id": 31,
+      "name": "Manus",
+      "category": "🤖 Chat/Agents",
+      "description": "Agente AI per controllo computer, automazione task e raccolta informazioni",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://manus.ai",
+      "domain": "manus.ai",
+      "tags": ["automazione", "controllo", "agente", "produttività"],
+      "featured": false,
+      "dateAdded": "2025-02-20"
+    }
+  ],
+  "categories": [
+    {
+      "id": "all",
+      "name": "🌟 Tutti",
+      "emoji": "🌟",
+      "description": "Tutti i tool disponibili",
+      "count": 31
+    },
+    {
+      "id": "🤖 Chat/Agents",
+      "name": "🤖 Chat/Agents",
+      "emoji": "🤖",
+      "description": "Assistenti AI conversazionali e agenti intelligenti",
+      "count": 7
+    },
+    {
+      "id": "🖼️ Image",
+      "name": "🖼️ Image",
+      "emoji": "🖼️",
+      "description": "Generazione e manipolazione immagini con AI",
+      "count": 3
+    },
+    {
+      "id": "💻 Dev Tools",
+      "name": "💻 Dev Tools",
+      "emoji": "💻",
+      "description": "Strumenti AI per sviluppatori e programmatori",
+      "count": 4
+    },
+    {
+      "id": "📊 Data/Analytics",
+      "name": "📊 Data/Analytics",
+      "emoji": "📊",
+      "description": "Analisi dati, ricerca e insights intelligenti",
+      "count": 4
+    },
+    {
+      "id": "⚡ Productivity",
+      "name": "⚡ Productivity",
+      "emoji": "⚡",
+      "description": "Strumenti per aumentare la produttività",
+      "count": 3
+    },
+    {
+      "id": "📝 Content",
+      "name": "📝 Content",
+      "emoji": "📝",
+      "description": "Creazione e editing contenuti testuali",
+      "count": 4
+    },
+    {
+      "id": "🎵 Audio/Voice",
+      "name": "🎵 Audio/Voice",
+      "emoji": "🎵",
+      "description": "Elaborazione audio, voce e musica",
+      "count": 3
+    },
+    {
+      "id": "🎓 Education",
+      "name": "🎓 Education",
+      "emoji": "🎓",
+      "description": "Strumenti per apprendimento e educazione",
+      "count": 2
+    },
+    {
+      "id": "📢 Marketing",
+      "name": "📢 Marketing",
+      "emoji": "📢",
+      "description": "Marketing digitale e social media",
+      "count": 1
+    }
+  ],
+  "filters": {
+    "pricing": [
+      {
+        "id": "all",
+        "name": "Tutti i piani",
+        "count": 31
+      },
+      {
+        "id": "Free",
+        "name": "🆓 Solo Gratuiti",
+        "count": 4
+      },
+      {
+        "id": "Freemium", 
+        "name": "🟡 Freemium",
+        "count": 25
+      },
+      {
+        "id": "Paid",
+        "name": "💰 A Pagamento", 
+        "count": 2
+      }
+    ],
+    "rating": [
+      {
+        "id": "all",
+        "name": "Tutte le valutazioni",
+        "count": 31
+      },
+      {
+        "id": "5",
+        "name": "⭐⭐⭐⭐⭐ 5 stelle",
+        "count": 8
+      },
+      {
+        "id": "4",
+        "name": "⭐⭐⭐⭐ 4+ stelle",
+        "count": 23
+      },
+      {
+        "id": "3", 
+        "name": "⭐⭐⭐ 3+ stelle",
+        "count": 31
+      }
+    ],
+    "sorting": [
+      {
+        "id": "name",
+        "name": "Nome A-Z"
+      },
+      {
+        "id": "rating",
+        "name": "Valutazione ↓"
+      },
+      {
+        "id": "category",
+        "name": "Categoria"
+      },
+      {
+        "id": "plan", 
+        "name": "Piano prezzo"
+      },
+      {
+        "id": "dateAdded",
+        "name": "Più recenti"
+      },
+      {
+        "id": "featured",
+        "name": "In evidenza"
+      }
+    ]
+  },
+  "settings": {
+    "itemsPerPage": 12,
+    "enableInfiniteScroll": false,
+    "enableAnimations": true,
+    "enableDarkMode": false,
+    "enableNotifications": true,
+    "cacheExpiry": 3600000,
+    "analyticsEnabled": true
+  }
+}
