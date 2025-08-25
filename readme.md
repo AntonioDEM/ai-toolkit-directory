@@ -1,8 +1,9 @@
+@ -0,0 +1,207 @@
 # 🔧 Tools for AI
 
 > La tua raccolta completa dei migliori strumenti AI organizzati per categoria
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/12345678-1234-1234-1234-123456789abc/deploy-status)](https://app.netlify.com/sites/tools-for-ai/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/84636012-1f20-4c50-ab7a-665b323a16e3/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/tools-for-ai.svg)](https://github.com/yourusername/tools-for-ai/stargazers)
 
