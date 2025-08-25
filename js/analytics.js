@@ -2,7 +2,7 @@
 
 class AnalyticsManager {
     constructor() {
-        this.GA_ID = 'G-XXXXXXXXXX'; // Sostituire con il tuo GA4 ID
+        this.GA_ID = 'G-VYXQK7WBXS'; // Sostituire con il tuo GA4 ID
         this.DEBUG = false; // Imposta su true per debug
         this.initialized = false;
         
