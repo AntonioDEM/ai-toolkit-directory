@@ -1,46 +1,817 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Description" content="Scopri i migliori 31 strumenti AI gratuiti e premium, organizzati per categoria. Chat/Agents, Image Generation, Dev Tools e molto altro.">
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 20.0px '.Apple Color Emoji UI'; color: #262626; -webkit-text-stroke: #262626}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Helvetica Neue'; color: #3a4355; -webkit-text-stroke: #3a4355}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.Apple Color Emoji UI'; color: #8f9eb3; -webkit-text-stroke: #8f9eb3}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.2px 'Helvetica Neue'; color: #ffffff; color: rgba(255, 255, 255, 0.9); -webkit-text-stroke: rgba(255, 255, 255, 0.9)}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 30.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.0px '.SF NS'; color: #262626; -webkit-text-stroke: #262626; background-color: #ffffff; background-color: rgba(255, 255, 255, 0.9)}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.0px '.SF NS'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #ffffff; background-color: rgba(255, 255, 255, 0.2)}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    span.s1 {font-kerning: none; background-color: rgba(255, 255, 255, 0.95)}
-    span.s2 {font-kerning: none}
-    span.s3 {font-kerning: none; text-shadow: 0.0px 2.0px 10.0px rgba(255, 255, 255, 0)}
-    span.s4 {font: 14.0px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s5 {font-kerning: none; background-color: rgba(0, 0, 0, 0.8)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Toolkit Directory - I Migliori Strumenti AI</title>
+    <meta name="description" content="Scopri i migliori 31 strumenti AI gratuiti e premium, organizzati per categoria. Chat/Agents, Image Generation, Dev Tools e molto altro.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.google.com/s2/favicons?sz=32&domain=ai-toolkit.com">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .subtitle {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            font-size: 16px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+        }
+
+        .main {
+            padding: 40px 0;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            border-color: rgba(255,255,255,0.9);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .tool-description {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .tool-meta {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .tag-free { background: #d1fae5; color: #047857; }
+        .tag-freemium { background: #dbeafe; color: #1d4ed8; }
+        .tag-paid { background: #fee2e2; color: #dc2626; }
+        .tag-category { background: #f3e8ff; color: #7c3aed; }
+        .tag-rating { background: #fef3c7; color: #d97706; }
+
+        .tool-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .stats {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stats-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .stats-highlight {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .tool-card {
+                padding: 20px;
+            }
+            
+            .stats-highlight {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">🤖</span></p>
-<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px 'Helvetica Neue'; color: #141821; -webkit-text-stroke: #141821"><span class="s1"><b>AI Toolkit Directory</b></span></h1>
-<p class="p3"><span class="s1">I migliori strumenti AI organizzati per categoria</span></p>
-<p class="p4"><span class="s1">🔍</span></p>
-<p class="p5"><span class="s2">Scopri i migliori strumenti AI</span></p>
-<p class="p6"><span class="s3"><b>31 Tools</b></span></p>
-<p class="p7"><span class="s4">🌟</span><span class="s2"> Tutti</span></p>
-<p class="p8"><span class="s4">🤖</span><span class="s2"> Chat/Agents</span></p>
-<p class="p8"><span class="s4">🖼️</span><span class="s2"> Image</span></p>
-<p class="p8"><span class="s4">💻</span><span class="s2"> Dev Tools</span></p>
-<p class="p8"><span class="s4">📊</span><span class="s2"> Data/Analytics</span></p>
-<p class="p8"><span class="s4">⚡</span><span class="s2"> Productivity</span></p>
-<p class="p8"><span class="s4">📝</span><span class="s2"> Content</span></p>
-<p class="p8"><span class="s4">🎵</span><span class="s2"> Audio/Voice</span></p>
-<p class="p8"><span class="s4">🎓</span><span class="s2"> Education</span></p>
-<p class="p8"><span class="s4">📢</span><span class="s2"> Marketing</span></p>
-<p class="p9"><span class="s5">© 2025 AI Toolkit Directory. Creato per aiutarti a scoprire i migliori strumenti AI.</span></p>
-<p class="p9"><span class="s5">Aggiornato con i tool più recenti e popolari</span></p>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🤖</div>
+                    <div>
+                        <h1>AI Toolkit Directory</h1>
+                        <div class="subtitle">I migliori strumenti AI organizzati per categoria</div>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-bar" id="searchInput" placeholder="Cerca AI tools...">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="stats">
+                <div class="stats-text">Scopri i migliori strumenti AI</div>
+                <div class="stats-highlight" id="toolsCount">31 Tools</div>
+            </div>
+
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-category="all">🌟 Tutti</button>
+                <button class="filter-btn" data-category="🤖 Chat/Agents">🤖 Chat/Agents</button>
+                <button class="filter-btn" data-category="🖼️ Image">🖼️ Image</button>
+                <button class="filter-btn" data-category="💻 Dev Tools">💻 Dev Tools</button>
+                <button class="filter-btn" data-category="📊 Data/Analytics">📊 Data/Analytics</button>
+                <button class="filter-btn" data-category="⚡ Productivity">⚡ Productivity</button>
+                <button class="filter-btn" data-category="📝 Content">📝 Content</button>
+                <button class="filter-btn" data-category="🎵 Audio/Voice">🎵 Audio/Voice</button>
+                <button class="filter-btn" data-category="🎓 Education">🎓 Education</button>
+                <button class="filter-btn" data-category="📢 Marketing">📢 Marketing</button>
+            </div>
+
+            <div class="tools-grid" id="toolsGrid">
+                <!-- Tools will be loaded here by JavaScript -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>🔍 Nessun risultato trovato</h3>
+                <p>Prova a modificare i filtri o il termine di ricerca</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AI Toolkit Directory. Creato per aiutarti a scoprire i migliori strumenti AI.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Aggiornato con i tool più recenti e popolari</p>
+        </div>
+    </footer>
+
+    <script>
+        // Database AI Tools
+        const aiTools = [
+            {
+                id: 1,
+                name: "ChatGPT",
+                category: "🤖 Chat/Agents",
+                description: "Conversational AI con accesso GPT-4o mini illimitato, ricerca web, analisi immagini e GPT personalizzati",
+                plan: "Freemium",
+                rating: 5,
+                url: "https://chat.openai.com",
+                domain: "openai.com",
+                tags: ["conversazione", "codice", "ricerca"]
+            },
+            {
+                id: 2,
+                name: "Claude",
+                category: "🤖 Chat/Agents",
+                description: "AI avanzata per scrittura long-context, analisi e ragionamento con capacità superiori",
+                plan: "Freemium",
+                rating: 5,
+                url: "https://claude.ai",
+                domain: "anthropic.com",
+                tags: ["conversazione", "analisi", "codice"]
+            },
+            {
+                id: 3,
+                name: "Leonardo AI",
+                category: "🖼️ Image",
+                description: "Generazione immagini AI con vari stili artistici e crediti giornalieri gratuiti",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://leonardo.ai",
+                domain: "leonardo.ai",
+                tags: ["immagini", "arte", "design"]
+            },
+            {
+                id: 4,
+                name: "Midjourney",
+                category: "🖼️ Image",
+                description: "Generatore di immagini AI di altissima qualità artistica tramite Discord",
+                plan: "Paid",
+                rating: 5,
+                url: "https://midjourney.com",
+                domain: "midjourney.com",
+                tags: ["immagini", "arte", "premium"]
+            },
+            {
+                id: 5,
+                name: "Perplexity AI",
+                category: "📊 Data/Analytics",
+                description: "Motore di ricerca AI con citazioni e fonti verificate in tempo reale",
+                plan: "Freemium",
+                rating: 5,
+                url: "https://perplexity.ai",
+                domain: "perplexity.ai",
+                tags: ["ricerca", "citazioni", "fonti"]
+            },
+            {
+                id: 6,
+                name: "GitHub Copilot",
+                category: "💻 Dev Tools",
+                description: "Assistente AI per codice in tempo reale, gratuito per studenti e progetti OSS",
+                plan: "Freemium",
+                rating: 5,
+                url: "https://github.com/features/copilot",
+                domain: "github.com",
+                tags: ["codice", "programmazione", "AI"]
+            },
+            {
+                id: 7,
+                name: "NotebookLM",
+                category: "⚡ Productivity",
+                description: "Analizza documenti caricati, genera riassunti e risponde a domande basate sui contenuti",
+                plan: "Free",
+                rating: 5,
+                url: "https://notebooklm.google.com",
+                domain: "google.com",
+                tags: ["note-taking", "analisi", "google"]
+            },
+            {
+                id: 8,
+                name: "Whisper",
+                category: "🎵 Audio/Voice",
+                description: "Modello open-source per trascrizione e traduzione audio multilingua",
+                plan: "Free",
+                rating: 5,
+                url: "https://github.com/openai/whisper",
+                domain: "openai.com",
+                tags: ["trascrizione", "audio", "open-source"]
+            },
+            {
+                id: 9,
+                name: "Stable Diffusion",
+                category: "🖼️ Image",
+                description: "Modello open-source per generazione immagini con interfacce web gratuite",
+                plan: "Free",
+                rating: 4,
+                url: "https://stablediffusionweb.com",
+                domain: "stability.ai",
+                tags: ["immagini", "open-source", "generazione"]
+            },
+            {
+                id: 10,
+                name: "Grammarly",
+                category: "📝 Content",
+                description: "Controllo avanzato grammatica, spelling e suggerimenti per migliorare la scrittura",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://grammarly.com",
+                domain: "grammarly.com",
+                tags: ["grammatica", "scrittura", "correzione"]
+            },
+            {
+                id: 11,
+                name: "Elicit",
+                category: "📊 Data/Analytics",
+                description: "Ricerca accademica su 125M+ articoli con riassunti e estrazione dati PDF",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://elicit.com",
+                domain: "elicit.com",
+                tags: ["ricerca", "accademico", "PDF"]
+            },
+            {
+                id: 12,
+                name: "Otter.ai",
+                category: "⚡ Productivity",
+                description: "Trascrizione meeting in tempo reale con riassunti automatici intelligenti",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://otter.ai",
+                domain: "otter.ai",
+                tags: ["trascrizione", "meeting", "produttività"]
+            },
+            {
+                id: 13,
+                name: "Suno AI",
+                category: "🎵 Audio/Voice",
+                description: "Creazione canzoni complete con voce e strumenti da prompt testuali",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://suno.ai",
+                domain: "suno.ai",
+                tags: ["musica", "canzoni", "generazione"]
+            },
+            {
+                id: 14,
+                name: "Phind",
+                category: "💻 Dev Tools",
+                description: "Motore di ricerca specializzato per sviluppatori con esempi di codice",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://phind.com",
+                domain: "phind.com",
+                tags: ["programmazione", "ricerca", "codice"]
+            },
+            {
+                id: 15,
+                name: "Quizlet",
+                category: "🎓 Education",
+                description: "Piattaforma studio con flashcard, test e tutor AI personalizzato",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://quizlet.com",
+                domain: "quizlet.com",
+                tags: ["studio", "flashcard", "educazione"]
+            },
+            {
+                id: 16,
+                name: "DeepL Write",
+                category: "📝 Content",
+                description: "Miglioramento professionale di chiarezza, stile e grammatica dei testi",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://deepl.com/write",
+                domain: "deepl.com",
+                tags: ["scrittura", "correzione", "stile"]
+            },
+            {
+                id: 17,
+                name: "Consensus",
+                category: "📊 Data/Analytics",
+                description: "Ricerca scientifica AI con indicatori qualità e analisi articoli peer-reviewed",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://consensus.app",
+                domain: "consensus.app",
+                tags: ["ricerca", "scientifico", "analisi"]
+            },
+            {
+                id: 18,
+                name: "Poe",
+                category: "🤖 Chat/Agents",
+                description: "Accesso a multipli modelli AI (GPT, Claude) con creazione bot personalizzati",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://poe.com",
+                domain: "poe.com",
+                tags: ["multi-modello", "bot", "conversazione"]
+            },
+            {
+                id: 19,
+                name: "Google Gemini",
+                category: "🤖 Chat/Agents",
+                description: "Modello Gemini Pro per conversazione, codice, analisi e integrazione Google",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://gemini.google.com",
+                domain: "google.com",
+                tags: ["google", "conversazione", "integrazione"]
+            },
+            {
+                id: 20,
+                name: "Rytr",
+                category: "📝 Content",
+                description: "Assistente scrittura AI per email, blog, social media con 40+ use case",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://rytr.me",
+                domain: "rytr.me",
+                tags: ["scrittura", "blog", "social"]
+            },
+            {
+                id: 21,
+                name: "Buffer",
+                category: "📢 Marketing",
+                description: "Pianificazione post social media con AI Assistant e analytics integrate",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://buffer.com",
+                domain: "buffer.com",
+                tags: ["social media", "marketing", "pianificazione"]
+            },
+            {
+                id: 22,
+                name: "Character AI",
+                category: "🤖 Chat/Agents",
+                description: "Chat con personaggi AI (reali, finzione, custom) con messaggi illimitati",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://character.ai",
+                domain: "character.ai",
+                tags: ["personaggi", "roleplay", "intrattenimento"]
+            },
+            {
+                id: 23,
+                name: "Replit",
+                category: "💻 Dev Tools",
+                description: "IDE online con Ghostwriter AI per generazione, debug e completamento codice",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://replit.com",
+                domain: "replit.com",
+                tags: ["IDE", "codice", "online"]
+            },
+            {
+                id: 24,
+                name: "Microsoft Copilot",
+                category: "🤖 Chat/Agents",
+                description: "AI integrata Windows/Office con GPT-4, ricerca web e generazione immagini",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://copilot.microsoft.com",
+                domain: "microsoft.com",
+                tags: ["microsoft", "office", "integrazione"]
+            },
+            {
+                id: 25,
+                name: "Notion AI",
+                category: "⚡ Productivity",
+                description: "AI integrata in Notion per riassunti, traduzioni, brainstorming e scrittura",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://notion.so/ai",
+                domain: "notion.so",
+                tags: ["notion", "produttività", "scrittura"]
+            },
+            {
+                id: 26,
+                name: "Blackbox AI",
+                category: "💻 Dev Tools",
+                description: "Generazione e spiegazione codice da testo, immagini e video",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://useblackbox.io",
+                domain: "blackbox.ai",
+                tags: ["codice", "generazione", "AI"]
+            },
+            {
+                id: 27,
+                name: "Canva Magic Write",
+                category: "📝 Content",
+                description: "Generazione testi integrata in Canva per design, presentazioni e social",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://canva.com/magic-write",
+                domain: "canva.com",
+                tags: ["design", "canva", "testi"]
+            },
+            {
+                id: 28,
+                name: "AIVA",
+                category: "🎵 Audio/Voice",
+                description: "Compositore AI per colonne sonore e musica strumentale professionale",
+                plan: "Freemium",
+                rating: 3,
+                url: "https://aiva.ai",
+                domain: "aiva.ai",
+                tags: ["composizione", "musica", "strumentale"]
+            },
+            {
+                id: 29,
+                name: "Khanmigo",
+                category: "🎓 Education",
+                description: "Tutor AI personalizzato per matematica, scienze e discipline umanistiche",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://khanacademy.org/khan-labs",
+                domain: "khanacademy.org",
+                tags: ["tutoraggio", "matematica", "educazione"]
+            },
+            {
+                id: 30,
+                name: "WebMD Symptom Checker",
+                category: "📊 Data/Analytics",
+                description: "Analisi sintomi e informazioni mediche preliminari (non sostituisce il medico)",
+                plan: "Free",
+                rating: 3,
+                url: "https://symptoms.webmd.com",
+                domain: "webmd.com",
+                tags: ["salute", "sintomi", "medico"]
+            },
+            {
+                id: 31,
+                name: "Manus",
+                category: "🤖 Chat/Agents",
+                description: "Agente AI per controllo computer, automazione task e raccolta informazioni",
+                plan: "Freemium",
+                rating: 4,
+                url: "https://manus.ai",
+                domain: "manus.ai",
+                tags: ["automazione", "controllo", "agente"]
+            }
+        ];
+
+        // DOM Elements
+        const toolsGrid = document.getElementById('toolsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const toolsCount = document.getElementById('toolsCount');
+        const noResults = document.getElementById('noResults');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // State
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // Initialize
+        renderTools(aiTools);
+        updateToolsCount(aiTools.length);
+
+        // Event Listeners
+        searchInput.addEventListener('input', handleSearch);
+        filterButtons.forEach(btn => btn.addEventListener('click', handleFilter));
+
+        // Functions
+        function renderTools(tools) {
+            if (tools.length === 0) {
+                toolsGrid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            toolsGrid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            toolsGrid.innerHTML = tools.map(tool => `
+                <div class="tool-card" data-category="${tool.category}">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <img src="https://logo.clearbit.com/${tool.domain}" alt="${tool.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div style="display:none; width:32px; height:32px; background:linear-gradient(45deg,#667eea,#764ba2); border-radius:6px; align-items:center; justify-content:center; color:white; font-weight:bold; font-size:14px;">${tool.name.charAt(0)}</div>
+                        </div>
+                        <div>
+                            <div class="tool-title">${tool.name}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-description">${tool.description}</div>
+                    
+                    <div class="tool-meta">
+                        <span class="tag tag-${tool.plan.toLowerCase()}">${tool.plan === 'Free' ? '🆓 Gratuito' : tool.plan === 'Freemium' ? '🟡 Freemium' : '💰 A pagamento'}</span>
+                        <span class="tag tag-category">${tool.category}</span>
+                        <span class="tag tag-rating">${'⭐'.repeat(tool.rating)} ${tool.rating}/5</span>
+                    </div>
+                    
+                    <div class="tool-actions">
+                        <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                            Apri ${tool.name}
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleSearch(e) {
+            searchTerm = e.target.value.toLowerCase();
+            filterTools();
+        }
+
+        function handleFilter(e) {
+            // Update active filter button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            currentFilter = e.target.dataset.category;
+            filterTools();
+        }
+
+        function filterTools() {
+            let filteredTools = aiTools;
+
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filteredTools = filteredTools.filter(tool => tool.category === currentFilter);
+            }
+
+            // Apply search filter
+            if (searchTerm) {
+                filteredTools = filteredTools.filter(tool => 
+                    tool.name.toLowerCase().includes(searchTerm) ||
+                    tool.description.toLowerCase().includes(searchTerm) ||
+                    tool.category.toLowerCase().includes(searchTerm) ||
+                    tool.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+            }
+
+            renderTools(filteredTools);
+            updateToolsCount(filteredTools.length);
+        }
+
+        function updateToolsCount(count) {
+            toolsCount.textContent = `${count} Tool${count !== 1 ? 's' : ''}`;
+        }
+
+        // Add some smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
