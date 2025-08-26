@@ -378,7 +378,7 @@
                 const rating = index + 1;
                 ratingInput.value = rating;
                 starRating.setAttribute('data-rating', rating);
-                
+        
                 stars.forEach((s, i) => {
                     s.classList.toggle('active', i < rating);
                 });
@@ -399,27 +399,30 @@
             });
         });
 
-        // Gestione form submission
+         // Gestione form submission per Netlify Forms
         const form = document.getElementById('suggestForm');
 
-        form.addEventListener('submit', function(e) { 
+        form.addEventListener('submit', function(e) {
             // Validazione descrizione
             const description = document.getElementById('description').value;
             if (description.length < 50) {
+                e.preventDefault();
                 alert('La descrizione deve essere di almeno 50 caratteri');
                 return;
             }
             if (description.length > 300) {
+                e.preventDefault();
                 alert('La descrizione non può superare i 300 caratteri');
                 return;
             }
 
-            // Validazione tags
-            const tags = document.getElementById('tags').value;
-            if (tags && tags.split(',').length > 5) {
-                alert('Massimo 5 tags consentiti');
-                return;
-            }
+    // Validazione tags
+    const tags = document.getElementById('tags').value;
+    if (tags && tags.split(',').length > 5) {
+        e.preventDefault();
+        alert('Massimo 5 tags consentiti');
+        return;
+    }
 
             // Simula invio (in produzione, inviare a un endpoint)
             submitForm(new FormData(form));
