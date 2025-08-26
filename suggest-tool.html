@@ -401,11 +401,8 @@
 
         // Gestione form submission
         const form = document.getElementById('suggestForm');
-        const successMessage = document.getElementById('successMessage');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        form.addEventListener('submit', function(e) { 
             // Validazione descrizione
             const description = document.getElementById('description').value;
             if (description.length < 50) {
@@ -427,38 +424,38 @@
             // Simula invio (in produzione, inviare a un endpoint)
             submitForm(new FormData(form));
         });
-
-        function submitForm(formData) {
-            // In produzione, sostituire con una vera chiamata API
-            // fetch('/api/suggest-tool', { method: 'POST', body: formData })
+//-----------funzione sospesa----------
+        //function submitForm(formData) {
+            //// In produzione, sostituire con una vera chiamata API
+            //// fetch('/api/suggest-tool', { method: 'POST', body: formData })
             
-            // Simula caricamento
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '⏳ Invio in corso...';
-            submitBtn.disabled = true;
+            //// Simula caricamento
+            //const submitBtn = form.querySelector('button[type="submit"]');
+            //const originalText = submitBtn.innerHTML;
+            //submitBtn.innerHTML = '⏳ Invio in corso...';
+            //submitBtn.disabled = true;
 
-            setTimeout(() => {
-                // Simula successo
-                successMessage.style.display = 'block';
-                form.style.display = 'none';
+            //setTimeout(() => {
+                //// Simula successo
+                //successMessage.style.display = 'block';
+                //form.style.display = 'none';
                 
-                // Reset dopo 5 secondi
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                    form.style.display = 'block';
-                    form.reset();
+                //// Reset dopo 5 secondi
+                //setTimeout(() => {
+                    //successMessage.style.display = 'none';
+                    //form.style.display = 'block';
+                    //form.reset();
                     
-                    // Reset rating
-                    stars.forEach(s => s.classList.remove('active'));
-                    ratingInput.value = '0';
-                    starRating.setAttribute('data-rating', '0');
+                    //// Reset rating
+                    //stars.forEach(s => s.classList.remove('active'));
+                    //ratingInput.value = '0';
+                    //starRating.setAttribute('data-rating', '0');
                     
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 5000);
-            }, 2000);
-
+                    //submitBtn.innerHTML = originalText;
+                    //submitBtn.disabled = false;
+                //}, 5000);
+            //}, 2000);
+//------------------------------------------------
             // Log dei dati per debug
             console.log('Form data:', Object.fromEntries(formData.entries()));
         }
