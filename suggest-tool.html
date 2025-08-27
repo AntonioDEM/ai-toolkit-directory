@@ -177,6 +177,8 @@
             gap: 0.25rem;
             justify-content: flex-start;
             margin-top: 0.5rem;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
         }
 
         .rating-stars input[type="radio"] {
@@ -191,25 +193,11 @@
             margin: 0;
             padding: 0.25rem;
             border-radius: 4px;
+            order: 2;
         }
 
         .rating-stars label:hover {
             transform: scale(1.1);
-        }
-
-        .rating-stars input[type="radio"]:checked ~ label,
-        .rating-stars label:hover,
-        .rating-stars label:hover ~ label {
-            color: #fbbf24;
-        }
-
-        .rating-stars {
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
-
-        .rating-stars label {
-            order: 2;
         }
 
         .rating-stars input[type="radio"]:checked ~ label {
@@ -330,6 +318,24 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Animazione slide per campo categoria personalizzata */
+        #otherCategory {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #otherCategory.show {
+            display: block !important;
+            opacity: 1;
+            max-height: 100px;
+        }
+
+        #otherCategory.hide {
+            opacity: 0;
+            max-height: 0;
+            margin-bottom: 0;
+        }
+
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 1.5rem;
@@ -436,6 +442,13 @@
                                     </select>
                                 </div>
                             </div>
+                            
+                            <!-- Campo categoria personalizzata (nascosto di default) -->
+                            <div class="form-group" id="otherCategory" style="display: none;">
+                                <label for="otherCategoryText">Specifica altra categoria non presente nell'elenco</label>
+                                <input type="text" id="otherCategoryText" name="otherCategoryText" placeholder="es. Video, 3D Modeling...">
+                                <!--  <div class="help-text">Inserisci una nuova categoria non presente nell'elenco</div>-->
+                            </div>
                         </div>
                         
                         <div class="form-section">
@@ -512,6 +525,32 @@
     </footer>
 
     <script>
+        // Gestione categoria "altro" - DEVE ESSERE PRIMA del resto
+        const categorySelect = document.getElementById('category');
+        const otherCategoryDiv = document.getElementById('otherCategory');
+        const otherCategoryInput = document.getElementById('otherCategoryText');
+        
+        categorySelect.addEventListener('change', function() {
+            if (this.value === '🔧 Other') {
+                otherCategoryDiv.style.display = 'block';
+                otherCategoryDiv.classList.add('show');
+                otherCategoryDiv.classList.remove('hide');
+                otherCategoryInput.required = true;
+                
+                // Analytics tracking per selezione "Other"
+                gtag('event', 'other_category_selected', {
+                    'event_category': 'form_interaction',
+                    'event_label': 'custom_category_requested'
+                });
+            } else {
+                otherCategoryDiv.style.display = 'none';
+                otherCategoryDiv.classList.add('hide');
+                otherCategoryDiv.classList.remove('show');
+                otherCategoryInput.required = false;
+                otherCategoryInput.value = ''; // Pulisce il campo quando nascosto
+            }
+        });
+
         // Rating Stars Functionality
         const ratingInputs = document.querySelectorAll('input[name="rating"]');
         const ratingDisplay = document.getElementById('rating-display');
@@ -530,11 +569,20 @@
             });
         });
 
-        // Form submission analytics
-        document.querySelector('form').addEventListener('submit', function() {
+        // Form submission analytics e validazione
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Validazione aggiuntiva per categoria personalizzata
+            if (categorySelect.value === '🔧 Other' && !otherCategoryInput.value.trim()) {
+                e.preventDefault();
+                alert('Per favore, specifica la categoria personalizzata.');
+                otherCategoryInput.focus();
+                return false;
+            }
+            
             gtag('event', 'form_submit', {
                 'event_category': 'suggestions',
-                'event_label': 'suggest_tool_form'
+                'event_label': 'suggest_tool_form',
+                'custom_category': categorySelect.value === '🔧 Other' ? 'custom' : 'predefined'
             });
         });
 
