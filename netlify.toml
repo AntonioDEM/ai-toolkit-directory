@@ -79,7 +79,7 @@
 # Configurazione per ottimizzazione immagini (se usata)
 [[plugins]]
   #package = "netlify-plugin-image-optim" #problematico
-  package = "netlify-plugin-image-cdn"
+  package = "@netlify/plugin-sitemap"
 
 # Deploy contexts per diversi ambienti
 [context.production.environment]
