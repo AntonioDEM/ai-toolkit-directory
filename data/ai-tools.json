@@ -408,6 +408,19 @@
       "tags": ["automazione", "controllo", "agente", "produttività"],
       "featured": false,
       "dateAdded": "2025-02-20"
+    },
+    {
+      "id": 32,
+      "name": "Prompts Chat",
+      "category": "💎 PromptAI",
+      "description": "ALa prima e più famosa directory di prompt al mondo",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://prompts.chat",
+      "domain": "manus.ai",
+      "tags": ["prompt AI", "prompt generator", "tool AI", "produttività"],
+      "featured": false,
+      "dateAdded": "2025-08-27"
     }
   ],
   "categories": [
@@ -480,14 +493,22 @@
       "emoji": "📢",
       "description": "Marketing digitale e social media",
       "count": 1
-    }
+    },
+    {
+      "id": "💎 PromptAI",
+      "name": "💎 PromptAI",
+      "emoji": "💎",
+      "description": "Comandi per la guida creativa nelle AI",
+      "count": 1
+    },
+
   ],
   "filters": {
     "pricing": [
       {
         "id": "all",
         "name": "Tutti i piani",
-        "count": 31
+        "count": 32
       },
       {
         "id": "Free",
