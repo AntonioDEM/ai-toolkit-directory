@@ -78,7 +78,8 @@
 
 # Configurazione per ottimizzazione immagini (se usata)
 [[plugins]]
-  package = "netlify-plugin-image-optim"
+  #package = "netlify-plugin-image-optim" #problematico
+  package = "netlify-plugin-image-cdn"
 
 # Deploy contexts per diversi ambienti
 [context.production.environment]
