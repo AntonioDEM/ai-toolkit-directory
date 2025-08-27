@@ -2,14 +2,14 @@
 
 > Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f5fa92f3-4ea9-48b3-9977-f4109d0159ed/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/651852bb-e4bc-4784-aa8d-026c4ee5f531/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/AntonioDEM/ai-toolkit-directory.svg)](https://github.com/AntonioDEM/ai-toolkit-directory/stargazers)
 [![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)](https://web.dev/progressive-web-apps/)
 
 ## 🚀 Demo Live
 
-**[🔗 Visita AI Toolkit Directory](https://your-site.netlify.app)**
+**[🔗 Visita AI Toolkit Directory](https://tools-for-ai.netlify.app)**
 
 
 ## ✨ Caratteristiche Principali
