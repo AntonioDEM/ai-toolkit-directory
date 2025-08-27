@@ -76,11 +76,6 @@
 [[plugins]]
   package = "@netlify/plugin-sitemap"
 
-# Configurazione per ottimizzazione immagini (se usata)
-[[plugins]]
-  #package = "netlify-plugin-image-optim" #problematico
-  package = "@netlify/plugin-sitemap"
-
 # Deploy contexts per diversi ambienti
 [context.production.environment]
   HUGO_VERSION = "0.58.2"
