@@ -1,0 +1,21 @@
+# Netlify _redirects file per AI Toolkit Directory
+# Questo file deve essere nella root directory del progetto
+
+# Redirect principale - se index.html non viene trovato
+/* /index.html 200
+
+# Redirect per le pagine specifiche (se necessario)
+/suggest-tool /suggest-tool.html 200
+/suggest /suggest-tool.html 200
+
+# Redirect per gestire trailing slashes
+/suggest-tool/ /suggest-tool.html 200
+
+# Redirect di fallback per SPA (Single Page Application)
+/app/* /index.html 200
+
+# Security headers e cache (opzionali ma raccomandati)
+/css/* /css/:splat 200!
+/js/* /js/:splat 200!
+/data/* /data/:splat 200!
+/icons/* /icons/:splat 200!

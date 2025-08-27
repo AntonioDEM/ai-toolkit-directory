@@ -1,21 +1,27 @@
 [build]
- command = "echo 'Static site, no build needed'"
+  # Directory pubblicazione (root del progetto)
   publish = "."
- 
+  # Non abbiamo build command per sito statico
+  command = ""
+
 [build.environment]
+  # Versione Node.js (per compatibilità)
   NODE_VERSION = "18"
 
-# Headers per sicurezza e performance
+# Configurazione Headers per sicurezza e performance
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
 
-# Headers per file statici con cache ottimizzata
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/css/*"
   [headers.values]
@@ -32,61 +38,40 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-# Service Worker con cache appropriata
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-    Service-Worker-Allowed = "/"
-
-# Headers per le pagine HTML
-[[headers]]
-  for = "/*.html"
+  for = "/data/*"
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
-# Redirect da www a dominio principale (se configurato)
+# Redirect rules (backup per _redirects)
 [[redirects]]
-  from = "https://www.tools-for-ai.netlify.app/*"
-  to = "https://tools-for-ai.netlify.app/:splat"
-  status = 301
-  force = true
+  from = "/app/*"
+  to = "/index.html"
+  status = 200
 
-# Redirect per pagine legacy (se necessario)
+[[redirects]]
+  from = "/suggest-tool/"
+  to = "/suggest-tool.html"
+  status = 200
+
 [[redirects]]
   from = "/suggest"
   to = "/suggest-tool.html"
-  status = 301
+  status = 200
 
-# Fallback per SPA routing (se necessario in futuro)
+# Gestione 404 personalizzata
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  conditions = {Role = ["admin"]}
 
-# Configurazione forme Netlify
-# I form vengono rilevati automaticamente dai tag HTML
+# Configurazione PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/manifest+json"
 
-# Plugin e funzionalità avanzate
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-
-# Deploy contexts per diversi ambienti
-[context.production.environment]
-  HUGO_VERSION = "0.58.2"
-  HUGO_ENV = "production"
-
-[context.branch-deploy.environment]
-  HUGO_VERSION = "0.58.2"
-
-[context.deploy-preview.environment]
-  HUGO_VERSION = "0.58.2"
-
-# Regole per il processing dei form
-[forms]
-  # Netlify gestisce automaticamente i form con data-netlify="true"
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
