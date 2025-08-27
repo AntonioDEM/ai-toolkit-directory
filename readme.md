@@ -9,7 +9,7 @@
 
 ## 🚀 Demo Live
 
-**[🔗 Visita AI Toolkit Directory](https://your-site.netlify.app)**
+**[🔗 Visita AI Toolkit Directory](https://tools-for-ai.netlify.app)**
 
 
 ## ✨ Caratteristiche Principali
