@@ -1,23 +1,23 @@
 // sw.js - Service Worker per AI Toolkit Directory PWA
 
-const CACHE_NAME = 'ai-tools-v1.2.0';
-const STATIC_CACHE = 'static-v1.2.0';
-const DYNAMIC_CACHE = 'dynamic-v1.2.0';
+cconst CACHE_NAME = 'ai-tools-v1.3.0'; // Era v1.2.0
+const STATIC_CACHE = 'static-v1.3.0';  // Era v1.2.0
+const DYNAMIC_CACHE = 'dynamic-v1.3.0'; // Era v1.2.0
 
-// File da cacheare immediatamente
+// 2. Aggiungi i nuovi file a STATIC_FILES
 const STATIC_FILES = [
   '/',
   '/index.html',
   '/suggest-tool.html',
+  '/success.html',              // ← AGGIUNGI QUESTA RIGA
   '/css/styles.css',
   '/js/app.js',
   '/js/enhanced-app.js',
+  '/js/rating-system.js',       // ← AGGIUNGI QUESTA RIGA (se usi file separato)
   '/data/ai-tools.json',
   '/manifest.json',
-  // Icone essenziali
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
-  // Font e risorse esterne essenziali
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
 ];
 

@@ -1,9 +1,11 @@
 [build]
   publish = "."
+  command = "echo 'Static site, no build needed'"
 
 [build.environment]
   NODE_VERSION = "18"
 
+# Headers per sicurezza e performance
 [[headers]]
   for = "/*"
   [headers.values]
@@ -11,7 +13,9 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Headers per file statici con cache ottimizzata
 [[headers]]
   for = "/css/*"
   [headers.values]
@@ -23,16 +27,70 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/data/*"
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Service Worker con cache appropriata
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+# Headers per le pagine HTML
+[[headers]]
+  for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=3600"
 
+# Redirect da www a dominio principale (se configurato)
 [[redirects]]
-  from = "/tools"
-  to = "/"
+  from = "https://www.tools-for-ai.netlify.app/*"
+  to = "https://tools-for-ai.netlify.app/:splat"
+  status = 301
+  force = true
+
+# Redirect per pagine legacy (se necessario)
+[[redirects]]
+  from = "/suggest"
+  to = "/suggest-tool.html"
   status = 301
 
+# Fallback per SPA routing (se necessario in futuro)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  conditions = {Role = ["admin"]}
+
+# Configurazione forme Netlify
+# I form vengono rilevati automaticamente dai tag HTML
+
+# Plugin e funzionalità avanzate
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+# Configurazione per ottimizzazione immagini (se usata)
+[[plugins]]
+  package = "netlify-plugin-image-optim"
+
+# Deploy contexts per diversi ambienti
+[context.production.environment]
+  HUGO_VERSION = "0.58.2"
+  HUGO_ENV = "production"
+
+[context.branch-deploy.environment]
+  HUGO_VERSION = "0.58.2"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.58.2"
+
+# Regole per il processing dei form
+[forms]
+  # Netlify gestisce automaticamente i form con data-netlify="true"

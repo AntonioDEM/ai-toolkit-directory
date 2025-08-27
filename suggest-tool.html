@@ -3,170 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suggerisci un Tool AI - AI Toolkit Directory</title>
-    <meta name="description" content="Suggerisci un nuovo strumento AI da aggiungere alla nostra directory curata">
+    <title>Suggerisci Tool AI | AI Toolkit Directory</title>
+    <meta name="description" content="Contribuisci alla directory con nuovi strumenti AI. Suggerisci il tuo tool AI preferito.">
     
-    <link rel="icon" href="https://www.google.com/s2/favicons?sz=32&domain=ai-toolkit.com">
-    <link rel="stylesheet" href="./css/styles.css">
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AI Toolkit">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXQK7WBXS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VYXQK7WBXS', {
+            anonymize_ip: true,
+            cookie_flags: 'SameSite=None;Secure'
+        });
+    </script>
     
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --border-radius: 12px;
+            --spacing-lg: 2rem;
+            --spacing-md: 1.5rem;
+            --spacing-sm: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header principale del sito */
+        .header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main content */
+        .main {
+            padding: var(--spacing-lg) 0;
+        }
+
         .form-container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
         }
 
         .form-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: var(--spacing-lg);
             text-align: center;
-            margin-bottom: 40px;
         }
 
         .form-header h2 {
-            font-size: 2rem;
-            color: var(--text-primary);
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
         .form-header p {
-            color: var(--text-secondary);
             font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-content {
+            padding: var(--spacing-lg);
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: var(--spacing-md);
         }
 
         .form-group label {
             display: block;
+            margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 8px;
         }
 
         .required {
             color: #e53e3e;
         }
 
-        .form-control {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 12px 16px;
+            padding: 0.875rem;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
         }
 
-        .form-control:focus {
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        .form-control textarea {
+        .form-group textarea {
             min-height: 120px;
             resize: vertical;
+        }
+
+        /* Sistema Rating con Stelle */
+        .rating-container {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.25rem;
+            justify-content: flex-start;
+            margin-top: 0.5rem;
+        }
+
+        .rating-stars input[type="radio"] {
+            display: none;
+        }
+
+        .rating-stars label {
+            cursor: pointer;
+            font-size: 2rem;
+            color: #e2e8f0;
+            transition: all 0.2s ease;
+            margin: 0;
+            padding: 0.25rem;
+            border-radius: 4px;
+        }
+
+        .rating-stars label:hover {
+            transform: scale(1.1);
+        }
+
+        .rating-stars input[type="radio"]:checked ~ label,
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label {
+            color: #fbbf24;
+        }
+
+        .rating-stars {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .rating-stars label {
+            order: 2;
+        }
+
+        .rating-stars input[type="radio"]:checked ~ label {
+            color: #fbbf24;
+        }
+
+        .rating-stars label:hover ~ label {
+            color: #fbbf24;
+        }
+
+        .rating-value {
+            margin-left: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Honeypot per spam protection */
+        .honeypot {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: var(--spacing-md);
         }
 
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 20px;
-            padding-right: 40px;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .radio-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        .radio-item input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #667eea;
-        }
-
-        .star-rating {
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-
-        .star {
-            font-size: 24px;
-            color: #e2e8f0;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .star:hover,
-        .star.active {
-            color: #fbbf24;
-        }
-
-        .form-help {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 12px 24px;
+        .submit-btn {
+            background: var(--primary-gradient);
+            color: white;
             border: none;
+            padding: 1rem 2rem;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: var(--spacing-md);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: var(--spacing-md);
+            transition: color 0.2s ease;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+        .back-link:hover {
+            color: #764ba2;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        .back-link::before {
+            content: '←';
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
 
-        .btn-secondary {
-            background: #f7fafc;
+        .help-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .form-section {
+            background: #f8fafc;
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            border-left: 4px solid #667eea;
+        }
+
+        .form-section h3 {
             color: var(--text-primary);
-            border: 2px solid #e2e8f0;
-        }
-
-        .btn-secondary:hover {
-            background: #edf2f7;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
         }
 
         .success-message {
@@ -179,38 +317,35 @@
             text-align: center;
         }
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        /* Footer */
+        .footer {
+            background: var(--primary-gradient);
             color: white;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-weight: 500;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
 
-        .back-link:hover {
-            color: rgba(255,255,255,0.8);
+        .footer p {
+            margin-bottom: 0.5rem;
         }
 
         @media (max-width: 768px) {
-            .form-container {
-                padding: 24px;
-                margin: 20px;
+            .logo h1 {
+                font-size: 1.5rem;
             }
-
+            
+            .form-header h2 {
+                font-size: 2rem;
+            }
+            
             .form-row {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: var(--spacing-sm);
             }
-
-            .btn-container {
-                flex-direction: column;
-            }
-
-            .radio-group {
-                flex-direction: column;
-                gap: 12px;
+            
+            .rating-stars label {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -220,7 +355,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon">🤖</div>
+                    <div class="logo-icon"><img src="icons/icon-192x192.png" alt="AI Toolkit" style="width: 32px; height: 32px;"></div>
                     <div>
                         <h1>AI Toolkit Directory</h1>
                         <div class="subtitle">Suggerisci un nuovo tool</div>
@@ -239,247 +374,198 @@
             <div class="form-container">
                 <div class="form-header">
                     <h2>🚀 Suggerisci un Tool AI</h2>
-                    <p>Aiutaci a migliorare la directory suggerendo un nuovo strumento AI</p>
+                    <p>Contribuisci alla directory con nuovi strumenti AI</p>
                 </div>
-
-                <div class="success-message" id="successMessage">
-                    ✅ Grazie per il tuo suggerimento! Lo esamineremo entro 48 ore.
-                </div>
-
-                <form id="suggestForm" netlify name="suggest-tool" method="POST">
-                    <div class="form-group">
-                        <label for="toolName">Nome del Tool <span class="required">*</span></label>
-                        <input type="text" id="toolName" name="toolName" class="form-control" required placeholder="es. ChatGPT, Midjourney...">
+                
+                <div class="form-content">
+                    <div class="success-message" id="successMessage">
+                        ✅ Grazie per il tuo suggerimento! Lo esamineremo entro 48 ore.
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="toolUrl">URL del Tool <span class="required">*</span></label>
-                            <input type="url" id="toolUrl" name="toolUrl" class="form-control" required placeholder="https://example.com">
+                    
+                    <!-- Netlify Forms - form con attributi necessari -->
+                    <form name="suggest-tool" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <!-- Honeypot per spam protection -->
+                        <div class="honeypot">
+                            <label for="bot-field">Non compilare se sei umano:</label>
+                            <input type="text" name="bot-field" id="bot-field" />
                         </div>
-                        <div class="form-group">
-                            <label for="category">Categoria <span class="required">*</span></label>
-                            <select id="category" name="category" class="form-control form-select" required>
-                                <option value="">Seleziona categoria...</option>
-                                <option value="🤖 Chat/Agents">🤖 Chat/Agents</option>
-                                <option value="🖼️ Image">🖼️ Image Generation</option>
-                                <option value="💻 Dev Tools">💻 Dev Tools</option>
-                                <option value="📊 Data/Analytics">📊 Data/Analytics</option>
-                                <option value="⚡ Productivity">⚡ Productivity</option>
-                                <option value="📝 Content">📝 Content Creation</option>
-                                <option value="🎵 Audio/Voice">🎵 Audio/Voice</option>
-                                <option value="🎓 Education">🎓 Education</option>
-                                <option value="📢 Marketing">📢 Marketing</option>
-                                <option value="other">🔧 Altro (specificare)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group" id="otherCategory" style="display: none;">
-                        <label for="otherCategoryText">Specifica altra categoria</label>
-                        <input type="text" id="otherCategoryText" name="otherCategoryText" class="form-control" placeholder="es. Video, 3D Modeling...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Descrizione <span class="required">*</span></label>
-                        <textarea id="description" name="description" class="form-control" required placeholder="Descrivi cosa fa il tool, le sue caratteristiche principali..."></textarea>
-                        <div class="form-help">Minimum 50 caratteri, massimo 300</div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Piano di prezzo <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <label class="radio-item">
-                                    <input type="radio" name="pricing" value="Free" required>
-                                    <span>🆓 Gratuito</span>
-                                </label>
-                                <label class="radio-item">
-                                    <input type="radio" name="pricing" value="Freemium" required>
-                                    <span>🟡 Freemium</span>
-                                </label>
-                                <label class="radio-item">
-                                    <input type="radio" name="pricing" value="Paid" required>
-                                    <span>💰 A pagamento</span>
-                                </label>
+                        
+                        <!-- Hidden field per identificare il form -->
+                        <input type="hidden" name="form-name" value="suggest-tool" />
+                        
+                        <div class="form-section">
+                            <h3>📋 Informazioni Base</h3>
+                            
+                            <div class="form-group">
+                                <label for="tool-name">Nome del Tool <span class="required">*</span></label>
+                                <input type="text" id="tool-name" name="tool-name" required placeholder="es. ChatGPT, Claude, Midjourney">
+                                <div class="help-text">Il nome ufficiale dello strumento AI</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tool-url">URL del Tool <span class="required">*</span></label>
+                                <input type="url" id="tool-url" name="tool-url" required placeholder="https://esempio.com">
+                                <div class="help-text">Link diretto al sito web dello strumento</div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="category">Categoria <span class="required">*</span></label>
+                                    <select id="category" name="category" required>
+                                        <option value="">Seleziona categoria</option>
+                                        <option value="🤖 Chat/Agents">🤖 Chat/Agents</option>
+                                        <option value="🖼️ Image">🖼️ Image</option>
+                                        <option value="💻 Dev Tools">💻 Dev Tools</option>
+                                        <option value="📊 Data/Analytics">📊 Data/Analytics</option>
+                                        <option value="⚡ Productivity">⚡ Productivity</option>
+                                        <option value="📝 Content">📝 Content</option>
+                                        <option value="🎵 Audio/Voice">🎵 Audio/Voice</option>
+                                        <option value="🎓 Education">🎓 Education</option>
+                                        <option value="📢 Marketing">📢 Marketing</option>
+                                        <option value="🔧 Other">🔧 Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="pricing">Piano Tariffario <span class="required">*</span></label>
+                                    <select id="pricing" name="pricing" required>
+                                        <option value="">Seleziona piano</option>
+                                        <option value="Free">Free - Completamente gratuito</option>
+                                        <option value="Freemium">Freemium - Piano base gratuito + premium</option>
+                                        <option value="Paid">Paid - Solo a pagamento</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>La tua valutazione</label>
-                            <div class="star-rating" data-rating="0">
-                                <span class="star" data-value="1">⭐</span>
-                                <span class="star" data-value="2">⭐</span>
-                                <span class="star" data-value="3">⭐</span>
-                                <span class="star" data-value="4">⭐</span>
-                                <span class="star" data-value="5">⭐</span>
+                        
+                        <div class="form-section">
+                            <h3>⭐ Valutazione e Dettagli</h3>
+                            
+                            <div class="rating-container">
+                                <label>Rating <span class="required">*</span></label>
+                                <div class="rating-stars">
+                                    <input type="radio" id="star5" name="rating" value="5" required />
+                                    <label for="star5">⭐</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4">⭐</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3">⭐</label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2">⭐</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1">⭐</label>
+                                    <span class="rating-value" id="rating-display">Seleziona rating</span>
+                                </div>
+                                <div class="help-text">Da 1 stella (scarso) a 5 stelle (eccellente)</div>
                             </div>
-                            <input type="hidden" name="rating" id="rating" value="0">
+                            
+                            <div class="form-group">
+                                <label for="description">Descrizione <span class="required">*</span></label>
+                                <textarea id="description" name="description" required placeholder="Descrivi brevemente le funzionalità principali e i vantaggi del tool AI..."></textarea>
+                                <div class="help-text">Una descrizione chiara e concisa (100-300 caratteri)</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tags">Tags (separati da virgola)</label>
+                                <input type="text" id="tags" name="tags" placeholder="ai, chatbot, automation, produttività">
+                                <div class="help-text">Parole chiave che descrivono il tool (massimo 5 tags)</div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tags">Tags (opzionale)</label>
-                        <input type="text" id="tags" name="tags" class="form-control" placeholder="es. ai, scrittura, codice (separati da virgola)">
-                        <div class="form-help">Massimo 5 tags, separati da virgola</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="submitterName">Il tuo nome (opzionale)</label>
-                        <input type="text" id="submitterName" name="submitterName" class="form-control" placeholder="Come vuoi essere accreditato">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="submitterEmail">La tua email (opzionale)</label>
-                        <input type="email" id="submitterEmail" name="submitterEmail" class="form-control" placeholder="Per eventuali chiarimenti">
-                        <div class="form-help">Non verrà pubblicata, usata solo per contattarti se necessario</div>
-                    </div>
-
-                    <div class="btn-container">
-                        <button type="submit" class="btn btn-primary">
-                            🚀 Invia Suggerimento
+                        
+                        <div class="form-section">
+                            <h3>👤 I tuoi Dati (opzionali)</h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="your-name">Il tuo Nome</label>
+                                    <input type="text" id="your-name" name="your-name" placeholder="Nome o pseudonimo">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="your-email">La tua Email</label>
+                                    <input type="email" id="your-email" name="your-email" placeholder="email@esempio.com">
+                                    <div class="help-text">Per eventuali chiarimenti sul tool suggerito</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="additional-notes">Note Aggiuntive</label>
+                                <textarea id="additional-notes" name="additional-notes" placeholder="Qualsiasi informazione aggiuntiva che ritieni utile..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            📤 Invia Suggerimento
                         </button>
-                        <a href="index.html" class="btn btn-secondary">
-                            ← Annulla
-                        </a>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 AI Toolkit Directory. Grazie per aiutarci a migliorare!</p>
+            <p>&copy; 2025 AI Toolkit Directory. Creato per aiutarti a scoprire i migliori strumenti AI.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Aggiornato con i tool più recenti e popolari</p>
+            <p style="margin-top: 10px; opacity: 0.7;">By Antonio Demarcus</p>
         </div>
     </footer>
 
     <script>
-        // Gestione categoria "altro"
-        const categorySelect = document.getElementById('category');
-        const otherCategoryDiv = document.getElementById('otherCategory');
-
-        categorySelect.addEventListener('change', function() {
-            if (this.value === 'other') {
-                otherCategoryDiv.style.display = 'block';
-                document.getElementById('otherCategoryText').required = true;
-            } else {
-                otherCategoryDiv.style.display = 'none';
-                document.getElementById('otherCategoryText').required = false;
-            }
-        });
-
-        // Gestione rating con stelle
-        const starRating = document.querySelector('.star-rating');
-        const ratingInput = document.getElementById('rating');
-        const stars = document.querySelectorAll('.star');
-
-        stars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                const rating = index + 1;
-                ratingInput.value = rating;
-                starRating.setAttribute('data-rating', rating);
+        // Rating Stars Functionality
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        const ratingDisplay = document.getElementById('rating-display');
         
-                stars.forEach((s, i) => {
-                    s.classList.toggle('active', i < rating);
-                });
-            });
-
-            star.addEventListener('mouseenter', () => {
-                const rating = index + 1;
-                stars.forEach((s, i) => {
-                    s.style.color = i < rating ? '#fbbf24' : '#e2e8f0';
-                });
-            });
-        });
-
-        starRating.addEventListener('mouseleave', () => {
-            const currentRating = parseInt(starRating.getAttribute('data-rating'));
-            stars.forEach((s, i) => {
-                s.style.color = i < currentRating ? '#fbbf24' : '#e2e8f0';
-            });
-        });
-
-         // Gestione form submission per Netlify Forms
-        const form = document.getElementById('suggestForm');
-
-        form.addEventListener('submit', function(e) {
-            // Validazione descrizione
-            const description = document.getElementById('description').value;
-            if (description.length < 50) {
-                e.preventDefault();
-                alert('La descrizione deve essere di almeno 50 caratteri');
-                return;
-            }
-            if (description.length > 300) {
-                e.preventDefault();
-                alert('La descrizione non può superare i 300 caratteri');
-                return;
-            }
-
-    // Validazione tags
-    const tags = document.getElementById('tags').value;
-    if (tags && tags.split(',').length > 5) {
-        e.preventDefault();
-        alert('Massimo 5 tags consentiti');
-        return;
-    }
-
-            // Simula invio (in produzione, inviare a un endpoint)
-            submitForm(new FormData(form));
-        });
-//-----------funzione sospesa----------
-        //function submitForm(formData) {
-            //// In produzione, sostituire con una vera chiamata API
-            //// fetch('/api/suggest-tool', { method: 'POST', body: formData })
-            
-            //// Simula caricamento
-            //const submitBtn = form.querySelector('button[type="submit"]');
-            //const originalText = submitBtn.innerHTML;
-            //submitBtn.innerHTML = '⏳ Invio in corso...';
-            //submitBtn.disabled = true;
-
-            //setTimeout(() => {
-                //// Simula successo
-                //successMessage.style.display = 'block';
-                //form.style.display = 'none';
+        ratingInputs.forEach(input => {
+            input.addEventListener('change', function() {
+                const value = this.value;
+                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
+                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                ratingDisplay.style.color = '#667eea';
                 
-                //// Reset dopo 5 secondi
-                //setTimeout(() => {
-                    //successMessage.style.display = 'none';
-                    //form.style.display = 'block';
-                    //form.reset();
-                    
-                    //// Reset rating
-                    //stars.forEach(s => s.classList.remove('active'));
-                    //ratingInput.value = '0';
-                    //starRating.setAttribute('data-rating', '0');
-                    
-                    //submitBtn.innerHTML = originalText;
-                    //submitBtn.disabled = false;
-                //}, 5000);
-            //}, 2000);
-//------------------------------------------------
-            // Log dei dati per debug
-            //console.log('Form data:', Object.fromEntries(formData.entries()));
-        //}
+                // Analytics tracking
+                gtag('event', 'rating_selected', {
+                    'custom_parameter': value
+                });
+            });
+        });
 
-        // Contatore caratteri per descrizione
-        const descriptionField = document.getElementById('description');
-        const helpText = descriptionField.nextElementSibling;
+        // Form submission analytics
+        document.querySelector('form').addEventListener('submit', function() {
+            gtag('event', 'form_submit', {
+                'event_category': 'suggestions',
+                'event_label': 'suggest_tool_form'
+            });
+        });
 
-        descriptionField.addEventListener('input', function() {
-            const length = this.value.length;
-            const remaining = 300 - length;
-            helpText.textContent = `${length}/300 caratteri (minimo 50)`;
-            
-            if (length < 50) {
-                helpText.style.color = '#e53e3e';
-            } else if (remaining < 50) {
-                helpText.style.color = '#d69e2e';
+        // Enhanced hover effect for stars
+        const starLabels = document.querySelectorAll('.rating-stars label');
+        starLabels.forEach((label, index) => {
+            label.addEventListener('mouseenter', function() {
+                const value = 5 - index;
+                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
+                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                ratingDisplay.style.color = '#fbbf24';
+            });
+        });
+
+        document.querySelector('.rating-stars').addEventListener('mouseleave', function() {
+            const checkedInput = document.querySelector('input[name="rating"]:checked');
+            if (checkedInput) {
+                const value = checkedInput.value;
+                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
+                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                ratingDisplay.style.color = '#667eea';
             } else {
-                helpText.style.color = 'var(--text-secondary)';
+                ratingDisplay.textContent = 'Seleziona rating';
+                ratingDisplay.style.color = '#4a5568';
             }
         });
+
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(console.error);
+        }
     </script>
 </body>
 </html>

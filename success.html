@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggerimento Inviato! | AI Toolkit Directory</title>
+    <meta name="description" content="Grazie per il tuo contributo alla directory AI Tools!">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AI Toolkit">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXQK7WBXS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VYXQK7WBXS', {
+            anonymize_ip: true,
+            cookie_flags: 'SameSite=None;Secure'
+        });
+        
+        // Track success page view
+        gtag('event', 'form_success', {
+            'event_category': 'suggestions',
+            'event_label': 'suggest_tool_success'
+        });
+    </script>
+    
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-gradient: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --border-radius: 12px;
+            --spacing-lg: 2rem;
+            --spacing-md: 1.5rem;
+            --spacing-sm: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header {
+            background: var(--success-gradient);
+            color: white;
+            padding: var(--spacing-lg);
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            80% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: var(--spacing-lg);
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            padding: var(--spacing-md);
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline {
+            background: #f8fafc;
+            padding: var(--spacing-md);
+            border-radius: 12px;
+            margin: var(--spacing-lg) 0;
+            text-align: left;
+        }
+
+        .timeline h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .social-share {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .social-btn.twitter { background: #1da1f2; }
+        .social-btn.linkedin { background: #0077b5; }
+        .social-btn.facebook { background: #1877f2; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="success-icon">🎉</div>
+            <h1>Suggerimento Inviato!</h1>
+            <p>Grazie per il tuo contributo prezioso</p>
+        </header>
+        
+        <div class="content">
+            <div class="message">
+                Il tuo suggerimento è stato ricevuto con successo! Il nostro team esaminerà il tool AI che hai proposto e, se adatto, lo aggiungeremo presto alla directory.
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number">31+</span>
+                    <div class="stat-label">Tools Attuali</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">9</span>
+                    <div class="stat-label">Categorie</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">24h</span>
+                    <div class="stat-label">Tempo di Revisione</div>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <h3>
+                    📋 Cosa Succede Ora?
+                </h3>
+                <div class="timeline-item">
+                    <div class="timeline-icon">1</div>
+                    <div>Esaminiamo il tool suggerito per qualità e rilevanza</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">2</div>
+                    <div>Verifichiamo funzionalità, prezzo e categorie</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">3</div>
+                    <div>Aggiungiamo il tool alla directory (se approvato)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">4</div>
+                    <div>Ti contattiamo via email per aggiornamenti (se fornita)</div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="index.html" class="btn btn-primary">
+                    🏠 Torna alla Directory
+                </a>
+                <a href="suggest-tool.html" class="btn btn-secondary">
+                    ➕ Suggerisci Altro Tool
+                </a>
+            </div>
+            
+            <div class="social-share">
+                <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                    Aiutaci a crescere condividendo la directory!
+                </p>
+                <div class="social-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=Scopri%20la%20migliore%20directory%20di%20strumenti%20AI!&url=https://tools-for-ai.netlify.app" 
+                       class="social-btn twitter" 
+                       target="_blank" 
+                       rel="noopener"
+                       aria-label="Condividi su Twitter">
+                        🐦
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tools-for-ai.netlify.app" 
+                       class="social-btn linkedin" 
+                       target="_blank" 
+                       rel="noopener"
+                       aria-label="Condividi su LinkedIn">
+                        💼
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://tools-for-ai.netlify.app" 
+                       class="social-btn facebook" 
+                       target="_blank" 
+                       rel="noopener"
+                       aria-label="Condividi su Facebook">
+                        📘
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-redirect dopo 10 secondi (opzionale)
+        setTimeout(() => {
+            const shouldRedirect = confirm('Vuoi tornare alla directory principale?');
+            if (shouldRedirect) {
+                window.location.href = 'index.html';
+            }
+        }, 10000);
+
+        // Service Worker registration for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(console.error);
+        }
+    </script>
+</body>
+</html>
