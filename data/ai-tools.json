@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.2.0",
-    "lastUpdated": "2025-08-25T00:00:00Z",
+    "lastUpdated": "2025-08-28T00:00:00Z",
     "totalTools": 32,
     "categories": 11
   },
@@ -413,11 +413,11 @@
       "id": 32,
       "name": "Prompts Chat",
       "category": "💎 PromptAI",
-      "description": "ALa prima e più famosa directory di prompt al mondo",
+      "description": "La prima e più famosa directory di prompt al mondo",
       "plan": "Freemium",
       "rating": 5,
       "url": "https://prompts.chat",
-      "domain": "manus.ai",
+      "domain": "prompts.chat",
       "tags": ["prompt AI", "prompt generator", "tool AI", "produttività"],
       "featured": false,
       "dateAdded": "2025-08-27"
@@ -429,79 +429,78 @@
       "name": "🌟 Tutti",
       "emoji": "🌟",
       "description": "Tutti i tool disponibili",
-      "count": 31
+      "count": 32
     },
     {
-      "id": "🤖 Chat/Agents",
+      "id": "chat-agents",
       "name": "🤖 Chat/Agents",
       "emoji": "🤖",
       "description": "Assistenti AI conversazionali e agenti intelligenti",
       "count": 7
     },
     {
-      "id": "🖼️ Image",
+      "id": "image",
       "name": "🖼️ Image",
       "emoji": "🖼️",
       "description": "Generazione e manipolazione immagini con AI",
       "count": 3
     },
     {
-      "id": "💻 Dev Tools",
+      "id": "dev-tools",
       "name": "💻 Dev Tools",
       "emoji": "💻",
       "description": "Strumenti AI per sviluppatori e programmatori",
       "count": 4
     },
     {
-      "id": "📊 Data/Analytics",
+      "id": "data-analytics",
       "name": "📊 Data/Analytics",
       "emoji": "📊",
       "description": "Analisi dati, ricerca e insights intelligenti",
       "count": 4
     },
     {
-      "id": "⚡ Productivity",
+      "id": "productivity",
       "name": "⚡ Productivity",
       "emoji": "⚡",
       "description": "Strumenti per aumentare la produttività",
       "count": 3
     },
     {
-      "id": "📝 Content",
+      "id": "content",
       "name": "📝 Content",
       "emoji": "📝",
       "description": "Creazione e editing contenuti testuali",
       "count": 4
     },
     {
-      "id": "🎵 Audio/Voice",
+      "id": "audio-voice",
       "name": "🎵 Audio/Voice",
       "emoji": "🎵",
       "description": "Elaborazione audio, voce e musica",
       "count": 3
     },
     {
-      "id": "🎓 Education",
+      "id": "education",
       "name": "🎓 Education",
       "emoji": "🎓",
       "description": "Strumenti per apprendimento e educazione",
       "count": 2
     },
     {
-      "id": "📢 Marketing",
+      "id": "marketing",
       "name": "📢 Marketing",
       "emoji": "📢",
       "description": "Marketing digitale e social media",
       "count": 1
     },
     {
-      "id": "💎 PromptAI",
+      "id": "prompt-ai",
       "name": "💎 PromptAI",
       "emoji": "💎",
       "description": "Comandi per la guida creativa nelle AI",
       "count": 1
-    },
-
+    }
   ],
   "filters": {
     "pricing": [
@@ -518,19 +517,19 @@
       {
         "id": "Freemium", 
         "name": "🟡 Freemium",
-        "count": 25
+        "count": 26
       },
       {
         "id": "Paid",
         "name": "💰 A Pagamento", 
-        "count": 2
+        "count": 1
       }
     ],
     "rating": [
       {
         "id": "all",
         "name": "Tutte le valutazioni",
-        "count": 31
+        "count": 32
       },
       {
         "id": "5",
@@ -545,7 +544,7 @@
       {
         "id": "3", 
         "name": "⭐⭐⭐ 3+ stelle",
-        "count": 31
+        "count": 32
       }
     ],
     "sorting": [
