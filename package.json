@@ -1,0 +1,12 @@
+{
+  "name": "ai-toolkit-directory",
+  "version": "1.0.0",
+  "description": "> Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
