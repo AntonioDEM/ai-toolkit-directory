@@ -1,3 +1,4 @@
+
 # Netlify _redirects file per AI Toolkit Directory
 # Questo file deve essere nella root directory del progetto
 
@@ -7,6 +8,7 @@
 # Redirect per le pagine specifiche (se necessario)
 /suggest-tool /suggest-tool.html 200
 /suggest /suggest-tool.html 200
+/success /success.html 200
 
 # Redirect per gestire trailing slashes
 /suggest-tool/ /suggest-tool.html 200
