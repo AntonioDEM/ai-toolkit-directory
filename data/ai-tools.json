@@ -432,70 +432,70 @@
         "count": 32
     },
     {
-        "id": "🤖 Chat/Agents",
+        "id": "Chat/Agents",
         "name": "🤖 Chat/Agents",
         "emoji": "🤖",
         "description": "Assistenti AI conversazionali e agenti intelligenti",
         "count": 7
     },
     {
-        "id": "🖼️ Image",
+        "id": "Image",
         "name": "🖼️ Image",
         "emoji": "🖼️",
         "description": "Generazione e manipolazione immagini con AI",
         "count": 3
     },
     {
-        "id": "💻 Dev Tools",
+        "id": "Dev Tools",
         "name": "💻 Dev Tools",
         "emoji": "💻",
         "description": "Strumenti AI per sviluppatori e programmatori",
         "count": 4
     },
     {
-        "id": "📊 Data/Analytics",
+        "id": "Data/Analytics",
         "name": "📊 Data/Analytics",
         "emoji": "📊",
         "description": "Analisi dati, ricerca e insights intelligenti",
         "count": 4
     },
     {
-        "id": "⚡ Productivity",
+        "id": "Productivity",
         "name": "⚡ Productivity",
         "emoji": "⚡",
         "description": "Strumenti per aumentare la produttività",
         "count": 3
     },
     {
-        "id": "📝 Content",
+        "id": "Content",
         "name": "📝 Content",
         "emoji": "📝",
         "description": "Creazione e editing contenuti testuali",
         "count": 4
     },
     {
-        "id": "🎵 Audio/Voice",
+        "id": "Audio/Voice",
         "name": "🎵 Audio/Voice",
         "emoji": "🎵",
         "description": "Elaborazione audio, voce e musica",
         "count": 3
     },
     {
-        "id": "🎓 Education",
+        "id": "Education",
         "name": "🎓 Education",
         "emoji": "🎓",
         "description": "Strumenti per apprendimento e educazione",
         "count": 2
     },
     {
-        "id": "📢 Marketing",
+        "id": "Marketing",
         "name": "📢 Marketing",
         "emoji": "📢",
         "description": "Marketing digitale e social media",
         "count": 1
     },
     {
-        "id": "💎 PromptAI",
+        "id": "PromptAI",
         "name": "💎 PromptAI",
         "emoji": "💎",
         "description": "Comandi per la guida creativa nelle AI",
