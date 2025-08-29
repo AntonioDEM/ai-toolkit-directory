@@ -3,46 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suggerimento Inviato! | AI Toolkit Directory</title>
-    <meta name="description" content="Grazie per il tuo contributo alla directory AI Tools!">
-    
-    <!-- PWA Meta Tags -->
-    <link rel="manifest" href="manifest.json">
+    <title>Suggerimento Inviato | AI Toolkit Directory</title>
+    <meta name="description" content="Grazie per il tuo suggerimento! Lo esamineremo entro 48 ore.">
+    <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#667eea">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="AI Toolkit">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYXQK7WBXS"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VYXQK7WBXS', {
-            anonymize_ip: true,
-            cookie_flags: 'SameSite=None;Secure'
-        });
-        
-        // Track success page view
-        gtag('event', 'form_success', {
-            'event_category': 'suggestions',
-            'event_label': 'suggest_tool_success'
-        });
-    </script>
     
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --success-gradient: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
             --text-primary: #1a202c;
             --text-secondary: #4a5568;
-            --border-radius: 12px;
-            --spacing-lg: 2rem;
-            --spacing-md: 1.5rem;
-            --spacing-sm: 1rem;
         }
 
         * {
@@ -52,118 +23,118 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: var(--spacing-md);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 600px;
-            width: 100%;
+        .success-container {
             background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
             text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .header {
+        .success-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
             background: var(--success-gradient);
-            color: white;
-            padding: var(--spacing-lg);
         }
 
         .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: bounce 1s ease-in-out;
+            width: 80px;
+            height: 80px;
+            background: var(--success-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: bounce 0.6s ease-out;
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
         }
 
         @keyframes bounce {
-            0%, 20%, 60%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            80% {
-                transform: translateY(-5px);
-            }
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
-        .header h1 {
+        h1 {
             font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
         }
 
-        .header p {
+        .subtitle {
             font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .content {
-            padding: var(--spacing-lg);
-        }
-
-        .message {
-            font-size: 1.1rem;
             color: var(--text-secondary);
-            margin-bottom: var(--spacing-lg);
-            line-height: 1.8;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-        }
-
-        .stat-card {
+        .info-box {
             background: #f8fafc;
-            padding: var(--spacing-md);
+            border: 2px solid #e2e8f0;
             border-radius: 12px;
-            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .actions {
+        .info-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
             display: flex;
-            gap: var(--spacing-sm);
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: var(--spacing-lg);
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.875rem 1.5rem;
-            border-radius: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.2s ease;
-            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             cursor: pointer;
+            border: none;
             font-size: 1rem;
         }
 
@@ -172,212 +143,172 @@
             color: white;
         }
 
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
         .btn-secondary {
-            background: white;
-            color: var(--text-primary);
+            background: transparent;
+            color: var(--text-secondary);
             border: 2px solid #e2e8f0;
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .timeline {
+        .btn-secondary:hover {
             background: #f8fafc;
-            padding: var(--spacing-md);
-            border-radius: 12px;
-            margin: var(--spacing-lg) 0;
-            text-align: left;
-        }
-
-        .timeline h3 {
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-sm);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-        }
-
-        .timeline-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #667eea;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            flex-shrink: 0;
+            border-color: #cbd5e1;
         }
 
         .social-share {
-            margin-top: var(--spacing-lg);
-            padding-top: var(--spacing-lg);
+            margin-top: 2rem;
+            padding-top: 2rem;
             border-top: 1px solid #e2e8f0;
+        }
+
+        .social-title {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
 
         .social-buttons {
             display: flex;
-            gap: 0.5rem;
             justify-content: center;
+            gap: 1rem;
         }
 
         .social-btn {
-            width: 44px;
-            height: 44px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
+            font-size: 20px;
         }
 
         .social-btn:hover {
-            transform: scale(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .social-btn.twitter { background: #1da1f2; }
-        .social-btn.linkedin { background: #0077b5; }
-        .social-btn.facebook { background: #1877f2; }
+        .twitter { background: #1da1f2; color: white; }
+        .linkedin { background: #0077b5; color: white; }
+        .whatsapp { background: #25d366; color: white; }
 
-        @media (max-width: 768px) {
-            .header h1 {
+        @media (max-width: 600px) {
+            .success-container {
+                margin: 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
                 font-size: 2rem;
             }
             
-            .actions {
+            .buttons {
                 flex-direction: column;
-                align-items: center;
             }
             
             .btn {
                 width: 100%;
-                max-width: 280px;
                 justify-content: center;
+            }
+        }
+
+        /* Animazione per il testo */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.4s; }
+        .fade-in:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="success-icon">🎉</div>
-            <h1>Suggerimento Inviato!</h1>
-            <p>Grazie per il tuo contributo prezioso</p>
-        </header>
+    <div class="success-container">
+        <div class="success-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+        </div>
         
-        <div class="content">
-            <div class="message">
-                Il tuo suggerimento è stato ricevuto con successo! Il nostro team esaminerà il tool AI che hai proposto e, se adatto, lo aggiungeremo presto alla directory.
+        <h1 class="fade-in">Grazie per il suggerimento!</h1>
+        
+        <p class="subtitle fade-in">
+            Il tuo strumento AI è stato ricevuto con successo. 
+            Lo esamineremo entro 48 ore e lo aggiungeremo alla directory.
+        </p>
+        
+        <div class="info-box fade-in">
+            <div class="info-title">
+                📋 Cosa succede ora?
             </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <span class="stat-number">31+</span>
-                    <div class="stat-label">Tools Attuali</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">9</span>
-                    <div class="stat-label">Categorie</div>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">24h</span>
-                    <div class="stat-label">Tempo di Revisione</div>
-                </div>
+            <div class="info-text">
+                Il nostro team verificherà le informazioni del tool che hai suggerito. 
+                Se approvato, lo vedrai apparire nella directory principale entro 2-3 giorni lavorativi.
             </div>
-            
-            <div class="timeline">
-                <h3>
-                    📋 Cosa Succede Ora?
-                </h3>
-                <div class="timeline-item">
-                    <div class="timeline-icon">1</div>
-                    <div>Esaminiamo il tool suggerito per qualità e rilevanza</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">2</div>
-                    <div>Verifichiamo funzionalità, prezzo e categorie</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">3</div>
-                    <div>Aggiungiamo il tool alla directory (se approvato)</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">4</div>
-                    <div>Ti contattiamo via email per aggiornamenti (se fornita)</div>
-                </div>
-            </div>
-            
-            <div class="actions">
-                <a href="index.html" class="btn btn-primary">
-                    🏠 Torna alla Directory
+        </div>
+        
+        <div class="buttons fade-in">
+            <a href="./index.html" class="btn btn-primary">
+                🏠 Torna alla Directory
+            </a>
+            <a href="./suggest-tool.html" class="btn btn-secondary">
+                ➕ Suggerisci un altro tool
+            </a>
+        </div>
+        
+        <div class="social-share fade-in">
+            <div class="social-title">Condividi AI Toolkit Directory</div>
+            <div class="social-buttons">
+                <a href="https://twitter.com/intent/tweet?text=Ho%20appena%20suggerito%20un%20nuovo%20tool%20AI%20su%20AI%20Toolkit%20Directory!%20Scopri%20i%20migliori%20strumenti%20AI%20organizzati%20per%20categoria.&url=https://ai-toolkit.netlify.app" 
+                   target="_blank" 
+                   class="social-btn twitter"
+                   aria-label="Condividi su Twitter">
+                    🐦
                 </a>
-                <a href="suggest-tool.html" class="btn btn-secondary">
-                    ➕ Suggerisci Altro Tool
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ai-toolkit.netlify.app" 
+                   target="_blank" 
+                   class="social-btn linkedin"
+                   aria-label="Condividi su LinkedIn">
+                    💼
                 </a>
-            </div>
-            
-            <div class="social-share">
-                <p style="margin-bottom: 1rem; color: var(--text-secondary);">
-                    Aiutaci a crescere condividendo la directory!
-                </p>
-                <div class="social-buttons">
-                    <a href="https://twitter.com/intent/tweet?text=Scopri%20la%20migliore%20directory%20di%20strumenti%20AI!&url=https://tools-for-ai.netlify.app" 
-                       class="social-btn twitter" 
-                       target="_blank" 
-                       rel="noopener"
-                       aria-label="Condividi su Twitter">
-                        🐦
-                    </a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://tools-for-ai.netlify.app" 
-                       class="social-btn linkedin" 
-                       target="_blank" 
-                       rel="noopener"
-                       aria-label="Condividi su LinkedIn">
-                        💼
-                    </a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://tools-for-ai.netlify.app" 
-                       class="social-btn facebook" 
-                       target="_blank" 
-                       rel="noopener"
-                       aria-label="Condividi su Facebook">
-                        📘
-                    </a>
-                </div>
+                <a href="https://wa.me/?text=Scopri%20AI%20Toolkit%20Directory%20-%20I%20migliori%20strumenti%20AI%20organizzati%20per%20categoria%20https://ai-toolkit.netlify.app" 
+                   target="_blank" 
+                   class="social-btn whatsapp"
+                   aria-label="Condividi su WhatsApp">
+                    📱
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // Auto-redirect dopo 10 secondi (opzionale)
-        setTimeout(() => {
-            const shouldRedirect = confirm('Vuoi tornare alla directory principale?');
-            if (shouldRedirect) {
-                window.location.href = 'index.html';
-            }
-        }, 10000);
-
-        // Service Worker registration for PWA
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(console.error);
+        // Google Analytics tracking
+        if (typeof gtag === 'function') {
+            gtag('event', 'suggestion_success', {
+                'event_category': 'form_completion',
+                'event_label': 'suggest_tool_success'
+            });
         }
+
+        // Auto-redirect dopo 10 secondi (opzionale)
+        // setTimeout(() => {
+        //     window.location.href = './index.html';
+        // }, 10000);
     </script>
 </body>
 </html>
