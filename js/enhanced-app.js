@@ -17,8 +17,6 @@ class AIToolsDirectory {
         this.toolsCount = document.getElementById('toolsCount');
         this.noResults = document.getElementById('noResults');
         this.filtersContainer = document.getElementById('filters');
-        this.advancedFilters = document.getElementById('advancedFilters');
-        this.sortSelect = document.getElementById('sortSelect');
         
         this.init();
     }
@@ -108,26 +106,32 @@ class AIToolsDirectory {
 
         // Inserisci i filtri avanzati dopo i filtri categoria
         const filtersContainer = document.querySelector('.filters');
-        filtersContainer.insertAdjacentHTML('afterend', advancedFiltersHTML);
+        if (filtersContainer) {
+            filtersContainer.insertAdjacentHTML('afterend', advancedFiltersHTML);
+        }
     }
 
     renderFilters() {
-        this.filtersContainer.innerHTML = this.categories.map(category => `
-            <button class="filter-btn ${category.id === 'all' ? 'active' : ''}" data-category="${category.id}">
-                ${category.name}
-            </button>
-        `).join('');
+        if (this.filtersContainer) {
+            this.filtersContainer.innerHTML = this.categories.map(category => `
+                <button class="filter-btn ${category.id === 'all' ? 'active' : ''}" data-category="${category.id}">
+                    ${category.name}
+                </button>
+            `).join('');
+        }
     }
 
     renderTools(tools) {
+        if (!this.toolsGrid) return;
+        
         if (tools.length === 0) {
             this.toolsGrid.style.display = 'none';
-            this.noResults.style.display = 'block';
+            if (this.noResults) this.noResults.style.display = 'block';
             return;
         }
 
         this.toolsGrid.style.display = 'grid';
-        this.noResults.style.display = 'none';
+        if (this.noResults) this.noResults.style.display = 'none';
 
         const sortedTools = this.sortTools(tools);
         this.toolsGrid.innerHTML = sortedTools.map(tool => this.createToolCard(tool)).join('');
@@ -137,10 +141,9 @@ class AIToolsDirectory {
     }
 
     createToolCard(tool) {
-        // Aggiungiamo più informazioni nella card
-        const tagsHTML = tool.tags.slice(0, 3).map(tag => 
+        const tagsHTML = tool.tags ? tool.tags.slice(0, 3).map(tag => 
             `<span class="tag-small">${tag}</span>`
-        ).join('');
+        ).join('') : '';
 
         return `
             <div class="tool-card" data-category="${tool.category}" data-rating="${tool.rating}" data-plan="${tool.plan}">
@@ -160,16 +163,11 @@ class AIToolsDirectory {
                             <span class="rating-text">${tool.rating}/5</span>
                         </div>
                     </div>
-                    <div class="tool-bookmark" onclick="this.toggleBookmark(${tool.id})">
-                        <span class="bookmark-icon">🔖</span>
-                    </div>
                 </div>
                 
                 <div class="tool-description">${tool.description}</div>
                 
-                <div class="tool-tags">
-                    ${tagsHTML}
-                </div>
+                ${tool.tags ? `<div class="tool-tags">${tagsHTML}</div>` : ''}
                 
                 <div class="tool-meta">
                     <span class="tag tag-${tool.plan.toLowerCase()}">
@@ -182,21 +180,18 @@ class AIToolsDirectory {
                     <a href="${tool.url}" 
                        target="_blank" 
                        rel="noopener noreferrer" 
-                       class="btn-primary"
-                       onclick="this.trackClick('${tool.name}')">
+                       class="btn-primary">
                         Apri ${tool.name}
                         <span>→</span>
                     </a>
-                    <button class="btn-secondary" onclick="this.shareTools('${tool.name}', '${tool.url}')">
-                        📤
-                    </button>
                 </div>
             </div>
         `;
     }
 
     sortTools(tools) {
-        const sortBy = this.sortSelect?.value || 'name';
+        const sortSelect = document.getElementById('sortSelect');
+        const sortBy = sortSelect ? sortSelect.value : 'name';
         
         return [...tools].sort((a, b) => {
             switch (sortBy) {
@@ -224,26 +219,34 @@ class AIToolsDirectory {
 
     bindEvents() {
         // Search
-        this.searchInput.addEventListener('input', (e) => this.handleSearch(e));
+        if (this.searchInput) {
+            this.searchInput.addEventListener('input', (e) => this.handleSearch(e));
+        }
         
         // Category filters
-        this.filtersContainer.addEventListener('click', (e) => {
-            if (e.target.classList.contains('filter-btn')) {
-                this.handleCategoryFilter(e);
-            }
-        });
+        if (this.filtersContainer) {
+            this.filtersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    this.handleCategoryFilter(e);
+                }
+            });
+        }
 
         // Advanced filters toggle
         const toggleBtn = document.getElementById('toggleAdvanced');
         const advancedPanel = document.getElementById('advancedPanel');
-        const toggleIcon = toggleBtn.querySelector('.toggle-icon');
 
-        toggleBtn.addEventListener('click', () => {
-            const isVisible = advancedPanel.style.display !== 'none';
-            advancedPanel.style.display = isVisible ? 'none' : 'block';
-            toggleIcon.textContent = isVisible ? '▼' : '▲';
-            toggleBtn.classList.toggle('active');
-        });
+        if (toggleBtn && advancedPanel) {
+            const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+            toggleBtn.addEventListener('click', () => {
+                const isVisible = advancedPanel.style.display !== 'none';
+                advancedPanel.style.display = isVisible ? 'none' : 'block';
+                if (toggleIcon) {
+                    toggleIcon.textContent = isVisible ? '▼' : '▲';
+                }
+                toggleBtn.classList.toggle('active');
+            });
+        }
 
         // Advanced filters
         const pricingFilter = document.getElementById('pricingFilter');
@@ -258,39 +261,11 @@ class AIToolsDirectory {
             ratingFilter.addEventListener('change', () => this.handleAdvancedFilter());
         }
         if (sortSelect) {
-            this.sortSelect = sortSelect;
             sortSelect.addEventListener('change', () => this.handleAdvancedFilter());
         }
         if (clearFilters) {
             clearFilters.addEventListener('click', () => this.clearAllFilters());
         }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                switch (e.key) {
-                    case 'k':
-                        e.preventDefault();
-                        this.searchInput.focus();
-                        break;
-                    case 'f':
-                        e.preventDefault();
-                        toggleBtn.click();
-                        break;
-                }
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
     }
 
     handleSearch(e) {
@@ -355,7 +330,7 @@ class AIToolsDirectory {
                 tool.name.toLowerCase().includes(this.currentFilters.search) ||
                 tool.description.toLowerCase().includes(this.currentFilters.search) ||
                 tool.category.toLowerCase().includes(this.currentFilters.search) ||
-                tool.tags.some(tag => tag.toLowerCase().includes(this.currentFilters.search))
+                (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(this.currentFilters.search)))
             );
         }
 
@@ -372,16 +347,24 @@ class AIToolsDirectory {
         };
 
         // Reset UI elements
-        this.searchInput.value = '';
-        document.getElementById('pricingFilter').value = 'all';
-        document.getElementById('ratingFilter').value = 'all';
-        document.getElementById('sortSelect').value = 'name';
+        if (this.searchInput) this.searchInput.value = '';
+        
+        const pricingFilter = document.getElementById('pricingFilter');
+        const ratingFilter = document.getElementById('ratingFilter');
+        const sortSelect = document.getElementById('sortSelect');
+        
+        if (pricingFilter) pricingFilter.value = 'all';
+        if (ratingFilter) ratingFilter.value = 'all';
+        if (sortSelect) sortSelect.value = 'name';
 
         // Reset category buttons
-        this.filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        this.filtersContainer.querySelector('[data-category="all"]').classList.add('active');
+        if (this.filtersContainer) {
+            this.filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const allBtn = this.filtersContainer.querySelector('[data-category="all"]');
+            if (allBtn) allBtn.classList.add('active');
+        }
 
         this.applyFilters();
         this.updateFilterInfo();
@@ -389,6 +372,8 @@ class AIToolsDirectory {
 
     updateFilterInfo() {
         const filterInfo = document.getElementById('filterInfo');
+        if (!filterInfo) return;
+
         const activeFilters = [];
 
         if (this.currentFilters.category !== 'all') {
@@ -412,10 +397,14 @@ class AIToolsDirectory {
     }
 
     updateToolsCount(count) {
-        this.toolsCount.textContent = `${count} Tool${count !== 1 ? 's' : ''}`;
+        if (this.toolsCount) {
+            this.toolsCount.textContent = `${count} Tool${count !== 1 ? 's' : ''}`;
+        }
     }
 
     animateCards() {
+        if (!this.toolsGrid) return;
+        
         const cards = this.toolsGrid.querySelectorAll('.tool-card');
         cards.forEach((card, index) => {
             card.style.opacity = '0';
@@ -440,6 +429,8 @@ class AIToolsDirectory {
     }
 
     showError(message) {
+        if (!this.toolsGrid) return;
+        
         this.toolsGrid.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.8);">
                 <h3 style="font-size: 1.5rem; margin-bottom: 10px;">⚠️ ${message}</h3>
@@ -449,118 +440,6 @@ class AIToolsDirectory {
                 </button>
             </div>
         `;
-    }
-
-    // Utility methods for enhanced functionality
-    toggleBookmark(toolId) {
-        const bookmarks = this.getBookmarks();
-        const index = bookmarks.indexOf(toolId);
-        
-        if (index === -1) {
-            bookmarks.push(toolId);
-            this.showToast('🔖 Tool aggiunto ai preferiti');
-        } else {
-            bookmarks.splice(index, 1);
-            this.showToast('🗑️ Tool rimosso dai preferiti');
-        }
-        
-        localStorage.setItem('ai-tools-bookmarks', JSON.stringify(bookmarks));
-        this.updateBookmarkIcons();
-    }
-
-    getBookmarks() {
-        try {
-            return JSON.parse(localStorage.getItem('ai-tools-bookmarks') || '[]');
-        } catch {
-            return [];
-        }
-    }
-
-    updateBookmarkIcons() {
-        const bookmarks = this.getBookmarks();
-        const bookmarkElements = document.querySelectorAll('.tool-bookmark');
-        
-        bookmarkElements.forEach(element => {
-            const card = element.closest('.tool-card');
-            const toolId = parseInt(card.dataset.toolId);
-            const icon = element.querySelector('.bookmark-icon');
-            
-            if (bookmarks.includes(toolId)) {
-                icon.style.color = '#f59e0b';
-                element.setAttribute('title', 'Rimuovi dai preferiti');
-            } else {
-                icon.style.color = '#d1d5db';
-                element.setAttribute('title', 'Aggiungi ai preferiti');
-            }
-        });
-    }
-
-    shareTools(toolName, toolUrl) {
-        if (navigator.share) {
-            navigator.share({
-                title: `${toolName} - AI Tool`,
-                text: `Scopri ${toolName} su AI Toolkit Directory`,
-                url: toolUrl
-            });
-        } else {
-            // Fallback: copia URL negli appunti
-            navigator.clipboard.writeText(toolUrl).then(() => {
-                this.showToast('📋 Link copiato negli appunti');
-            }).catch(() => {
-                this.showToast('❌ Errore nella condivisione');
-            });
-        }
-    }
-
-    showToast(message) {
-        // Crea toast notification
-        const toast = document.createElement('div');
-        toast.className = 'toast-notification';
-        toast.textContent = message;
-        toast.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            z-index: 10000;
-            font-size: 14px;
-            font-weight: 500;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        `;
-        
-        document.body.appendChild(toast);
-        
-        // Anima l'entrata
-        setTimeout(() => {
-            toast.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Rimuovi dopo 3 secondi
-        setTimeout(() => {
-            toast.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 300);
-        }, 3000);
-    }
-
-    trackClick(toolName) {
-        // Analytics tracking
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'tool_click', {
-                'tool_name': toolName,
-                'event_category': 'engagement'
-            });
-        }
-
-        // Statistiche locali
-        const stats = JSON.parse(localStorage.getItem('ai-tools-stats') || '{}');
-        stats[toolName] = (stats[toolName] || 0) + 1;
-        localStorage.setItem('ai-tools-stats', JSON.stringify(stats));
     }
 }
 
