@@ -58,6 +58,11 @@
   to = "/suggest-tool.html"
   status = 200
 
+[[redirects]]
+  from = "/success"
+  to = "/success.html"
+  status = 200
+
 # Gestione 404 personalizzata
 [[redirects]]
   from = "/*"
