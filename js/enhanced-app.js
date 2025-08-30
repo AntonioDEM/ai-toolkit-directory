@@ -11,6 +11,10 @@ class AIToolsDirectory {
             search: ''
         };
         
+        // DEBUG: Attiva solo in sviluppo
+        this.DEBUG = window.location.hostname === 'localhost' || 
+                    window.location.hostname === '127.0.0.1';
+
         // DOM Elements
         this.toolsGrid = document.getElementById('toolsGrid');
         this.searchInput = document.getElementById('searchInput');
@@ -300,14 +304,23 @@ class AIToolsDirectory {
     }
 
     applyFilters() {
-        let filteredTools = [...this.tools];
+    let filteredTools = [...this.tools];
 
-        // Apply category filter
-        if (this.currentFilters.category !== 'all') {
-            filteredTools = filteredTools.filter(tool => 
-                tool.category === this.currentFilters.category
-            );
-        }
+    // Apply category filter
+    if (this.currentFilters.category !== 'all') {
+        filteredTools = filteredTools.filter(tool => {
+            // Rimuovi emoji e spazi extra per il matching sicuro
+            const normalizeCategory = (cat) => {
+                return cat.replace(/[^\w\s/-]/g, '')  // Rimuove emoji e caratteri speciali
+                         .trim()
+                         .toLowerCase();
+            };
+            
+            const toolCategory = normalizeCategory(tool.category);
+            const filterCategory = normalizeCategory(this.currentFilters.category);
+            return toolCategory === filterCategory;
+        });
+    }
 
         // Apply pricing filter
         if (this.currentFilters.pricing !== 'all') {
@@ -334,8 +347,14 @@ class AIToolsDirectory {
             );
         }
 
-        this.renderTools(filteredTools);
-        this.updateToolsCount(filteredTools.length);
+        // DEBUG: Log finale
+        if (this.DEBUG) {
+        console.log('✅ [DEBUG] Tools filtrati:', filteredTools.length);
+        console.log('📊 [DEBUG] Tools originali:', this.tools.length);
+    }
+
+    this.renderTools(filteredTools);
+    this.updateToolsCount(filteredTools.length);
     }
 
     clearAllFilters() {
