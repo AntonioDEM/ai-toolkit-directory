@@ -39,6 +39,56 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     max-width: 300px;
     word-wrap: break-word;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.consent-text p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.consent-actions {
+    display: flex;
+    gap: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-consent-accept,
+.btn-consent-reject {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-consent-accept {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.btn-consent-reject {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-consent-accept:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-consent-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .toast-notification.show {
@@ -616,56 +666,6 @@ select:focus-visible {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #5a67d8, #6b46c1);
-}size: 1.1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.consent-text p {
-    margin: 0;
-    opacity: 0.9;
-    font-size: 0.95rem;
-}
-
-.consent-actions {
-    display: flex;
-    gap: 12px;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.btn-consent-accept,
-.btn-consent-reject {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.btn-consent-accept {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-}
-
-.btn-consent-reject {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn-consent-accept:hover {
-    background: linear-gradient(135deg, #059669, #047857);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-.btn-consent-reject:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.6);
 }
 
 /* ===== PWA INSTALL PROMPT ===== */
@@ -1034,4 +1034,5 @@ select:focus-visible {
     border-radius: 12px;
     z-index: 10000;
     font-size: 14px;
-    font-
+    font-weight: 500;
+}
