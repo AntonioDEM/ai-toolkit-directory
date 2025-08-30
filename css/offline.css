@@ -1,0 +1,117 @@
+/* offline.css - Stili per la pagina offline */
+
+.offline-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.offline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.offline-icon {
+    margin-bottom: 1.5rem;
+    color: #6b7280;
+}
+
+.offline-icon svg {
+    width: 64px;
+    height: 64px;
+}
+
+.offline-content h1 {
+    color: #374151;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.offline-content p {
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.offline-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-retry,
+.btn-home {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn-retry {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-retry:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+.btn-home {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+}
+
+.btn-home:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .offline-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .offline-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .offline-actions {
+        flex-direction: column;
+    }
+    
+    .btn-retry,
+    .btn-home {
+        width: 100%;
+    }
+}
+
+/* Animation for retry button when connection is restored */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.connection-restored {
+    animation: pulse 2s infinite;
+    background-color: #10b981 !important;
+}
