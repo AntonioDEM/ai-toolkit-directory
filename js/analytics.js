@@ -64,6 +64,77 @@ class AnalyticsManager {
     }
 
     setupEventTracking() {
+        // Track tool clicks
+        document.addEventListener('click', (event) => {
+            const link = event.target.closest('a[href*="http"]');
+            if (link && !link.hostname.includes(window.location.hostname)) {
+                this.trackToolClick(link);
+            }
+        });
+
+        // Track search usage
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (event) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    if (event.target.value.length > 2) {
+                        this.trackSearch(event.target.value);
+                    }
+                }, 1000);
+            });
+        }
+
+        // Track filter usage
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('filter-btn')) {
+                this.trackFilterUsage(event.target.dataset.category);
+            }
+        });
+
+        // Track scroll depth
+        this.setupScrollTracking();
+
+        // Track time on site
+        this.setupTimeTracking();
+    }
+
+    // Event tracking methods
+    trackPageView(page = null) {
+        if (!this.initialized || !window.gtag) return;
+
+        const pageData = {
+            page_title: document.title,
+            page_location: page || window.location.href,
+            page_referrer: document.referrer
+        };
+
+        window.gtag('event', 'page_view', pageData);
+        
+        if (this.DEBUG) {
+            console.log('[Analytics] Page view tracked:', pageData);
+        }
+    }
+
+    trackToolClick(linkElement) {
+        if (!this.initialized || !window.gtag) return;
+
+        const card = linkElement.closest('.tool-card');
+        const toolName = card?.querySelector('.tool-title')?.textContent || 'Unknown';
+        const toolCategory = card?.dataset.category || 'Unknown';
+        const toolPlan = card?.dataset.plan || 'Unknown';
+
+        const eventData = {
+            event_category: 'Tool Interaction',
+            event_label: toolName,
+            custom_parameter_1: toolCategory,
+            custom_parameter_2: toolPlan,
+            value: 1
+        };
+
+        window.gtag('event', 'tool_click', eventData);
+
         // Track outbound link
         window.gtag('event', 'click', {
             event_category: 'outbound',
@@ -475,75 +546,4 @@ document.addEventListener('DOMContentLoaded', () => {
 // Export per uso in altri script
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = AnalyticsManager;
-} tool clicks
-        document.addEventListener('click', (event) => {
-            const link = event.target.closest('a[href*="http"]');
-            if (link && !link.hostname.includes(window.location.hostname)) {
-                this.trackToolClick(link);
-            }
-        });
-
-        // Track search usage
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            let searchTimeout;
-            searchInput.addEventListener('input', (event) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    if (event.target.value.length > 2) {
-                        this.trackSearch(event.target.value);
-                    }
-                }, 1000);
-            });
-        }
-
-        // Track filter usage
-        document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('filter-btn')) {
-                this.trackFilterUsage(event.target.dataset.category);
-            }
-        });
-
-        // Track scroll depth
-        this.setupScrollTracking();
-
-        // Track time on site
-        this.setupTimeTracking();
-    }
-
-    // Event tracking methods
-    trackPageView(page = null) {
-        if (!this.initialized || !window.gtag) return;
-
-        const pageData = {
-            page_title: document.title,
-            page_location: page || window.location.href,
-            page_referrer: document.referrer
-        };
-
-        window.gtag('event', 'page_view', pageData);
-        
-        if (this.DEBUG) {
-            console.log('[Analytics] Page view tracked:', pageData);
-        }
-    }
-
-    trackToolClick(linkElement) {
-        if (!this.initialized || !window.gtag) return;
-
-        const card = linkElement.closest('.tool-card');
-        const toolName = card?.querySelector('.tool-title')?.textContent || 'Unknown';
-        const toolCategory = card?.dataset.category || 'Unknown';
-        const toolPlan = card?.dataset.plan || 'Unknown';
-
-        const eventData = {
-            event_category: 'Tool Interaction',
-            event_label: toolName,
-            custom_parameter_1: toolCategory,
-            custom_parameter_2: toolPlan,
-            value: 1
-        };
-
-        window.gtag('event', 'tool_click', eventData);
-
-        // Track
+}
