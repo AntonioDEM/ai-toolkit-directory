@@ -10,20 +10,6 @@ class AIToolsDirectory {
             rating: 'all',
             search: ''
         };
-
-        // Mappatura categorie per filtraggio sicuro
-        this.categoryMap = {
-            '🤖 Chat/Agents': 'chat-agents',
-            '🖼️ Image': 'image',
-            '💻 Dev Tools': 'dev-tools',
-            '📊 Data/Analytics': 'data-analytics',
-            '⚡ Productivity': 'productivity',
-            '📝 Content': 'content',
-            '🎵 Audio/Voice': 'audio-voice',
-            '🎓 Education': 'education',
-            '📢 Marketing': 'marketing',
-            '💎 PromptAI': 'promptai'
-        };
         
         // DEBUG: Attiva solo in sviluppo
         this.DEBUG = window.location.hostname === 'localhost' || 
@@ -317,19 +303,38 @@ class AIToolsDirectory {
         this.updateFilterInfo();
     }
 
+        categoryMap = {
+        '🤖 Chat/Agents': 'chat-agents',
+        '🖼️ Image': 'image',
+        '💻 Dev Tools': 'dev-tools',
+        '📊 Data/Analytics': 'data-analytics',
+        '⚡ Productivity': 'productivity',
+        '📝 Content': 'content',
+        '🎵 Audio/Voice': 'audio-voice',
+        '🎓 Education': 'education',
+        '📢 Marketing': 'marketing',
+        '💎 PromptAI': 'promptai'
+    };
 
     applyFilters() {
-        let filteredTools = [...this.tools];
+    let filteredTools = [...this.tools];
 
-        // Apply category filter
-        if (this.currentFilters.category !== 'all') {
-            filteredTools = filteredTools.filter(tool => {
-                const toolKey = this.categoryMap[tool.category] || tool.category.toLowerCase().replace(/\s+/g, '-');
-                const filterKey = this.categoryMap[this.currentFilters.category] || this.currentFilters.category.toLowerCase().replace(/\s+/g, '-');
-                return toolKey === filterKey;
-            });
-        }
-        
+    // Apply category filter
+    if (this.currentFilters.category !== 'all') {
+        filteredTools = filteredTools.filter(tool => {
+            // Rimuovi emoji e spazi extra per il matching sicuro
+            const normalizeCategory = (cat) => {
+                return cat.replace(/[^\w\s/-]/g, '')  // Rimuove emoji e caratteri speciali
+                         .trim()
+                         .toLowerCase();
+            };
+            
+            const toolCategory = normalizeCategory(tool.category);
+            const filterCategory = normalizeCategory(this.currentFilters.category);
+            return toolCategory === filterCategory;
+        });
+    }
+
         // Apply pricing filter
         if (this.currentFilters.pricing !== 'all') {
             filteredTools = filteredTools.filter(tool => 
