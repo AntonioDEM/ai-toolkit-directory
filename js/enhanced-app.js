@@ -324,9 +324,36 @@ class AIToolsDirectory {
                 'other': '♻️ Other'
             };
             
-            const categoryName = categoryMap[this.currentFilters.category];
-            filteredTools = filteredTools.filter(tool => tool.category === categoryName);
+            // Cerca corrispondenza esatta nella mappatura
+        const exactCategoryName = categoryMap[this.currentFilters.category];
+        
+        if (exactCategoryName) {
+            // 2. Se trovata, filtro esatto (performance ottimale)
+            filteredTools = filteredTools.filter(tool => tool.category === exactCategoryName);
+        } else {
+            // 3. FALLBACK: normalizzazione per categorie non pre-mappate
+            const normalizeForComparison = (str) => {
+                return str
+                    .toLowerCase()
+                    .replace(/[^\w\s/-]/g, '')  // Rimuove emoji e caratteri speciali
+                    .replace(/[/-]/g, ' ')       // Sostituisce slash e trattini con spazi
+                    .replace(/\s+/g, ' ')        // Normalizza spazi multipli
+                    .trim();
+            };
+            
+            const filterCategoryNormalized = normalizeForComparison(this.currentFilters.category);
+            
+            filteredTools = filteredTools.filter(tool => {
+                const toolCategoryNormalized = normalizeForComparison(tool.category);
+                return toolCategoryNormalized === filterCategoryNormalized;
+            });
+            
+            // DEBUG: Avvisa se viene usato il fallback
+            if (this.DEBUG) {
+                console.warn('⚠️ [DEBUG] Fallback a normalizzazione per categoria:', this.currentFilters.category);
+            }
         }
+    }
 
         // Apply pricing filter
         if (this.currentFilters.pricing !== 'all') {
