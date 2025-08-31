@@ -303,38 +303,30 @@ class AIToolsDirectory {
         this.updateFilterInfo();
     }
 
-        categoryMap = {
-        '🤖 Chat/Agents': 'chat-agents',
-        '🖼️ Image': 'image',
-        '💻 Dev Tools': 'dev-tools',
-        '📊 Data/Analytics': 'data-analytics',
-        '⚡ Productivity': 'productivity',
-        '📝 Content': 'content',
-        '🎵 Audio/Voice': 'audio-voice',
-        '🎓 Education': 'education',
-        '📢 Marketing': 'marketing',
-        '💎 PromptAI': 'promptai',
-        '⚙️ Automation':'automation'
-    };
-
     applyFilters() {
-    let filteredTools = [...this.tools];
+        let filteredTools = [...this.tools];
 
-    // Apply category filter
-    if (this.currentFilters.category !== 'all') {
-        filteredTools = filteredTools.filter(tool => {
-            // Rimuovi emoji e spazi extra per il matching sicuro
-            const normalizeCategory = (cat) => {
-                return cat.replace(/[^\w\s/-]/g, '')  // Rimuove emoji e caratteri speciali
-                         .trim()
-                         .toLowerCase();
+        // Apply category filter - SOLUZIONE CORRETTA
+        if (this.currentFilters.category !== 'all') {
+            // Mappa gli ID delle categorie ai nomi completi
+            const categoryMap = {
+                'chat-agents': '🤖 Chat/Agents',
+                'image': '🖼️ Image',
+                'dev-tools': '💻 Dev Tools',
+                'data-analytics': '📊 Data/Analytics',
+                'productivity': '⚡ Productivity',
+                'content': '📝 Content',
+                'audio-voice': '🎵 Audio/Voice',
+                'education': '🎓 Education',
+                'marketing': '📢 Marketing',
+                'promptai': '💎 PromptAI',
+                'automation': '⚙️ Automation',
+                'other': '♻️ Other'
             };
             
-            const toolCategory = normalizeCategory(tool.category);
-            const filterCategory = normalizeCategory(this.currentFilters.category);
-            return toolCategory === filterCategory;
-        });
-    }
+            const categoryName = categoryMap[this.currentFilters.category];
+            filteredTools = filteredTools.filter(tool => tool.category === categoryName);
+        }
 
         // Apply pricing filter
         if (this.currentFilters.pricing !== 'all') {
@@ -363,12 +355,12 @@ class AIToolsDirectory {
 
         // DEBUG: Log finale
         if (this.DEBUG) {
-        console.log('✅ [DEBUG] Tools filtrati:', filteredTools.length);
-        console.log('📊 [DEBUG] Tools originali:', this.tools.length);
-    }
+            console.log('✅ [DEBUG] Tools filtrati:', filteredTools.length);
+            console.log('📊 [DEBUG] Tools originali:', this.tools.length);
+        }
 
-    this.renderTools(filteredTools);
-    this.updateToolsCount(filteredTools.length);
+        this.renderTools(filteredTools);
+        this.updateToolsCount(filteredTools.length);
     }
 
     clearAllFilters() {
