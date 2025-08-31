@@ -313,7 +313,8 @@ class AIToolsDirectory {
         '🎵 Audio/Voice': 'audio-voice',
         '🎓 Education': 'education',
         '📢 Marketing': 'marketing',
-        '💎 PromptAI': 'promptai'
+        '💎 PromptAI': 'promptai',
+        '⚙️ Automation':'automation'
     };
 
     applyFilters() {
