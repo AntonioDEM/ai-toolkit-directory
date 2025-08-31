@@ -1,9 +1,9 @@
 {
   "meta": {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "lastUpdated": "2025-08-31T14:19:22.630236Z",
     "totalTools": 34,
-    "categories": 13
+    "categories": 12
   },
   "tools": [
     {
@@ -587,7 +587,7 @@
     {
       "id": 33,
       "name": "THE RUNDOWN",
-      "category": "🔧 Other",
+      "category": "♻️ Other",
       "description": "Scopri le ultime novità sull'intelligenza artificiale, scopri perché è importante e impara come applicarla al tuo lavoro.",
       "plan": "Freemium",
       "rating": 4,
@@ -625,6 +625,13 @@
       "id": "all",
       "name": "🌟 Tutti",
       "emoji": "🌟",
+      "description": "Tutti i tool disponibili",
+      "count": 34
+    },
+    {
+      "id": "other",
+      "name": "♻️ Other",
+      "emoji": "♻️",
       "description": "Tutti i tool disponibili",
       "count": 34
     },
@@ -692,7 +699,7 @@
       "count": 1
     },
     {
-      "id": "prompt-ai",
+      "id": "promptai",
       "name": "💎 PromptAI",
       "emoji": "💎",
       "description": "Comandi per la guida creativa nelle AI",
