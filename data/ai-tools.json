@@ -1,9 +1,9 @@
 {
   "meta": {
     "version": "1.2.0",
-    "lastUpdated": "2025-08-28T00:00:00Z",
-    "totalTools": 32,
-    "categories": 11
+    "lastUpdated": "2025-08-31T14:19:22.630236Z",
+    "totalTools": 34,
+    "categories": 13
   },
   "tools": [
     {
@@ -15,7 +15,13 @@
       "rating": 5,
       "url": "https://chat.openai.com",
       "domain": "openai.com",
-      "tags": ["conversazione", "codice", "ricerca", "immagini", "gpts"],
+      "tags": [
+        "conversazione",
+        "codice",
+        "ricerca",
+        "immagini",
+        "gpts"
+      ],
       "featured": true,
       "dateAdded": "2025-01-15"
     },
@@ -28,7 +34,13 @@
       "rating": 5,
       "url": "https://claude.ai",
       "domain": "anthropic.com",
-      "tags": ["conversazione", "analisi", "codice", "scrittura", "ragionamento"],
+      "tags": [
+        "conversazione",
+        "analisi",
+        "codice",
+        "scrittura",
+        "ragionamento"
+      ],
       "featured": true,
       "dateAdded": "2025-02-01"
     },
@@ -41,7 +53,12 @@
       "rating": 4,
       "url": "https://leonardo.ai",
       "domain": "leonardo.ai",
-      "tags": ["immagini", "arte", "design", "creatività"],
+      "tags": [
+        "immagini",
+        "arte",
+        "design",
+        "creatività"
+      ],
       "featured": false,
       "dateAdded": "2025-01-20"
     },
@@ -54,7 +71,12 @@
       "rating": 5,
       "url": "https://midjourney.com",
       "domain": "midjourney.com",
-      "tags": ["immagini", "arte", "premium", "discord"],
+      "tags": [
+        "immagini",
+        "arte",
+        "premium",
+        "discord"
+      ],
       "featured": true,
       "dateAdded": "2025-01-10"
     },
@@ -67,7 +89,12 @@
       "rating": 5,
       "url": "https://perplexity.ai",
       "domain": "perplexity.ai",
-      "tags": ["ricerca", "citazioni", "fonti", "analisi"],
+      "tags": [
+        "ricerca",
+        "citazioni",
+        "fonti",
+        "analisi"
+      ],
       "featured": true,
       "dateAdded": "2025-01-25"
     },
@@ -80,7 +107,12 @@
       "rating": 5,
       "url": "https://github.com/features/copilot",
       "domain": "github.com",
-      "tags": ["codice", "programmazione", "AI", "sviluppo"],
+      "tags": [
+        "codice",
+        "programmazione",
+        "AI",
+        "sviluppo"
+      ],
       "featured": true,
       "dateAdded": "2025-01-05"
     },
@@ -93,7 +125,12 @@
       "rating": 5,
       "url": "https://notebooklm.google.com",
       "domain": "google.com",
-      "tags": ["note-taking", "analisi", "google", "documenti"],
+      "tags": [
+        "note-taking",
+        "analisi",
+        "google",
+        "documenti"
+      ],
       "featured": false,
       "dateAdded": "2025-02-10"
     },
@@ -106,7 +143,12 @@
       "rating": 5,
       "url": "https://github.com/openai/whisper",
       "domain": "openai.com",
-      "tags": ["trascrizione", "audio", "open-source", "multilingua"],
+      "tags": [
+        "trascrizione",
+        "audio",
+        "open-source",
+        "multilingua"
+      ],
       "featured": false,
       "dateAdded": "2025-01-08"
     },
@@ -119,7 +161,12 @@
       "rating": 4,
       "url": "https://stablediffusionweb.com",
       "domain": "stability.ai",
-      "tags": ["immagini", "open-source", "generazione", "gratis"],
+      "tags": [
+        "immagini",
+        "open-source",
+        "generazione",
+        "gratis"
+      ],
       "featured": false,
       "dateAdded": "2025-01-12"
     },
@@ -132,7 +179,12 @@
       "rating": 4,
       "url": "https://grammarly.com",
       "domain": "grammarly.com",
-      "tags": ["grammatica", "scrittura", "correzione", "inglese"],
+      "tags": [
+        "grammatica",
+        "scrittura",
+        "correzione",
+        "inglese"
+      ],
       "featured": false,
       "dateAdded": "2025-01-15"
     },
@@ -145,7 +197,12 @@
       "rating": 4,
       "url": "https://elicit.com",
       "domain": "elicit.com",
-      "tags": ["ricerca", "accademico", "PDF", "scienza"],
+      "tags": [
+        "ricerca",
+        "accademico",
+        "PDF",
+        "scienza"
+      ],
       "featured": false,
       "dateAdded": "2025-02-05"
     },
@@ -158,7 +215,12 @@
       "rating": 4,
       "url": "https://otter.ai",
       "domain": "otter.ai",
-      "tags": ["trascrizione", "meeting", "produttività", "business"],
+      "tags": [
+        "trascrizione",
+        "meeting",
+        "produttività",
+        "business"
+      ],
       "featured": false,
       "dateAdded": "2025-01-30"
     },
@@ -171,7 +233,12 @@
       "rating": 4,
       "url": "https://suno.ai",
       "domain": "suno.ai",
-      "tags": ["musica", "canzoni", "generazione", "creatività"],
+      "tags": [
+        "musica",
+        "canzoni",
+        "generazione",
+        "creatività"
+      ],
       "featured": false,
       "dateAdded": "2025-02-15"
     },
@@ -184,7 +251,12 @@
       "rating": 4,
       "url": "https://phind.com",
       "domain": "phind.com",
-      "tags": ["programmazione", "ricerca", "codice", "sviluppatori"],
+      "tags": [
+        "programmazione",
+        "ricerca",
+        "codice",
+        "sviluppatori"
+      ],
       "featured": false,
       "dateAdded": "2025-01-22"
     },
@@ -197,7 +269,12 @@
       "rating": 4,
       "url": "https://quizlet.com",
       "domain": "quizlet.com",
-      "tags": ["studio", "flashcard", "educazione", "apprendimento"],
+      "tags": [
+        "studio",
+        "flashcard",
+        "educazione",
+        "apprendimento"
+      ],
       "featured": false,
       "dateAdded": "2025-01-18"
     },
@@ -210,7 +287,12 @@
       "rating": 4,
       "url": "https://deepl.com/write",
       "domain": "deepl.com",
-      "tags": ["scrittura", "correzione", "stile", "multilingua"],
+      "tags": [
+        "scrittura",
+        "correzione",
+        "stile",
+        "multilingua"
+      ],
       "featured": false,
       "dateAdded": "2025-01-28"
     },
@@ -223,7 +305,12 @@
       "rating": 4,
       "url": "https://consensus.app",
       "domain": "consensus.app",
-      "tags": ["ricerca", "scientifico", "analisi", "accademico"],
+      "tags": [
+        "ricerca",
+        "scientifico",
+        "analisi",
+        "accademico"
+      ],
       "featured": false,
       "dateAdded": "2025-02-08"
     },
@@ -236,7 +323,12 @@
       "rating": 4,
       "url": "https://poe.com",
       "domain": "poe.com",
-      "tags": ["multi-modello", "bot", "conversazione", "personalizzazione"],
+      "tags": [
+        "multi-modello",
+        "bot",
+        "conversazione",
+        "personalizzazione"
+      ],
       "featured": false,
       "dateAdded": "2025-01-26"
     },
@@ -249,7 +341,12 @@
       "rating": 4,
       "url": "https://gemini.google.com",
       "domain": "google.com",
-      "tags": ["google", "conversazione", "integrazione", "multimodale"],
+      "tags": [
+        "google",
+        "conversazione",
+        "integrazione",
+        "multimodale"
+      ],
       "featured": false,
       "dateAdded": "2025-02-12"
     },
@@ -262,7 +359,12 @@
       "rating": 3,
       "url": "https://rytr.me",
       "domain": "rytr.me",
-      "tags": ["scrittura", "blog", "social", "marketing"],
+      "tags": [
+        "scrittura",
+        "blog",
+        "social",
+        "marketing"
+      ],
       "featured": false,
       "dateAdded": "2025-01-14"
     },
@@ -275,7 +377,12 @@
       "rating": 3,
       "url": "https://buffer.com",
       "domain": "buffer.com",
-      "tags": ["social media", "marketing", "pianificazione", "analytics"],
+      "tags": [
+        "social media",
+        "marketing",
+        "pianificazione",
+        "analytics"
+      ],
       "featured": false,
       "dateAdded": "2025-01-21"
     },
@@ -288,7 +395,12 @@
       "rating": 3,
       "url": "https://character.ai",
       "domain": "character.ai",
-      "tags": ["personaggi", "roleplay", "intrattenimento", "creatività"],
+      "tags": [
+        "personaggi",
+        "roleplay",
+        "intrattenimento",
+        "creatività"
+      ],
       "featured": false,
       "dateAdded": "2025-01-17"
     },
@@ -301,7 +413,12 @@
       "rating": 4,
       "url": "https://replit.com",
       "domain": "replit.com",
-      "tags": ["IDE", "codice", "online", "collaborazione"],
+      "tags": [
+        "IDE",
+        "codice",
+        "online",
+        "collaborazione"
+      ],
       "featured": false,
       "dateAdded": "2025-01-19"
     },
@@ -314,7 +431,12 @@
       "rating": 4,
       "url": "https://copilot.microsoft.com",
       "domain": "microsoft.com",
-      "tags": ["microsoft", "office", "integrazione", "produttività"],
+      "tags": [
+        "microsoft",
+        "office",
+        "integrazione",
+        "produttività"
+      ],
       "featured": false,
       "dateAdded": "2025-02-01"
     },
@@ -327,7 +449,12 @@
       "rating": 4,
       "url": "https://notion.so/ai",
       "domain": "notion.so",
-      "tags": ["notion", "produttività", "scrittura", "organizzazione"],
+      "tags": [
+        "notion",
+        "produttività",
+        "scrittura",
+        "organizzazione"
+      ],
       "featured": false,
       "dateAdded": "2025-01-24"
     },
@@ -340,7 +467,12 @@
       "rating": 3,
       "url": "https://useblackbox.io",
       "domain": "blackbox.ai",
-      "tags": ["codice", "generazione", "AI", "spiegazione"],
+      "tags": [
+        "codice",
+        "generazione",
+        "AI",
+        "spiegazione"
+      ],
       "featured": false,
       "dateAdded": "2025-01-16"
     },
@@ -353,7 +485,12 @@
       "rating": 3,
       "url": "https://canva.com/magic-write",
       "domain": "canva.com",
-      "tags": ["design", "canva", "testi", "creatività"],
+      "tags": [
+        "design",
+        "canva",
+        "testi",
+        "creatività"
+      ],
       "featured": false,
       "dateAdded": "2025-01-29"
     },
@@ -366,7 +503,12 @@
       "rating": 3,
       "url": "https://aiva.ai",
       "domain": "aiva.ai",
-      "tags": ["composizione", "musica", "strumentale", "professionale"],
+      "tags": [
+        "composizione",
+        "musica",
+        "strumentale",
+        "professionale"
+      ],
       "featured": false,
       "dateAdded": "2025-01-11"
     },
@@ -379,7 +521,12 @@
       "rating": 4,
       "url": "https://khanacademy.org/khan-labs",
       "domain": "khanacademy.org",
-      "tags": ["tutoraggio", "matematica", "educazione", "personalizzato"],
+      "tags": [
+        "tutoraggio",
+        "matematica",
+        "educazione",
+        "personalizzato"
+      ],
       "featured": false,
       "dateAdded": "2025-02-03"
     },
@@ -392,7 +539,12 @@
       "rating": 3,
       "url": "https://symptoms.webmd.com",
       "domain": "webmd.com",
-      "tags": ["salute", "sintomi", "medico", "diagnostica"],
+      "tags": [
+        "salute",
+        "sintomi",
+        "medico",
+        "diagnostica"
+      ],
       "featured": false,
       "dateAdded": "2025-01-13"
     },
@@ -405,7 +557,12 @@
       "rating": 4,
       "url": "https://manus.ai",
       "domain": "manus.ai",
-      "tags": ["automazione", "controllo", "agente", "produttività"],
+      "tags": [
+        "automazione",
+        "controllo",
+        "agente",
+        "produttività"
+      ],
       "featured": false,
       "dateAdded": "2025-02-20"
     },
@@ -418,96 +575,143 @@
       "rating": 5,
       "url": "https://prompts.chat",
       "domain": "prompts.chat",
-      "tags": ["prompt AI", "prompt generator", "tool AI", "produttività"],
+      "tags": [
+        "prompt AI",
+        "prompt generator",
+        "tool AI",
+        "produttività"
+      ],
       "featured": false,
       "dateAdded": "2025-08-27"
+    },
+    {
+      "id": 33,
+      "name": "THE RUNDOWN",
+      "category": "🔧 Other",
+      "description": "Scopri le ultime novità sull'intelligenza artificiale, scopri perché è importante e impara come applicarla al tuo lavoro.",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://www.rundown.ai/tools",
+      "domain": "rundown.ai",
+      "tags": [
+        "Tools",
+        "Coding",
+        "Data Analys",
+        "Contenet"
+      ],
+      "featured": false,
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": 34,
+      "name": "N8N automation",
+      "category": "⚙️ Automation",
+      "description": "N8N Automation è una piattaforma potente che consente di creare workflow personalizzati tramite drag-and-drop o codice, integrando oltre 1700 template. Con supporto per JavaScript e Python, è ideale per ottimizzare processi aziendali, offrendo sicurezza, controllo e flessibilità senza limiti.",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://n8n.io",
+      "domain": "n8n.io",
+      "tags": [
+        "Workflow",
+        "Automation",
+        "AI-Agent"
+      ],
+      "featured": false,
+      "dateAdded": "2025-08-31"
     }
   ],
   "categories": [
     {
-        "id": "all",
-        "name": "🌟 Tutti",
-        "emoji": "🌟",
-        "description": "Tutti i tool disponibili",
-        "count": 32
+      "id": "all",
+      "name": "🌟 Tutti",
+      "emoji": "🌟",
+      "description": "Tutti i tool disponibili",
+      "count": 34
     },
     {
-        "id": "Chat/Agents",
-        "name": "🤖 Chat/Agents",
-        "emoji": "🤖",
-        "description": "Assistenti AI conversazionali e agenti intelligenti",
-        "count": 7
+      "id": "chat-agents",
+      "name": "🤖 Chat/Agents",
+      "emoji": "🤖",
+      "description": "Assistenti AI conversazionali e agenti intelligenti",
+      "count": 7
     },
     {
-        "id": "Image",
-        "name": "🖼️ Image",
-        "emoji": "🖼️",
-        "description": "Generazione e manipolazione immagini con AI",
-        "count": 3
+      "id": "image",
+      "name": "🖼️ Image",
+      "emoji": "🖼️",
+      "description": "Generazione e manipolazione immagini con AI",
+      "count": 3
     },
     {
-        "id": "Dev Tools",
-        "name": "💻 Dev Tools",
-        "emoji": "💻",
-        "description": "Strumenti AI per sviluppatori e programmatori",
-        "count": 4
+      "id": "dev-tools",
+      "name": "💻 Dev Tools",
+      "emoji": "💻",
+      "description": "Strumenti AI per sviluppatori e programmatori",
+      "count": 4
     },
     {
-        "id": "Data/Analytics",
-        "name": "📊 Data/Analytics",
-        "emoji": "📊",
-        "description": "Analisi dati, ricerca e insights intelligenti",
-        "count": 4
+      "id": "data-analytics",
+      "name": "📊 Data/Analytics",
+      "emoji": "📊",
+      "description": "Analisi dati, ricerca e insights intelligenti",
+      "count": 4
     },
     {
-        "id": "Productivity",
-        "name": "⚡ Productivity",
-        "emoji": "⚡",
-        "description": "Strumenti per aumentare la produttività",
-        "count": 3
+      "id": "productivity",
+      "name": "⚡ Productivity",
+      "emoji": "⚡",
+      "description": "Strumenti per aumentare la produttività",
+      "count": 3
     },
     {
-        "id": "Content",
-        "name": "📝 Content",
-        "emoji": "📝",
-        "description": "Creazione e editing contenuti testuali",
-        "count": 4
+      "id": "content",
+      "name": "📝 Content",
+      "emoji": "📝",
+      "description": "Creazione e editing contenuti testuali",
+      "count": 4
     },
     {
-        "id": "Audio/Voice",
-        "name": "🎵 Audio/Voice",
-        "emoji": "🎵",
-        "description": "Elaborazione audio, voce e musica",
-        "count": 3
+      "id": "audio-voice",
+      "name": "🎵 Audio/Voice",
+      "emoji": "🎵",
+      "description": "Elaborazione audio, voce e musica",
+      "count": 3
     },
     {
-        "id": "Education",
-        "name": "🎓 Education",
-        "emoji": "🎓",
-        "description": "Strumenti per apprendimento e educazione",
-        "count": 2
+      "id": "education",
+      "name": "🎓 Education",
+      "emoji": "🎓",
+      "description": "Strumenti per apprendimento e educazione",
+      "count": 2
     },
     {
-        "id": "Marketing",
-        "name": "📢 Marketing",
-        "emoji": "📢",
-        "description": "Marketing digitale e social media",
-        "count": 1
+      "id": "marketing",
+      "name": "📢 Marketing",
+      "emoji": "📢",
+      "description": "Marketing digitale e social media",
+      "count": 1
     },
     {
-        "id": "PromptAI",
-        "name": "💎 PromptAI",
-        "emoji": "💎",
-        "description": "Comandi per la guida creativa nelle AI",
-        "count": 1
+      "id": "prompt-ai",
+      "name": "💎 PromptAI",
+      "emoji": "💎",
+      "description": "Comandi per la guida creativa nelle AI",
+      "count": 1
+    },
+    {
+      "id": "automation",
+      "name": "⚙️ Automation",
+      "emoji": "⚙️",
+      "description": "Strumenti per Automation",
+      "count": 1
     }
-],
+  ],
   "filters": {
     "pricing": [
       {
         "id": "all",
         "name": "Tutti i piani",
-        "count": 32
+        "count": 34
       },
       {
         "id": "Free",
@@ -515,13 +719,13 @@
         "count": 4
       },
       {
-        "id": "Freemium", 
+        "id": "Freemium",
         "name": "🟡 Freemium",
-        "count": 26
+        "count": 29
       },
       {
         "id": "Paid",
-        "name": "💰 A Pagamento", 
+        "name": "💰 A Pagamento",
         "count": 1
       }
     ],
@@ -529,22 +733,22 @@
       {
         "id": "all",
         "name": "Tutte le valutazioni",
-        "count": 32
+        "count": 34
       },
       {
         "id": "5",
         "name": "⭐⭐⭐⭐⭐ 5 stelle",
-        "count": 8
+        "count": 9
       },
       {
         "id": "4",
         "name": "⭐⭐⭐⭐ 4+ stelle",
-        "count": 23
+        "count": 27
       },
       {
-        "id": "3", 
+        "id": "3",
         "name": "⭐⭐⭐ 3+ stelle",
-        "count": 32
+        "count": 34
       }
     ],
     "sorting": [
@@ -561,7 +765,7 @@
         "name": "Categoria"
       },
       {
-        "id": "plan", 
+        "id": "plan",
         "name": "Piano prezzo"
       },
       {
