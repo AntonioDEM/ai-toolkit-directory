@@ -308,21 +308,31 @@ class AIToolsDirectory {
 
         // Apply category filter - SOLUZIONE CORRETTA
         if (this.currentFilters.category !== 'all') {
-            // Mappa gli ID delle categorie ai nomi completi
-            const categoryMap = {
-                'chat-agents': '🤖 Chat/Agents',
-                'image': '🖼️ Image',
-                'dev-tools': '💻 Dev Tools',
-                'data-analytics': '📊 Data/Analytics',
-                'productivity': '⚡ Productivity',
-                'content': '📝 Content',
-                'audio-voice': '🎵 Audio/Voice',
-                'education': '🎓 Education',
-                'marketing': '📢 Marketing',
-                'promptai': '💎 PromptAI',
-                'automation': '⚙️ Automation',
-                'other': '♻️ Other'
-            };
+        // Mappa gli ID delle categorie ai nomi completi
+        const categoryMap = {
+            'coding': '💻 Coding',
+            'business-operations': '🏢 Business Operations',
+            'sales': '💰 Sales',
+            'finance': '📈 Finance',
+            'design': '🎨 Design',
+            'healthcare': '🏥 Healthcare',
+            'consulting': '📊 Consulting',
+            'government': '🏛️ Government',
+            'data-analysis': '📊 Data Analysis',
+            'project-management': '📋 Project Management',
+            'legal': '⚖️ Legal',
+            'recruiting-hr': '👥 Recruiting / HR',
+            'students': '🎓 Students',
+            'chat-agents': '🤖 Chat/Agents',
+            'image': '🖼️ Image',
+            'productivity': '⚡ Productivity',
+            'content': '📝 Content',
+            'audio-voice': '🎵 Audio/Voice',
+            'marketing': '📢 Marketing',
+            'promptai': '💎 PromptAI',
+            'automation': '⚙️ Automation',
+            'other': '♻️ Other'
+    };
             
             // Cerca corrispondenza esatta nella mappatura
         const exactCategoryName = categoryMap[this.currentFilters.category];
