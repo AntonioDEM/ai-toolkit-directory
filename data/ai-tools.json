@@ -622,95 +622,165 @@
   ],
   "categories": [
     {
-      "id": "all",
-      "name": "🌟 Tutti",
-      "emoji": "🌟",
-      "description": "Tutti i tool disponibili",
-      "count": 34
+        "id": "all",
+        "name": "🌟 Tutti",
+        "emoji": "🌟",
+        "description": "Tutti i tool disponibili",
+        "count": 34
     },
     {
-      "id": "other",
-      "name": "♻️ Other",
-      "emoji": "♻️",
-      "description": "Tutti i tool disponibili",
-      "count": 34
+        "id": "coding",
+        "name": "💻 Coding",
+        "emoji": "💻",
+        "description": "Strumenti per sviluppo e programmazione",
+        "count": 4
     },
     {
-      "id": "chat-agents",
-      "name": "🤖 Chat/Agents",
-      "emoji": "🤖",
-      "description": "Assistenti AI conversazionali e agenti intelligenti",
-      "count": 7
+        "id": "business-operations",
+        "name": "🏢 Business Operations",
+        "emoji": "🏢",
+        "description": "Strumenti per operazioni aziendali",
+        "count": 0
     },
     {
-      "id": "image",
-      "name": "🖼️ Image",
-      "emoji": "🖼️",
-      "description": "Generazione e manipolazione immagini con AI",
-      "count": 3
+        "id": "sales",
+        "name": "💰 Sales",
+        "emoji": "💰",
+        "description": "Strumenti per vendite e CRM",
+        "count": 0
     },
     {
-      "id": "dev-tools",
-      "name": "💻 Dev Tools",
-      "emoji": "💻",
-      "description": "Strumenti AI per sviluppatori e programmatori",
-      "count": 4
+        "id": "finance",
+        "name": "📈 Finance",
+        "emoji": "📈",
+        "description": "Strumenti per finanza e contabilità",
+        "count": 0
     },
     {
-      "id": "data-analytics",
-      "name": "📊 Data/Analytics",
-      "emoji": "📊",
-      "description": "Analisi dati, ricerca e insights intelligenti",
-      "count": 4
+        "id": "design",
+        "name": "🎨 Design",
+        "emoji": "🎨",
+        "description": "Strumenti per design e creatività",
+        "count": 0
     },
     {
-      "id": "productivity",
-      "name": "⚡ Productivity",
-      "emoji": "⚡",
-      "description": "Strumenti per aumentare la produttività",
-      "count": 3
+        "id": "healthcare",
+        "name": "🏥 Healthcare",
+        "emoji": "🏥",
+        "description": "Strumenti per healthcare e medicina",
+        "count": 1
     },
     {
-      "id": "content",
-      "name": "📝 Content",
-      "emoji": "📝",
-      "description": "Creazione e editing contenuti testuali",
-      "count": 4
+        "id": "consulting",
+        "name": "📊 Consulting",
+        "emoji": "📊",
+        "description": "Strumenti per consulenza",
+        "count": 0
     },
     {
-      "id": "audio-voice",
-      "name": "🎵 Audio/Voice",
-      "emoji": "🎵",
-      "description": "Elaborazione audio, voce e musica",
-      "count": 3
+        "id": "government",
+        "name": "🏛️ Government",
+        "emoji": "🏛️",
+        "description": "Strumenti per governo e PA",
+        "count": 0
     },
     {
-      "id": "education",
-      "name": "🎓 Education",
-      "emoji": "🎓",
-      "description": "Strumenti per apprendimento e educazione",
-      "count": 2
+        "id": "data-analysis",
+        "name": "📊 Data Analysis",
+        "emoji": "📊",
+        "description": "Strumenti per analisi dati",
+        "count": 4
     },
     {
-      "id": "marketing",
-      "name": "📢 Marketing",
-      "emoji": "📢",
-      "description": "Marketing digitale e social media",
-      "count": 1
+        "id": "project-management",
+        "name": "📋 Project Management",
+        "emoji": "📋",
+        "description": "Strumenti per gestione progetti",
+        "count": 0
     },
     {
-      "id": "promptai",
-      "name": "💎 PromptAI",
-      "emoji": "💎",
-      "description": "Comandi per la guida creativa nelle AI",
-      "count": 1
+        "id": "legal",
+        "name": "⚖️ Legal",
+        "emoji": "⚖️",
+        "description": "Strumenti per legale e compliance",
+        "count": 0
     },
     {
-      "id": "automation",
-      "name": "⚙️ Automation",
-      "emoji": "⚙️",
-      "description": "Strumenti per Automation",
-      "count": 1
+        "id": "recruiting-hr",
+        "name": "👥 Recruiting / HR",
+        "emoji": "👥",
+        "description": "Strumenti per HR e recruiting",
+        "count": 0
+    },
+    {
+        "id": "students",
+        "name": "🎓 Students",
+        "emoji": "🎓",
+        "description": "Strumenti per studenti",
+        "count": 2
+    },
+    {
+        "id": "chat-agents",
+        "name": "🤖 Chat/Agents",
+        "emoji": "🤖",
+        "description": "Assistenti AI conversazionali",
+        "count": 7
+    },
+    {
+        "id": "image",
+        "name": "🖼️ Image",
+        "emoji": "🖼️",
+        "description": "Generazione immagini AI",
+        "count": 3
+    },
+    {
+        "id": "productivity",
+        "name": "⚡ Productivity",
+        "emoji": "⚡",
+        "description": "Strumenti per produttività",
+        "count": 3
+    },
+    {
+        "id": "content",
+        "name": "📝 Content",
+        "emoji": "📝",
+        "description": "Creazione contenuti testuali",
+        "count": 4
+    },
+    {
+        "id": "audio-voice",
+        "name": "🎵 Audio/Voice",
+        "emoji": "🎵",
+        "description": "Elaborazione audio e voce",
+        "count": 3
+    },
+    {
+        "id": "marketing",
+        "name": "📢 Marketing",
+        "emoji": "📢",
+        "description": "Marketing digitale",
+        "count": 1
+    },
+    {
+        "id": "promptai",
+        "name": "💎 PromptAI",
+        "emoji": "💎",
+        "description": "Comandi per AI creative",
+        "count": 1
+    },
+    {
+        "id": "automation",
+        "name": "⚙️ Automation",
+        "emoji": "⚙️",
+        "description": "Automazione workflow",
+        "count": 1
+    },
+    {
+        "id": "other",
+        "name": "♻️ Other",
+        "emoji": "♻️",
+        "description": "Altre categorie",
+        "count": 1
     }
   ],
   "filters": {
