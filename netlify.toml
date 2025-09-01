@@ -49,6 +49,11 @@
   status = 200
 
 [[redirects]]
+  from = "/success"
+  to = "/success.html"
+  status = 200
+
+[[redirects]]
   from = "/suggest-tool/"
   to = "/suggest-tool.html"
   status = 200
