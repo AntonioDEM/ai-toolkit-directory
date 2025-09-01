@@ -389,7 +389,7 @@
                     </div>
                     
                     <!-- Netlify Forms - form con attributi necessari -->
-                    <form name="suggest-tool" method="POST" data-netlify="true" action="/success.html">
+                    <form name="suggest-tool" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="./success.html">
                         <!-- Honeypot per spam protection -->
                         <div class="honeypot">
                             <label for="bot-field">Non compilare se sei umano:</label>
@@ -522,6 +522,15 @@
             <p>&copy; 2025 AI Toolkit Directory. Creato per aiutarti a scoprire i migliori strumenti AI.</p>
             <p style="margin-top: 10px; opacity: 0.7;">Aggiornato con i tool più recenti e popolari</p>
             <p style="margin-top: 10px; opacity: 0.7;">By Antonio Demarcus</p>
+            <div style="margin-top: 20px; font-size: 0.9rem;">
+                <a href="./index.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                    🏠 Torna alla Directory
+                </a>
+                <span style="margin: 0 10px;">|</span>
+                <a href="./privacy.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">
+                    🔒 Privacy
+                </a>
+            </div>
         </div>
     </footer>
 
