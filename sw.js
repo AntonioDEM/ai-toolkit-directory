@@ -1,14 +1,15 @@
 // sw.js - Service Worker migliorato per AI Toolkit Directory PWA
 
-const CACHE_NAME = 'ai-tools-v1.4.0'; // Aggiorna la versione
-const STATIC_CACHE = 'static-v1.4.0';
-const DYNAMIC_CACHE = 'dynamic-v1.4.0';
+const CACHE_NAME = 'ai-tools-v1.4.1'; // Aggiorna la versione
+const STATIC_CACHE = 'static-v1.4.1';
+const DYNAMIC_CACHE = 'dynamic-v1.4.1';
 
 const STATIC_FILES = [
   '/',
   '/index.html',
   '/suggest-tool.html',
   '/success.html',
+  '/privacy.html',
   '/offline.html', // Nuova pagina offline
   '/css/styles.css',
   '/css/offline.css', // Nuovi stili offline
