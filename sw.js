@@ -8,6 +8,7 @@ const STATIC_FILES = [
   '/',
   '/index.html',
   '/suggest-tool.html',
+  '/suggest-bug.html',
   '/success.html',
   '/privacy.html',
   '/offline.html', // Nuova pagina offline
