@@ -308,24 +308,25 @@
             font-size: 1.1rem;
         }
 
-        .success-message {
+        .success-message, .error-message {
             display: none;
-            background: #d1fae5;
-            color: #047857;
             padding: 16px;
             border-radius: 8px;
             margin-bottom: 24px;
             text-align: center;
+            font-weight: 600;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #10b981;
         }
 
         .error-message {
-            display: none;
             background: #fee2e2;
             color: #b91c1c;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-            text-align: center;
+            border: 1px solid #ef4444;
         }
 
         .loading-spinner {
@@ -341,7 +342,7 @@
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
-            margin: 0 auto;
+            margin: 0 auto 10px;
         }
 
         @keyframes spin {
@@ -362,22 +363,18 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Animazione slide per campo categoria personalizzata */
+        /* Animazione slide per categoria personalizzata */
         #otherCategory {
             overflow: hidden;
             transition: all 0.3s ease;
+            max-height: 0;
+            opacity: 0;
         }
 
         #otherCategory.show {
             display: block !important;
             opacity: 1;
             max-height: 100px;
-        }
-
-        #otherCategory.hide {
-            opacity: 0;
-            max-height: 0;
-            margin-bottom: 0;
         }
 
         @media (max-width: 768px) {
@@ -405,7 +402,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-icon"><img src="icons/icon-192x192.png" alt="AI Toolkit" style="width: 32px; height: 32px;"></div>
+                    <div class="logo-icon">
+                        <img src="icons/icon-192x192.png" alt="AI Toolkit" style="width: 32px; height: 32px;">
+                    </div>
                     <div>
                         <h1>AI Toolkit Directory</h1>
                         <div class="subtitle">Suggerisci un nuovo tool</div>
@@ -417,9 +416,7 @@
 
     <main class="main">
         <div class="container">
-            <a href="index.html" class="back-link">
-                ← Torna alla directory
-            </a>
+            <a href="index.html" class="back-link">← Torna alla directory</a>
 
             <div class="form-container">
                 <div class="form-header">
@@ -441,7 +438,6 @@
                         <p>Invio in corso...</p>
                     </div>
                     
-                    <!-- Form con EmailJS -->
                     <form id="suggestion-form">
                         <!-- Honeypot per spam protection -->
                         <div class="honeypot">
@@ -489,7 +485,7 @@
                                         <option value="📋 Project Management">📋 Project Management</option>
                                         <option value="⚖️ Legal">⚖️ Legal</option>
                                         <option value="👥 Recruiting / HR">👥 Recruiting / HR</option>
-                                        <option value="🎓 Students">🎓 Students</option> 
+                                        <option value="🎓 Students">🎓 Students</option>
                                         <option value="♻️ Other">♻️ Other</option>
                                     </select>
                                 </div>
@@ -505,9 +501,9 @@
                                 </div>
                             </div>
                             
-                            <!-- Campo categoria personalizzata (nascosto di default) -->
+                            <!-- Campo categoria personalizzata -->
                             <div class="form-group" id="otherCategory" style="display: none;">
-                                <label for="otherCategoryText">Specifica altra categoria non presente nell'elenco</label>
+                                <label for="otherCategoryText">Specifica altra categoria</label>
                                 <input type="text" id="otherCategoryText" name="otherCategoryText" placeholder="es. Video, 3D Modeling...">
                             </div>
                         </div>
@@ -535,7 +531,8 @@
                             
                             <div class="form-group">
                                 <label for="description">Descrizione <span class="required">*</span></label>
-                                <textarea id="description" name="description" required placeholder="Descrivi brevemente le funzionalità principali e i vantaggi del tool AI..."></textarea>
+                                <textarea id="description" name="description" required 
+                                    placeholder="Descrivi brevemente le funzionalità principali e i vantaggi del tool AI..."></textarea>
                                 <div class="help-text">Una descrizione chiara e concisa (100-300 caratteri)</div>
                             </div>
                             
@@ -564,7 +561,8 @@
                             
                             <div class="form-group">
                                 <label for="additional-notes">Note Aggiuntive</label>
-                                <textarea id="additional-notes" name="additional-notes" placeholder="Qualsiasi informazione aggiuntiva che ritieni utile..."></textarea>
+                                <textarea id="additional-notes" name="additional-notes" 
+                                    placeholder="Qualsiasi informazione aggiuntiva che ritieni utile..."></textarea>
                             </div>
                         </div>
                         
@@ -595,20 +593,30 @@
     </footer>
 
     <script>
-        // Gestione categoria "altro"
+        // Configurazione
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw6DyvN-7f2C_wUw9aet_k-P4172siLH7AIulERMK-Qju1KAX03Psn0z5RL6P0hwwFyAg/exec';
+
+        // Elementi DOM
+        const formEl = document.getElementById('suggestion-form');
         const categorySelect = document.getElementById('category');
         const otherCategoryDiv = document.getElementById('otherCategory');
         const otherCategoryInput = document.getElementById('otherCategoryText');
-        
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        const ratingDisplay = document.getElementById('rating-display');
+        const starLabels = document.querySelectorAll('.rating-stars label');
+        const submitBtn = document.getElementById('submit-btn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successMsg = document.getElementById('successMessage');
+        const errorMsg = document.getElementById('errorMessage');
+
+        // Gestione categoria "altro"
         categorySelect.addEventListener('change', function() {
             if (this.value === '♻️ Other') {
                 otherCategoryDiv.style.display = 'block';
                 otherCategoryDiv.classList.add('show');
-                otherCategoryDiv.classList.remove('hide');
                 otherCategoryInput.required = true;
             } else {
                 otherCategoryDiv.style.display = 'none';
-                otherCategoryDiv.classList.add('hide');
                 otherCategoryDiv.classList.remove('show');
                 otherCategoryInput.required = false;
                 otherCategoryInput.value = '';
@@ -616,25 +624,21 @@
         });
 
         // Rating Stars Functionality
-        const ratingInputs = document.querySelectorAll('input[name="rating"]');
-        const ratingDisplay = document.getElementById('rating-display');
-        
+        const ratingLabels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
+
         ratingInputs.forEach(input => {
             input.addEventListener('change', function() {
-                const value = this.value;
-                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
-                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                const value = parseInt(this.value);
+                ratingDisplay.textContent = `${value} stelle - ${ratingLabels[value - 1]}`;
                 ratingDisplay.style.color = '#667eea';
             });
         });
 
-        // Enhanced hover effect for stars
-        const starLabels = document.querySelectorAll('.rating-stars label');
+        // Hover effect per stelle
         starLabels.forEach((label, index) => {
             label.addEventListener('mouseenter', function() {
                 const value = 5 - index;
-                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
-                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                ratingDisplay.textContent = `${value} stelle - ${ratingLabels[value - 1]}`;
                 ratingDisplay.style.color = '#fbbf24';
             });
         });
@@ -642,9 +646,8 @@
         document.querySelector('.rating-stars').addEventListener('mouseleave', function() {
             const checkedInput = document.querySelector('input[name="rating"]:checked');
             if (checkedInput) {
-                const value = checkedInput.value;
-                const labels = ['Pessimo', 'Scarso', 'Accettabile', 'Buono', 'Eccellente'];
-                ratingDisplay.textContent = `${value} stelle - ${labels[value - 1]}`;
+                const value = parseInt(checkedInput.value);
+                ratingDisplay.textContent = `${value} stelle - ${ratingLabels[value - 1]}`;
                 ratingDisplay.style.color = '#667eea';
             } else {
                 ratingDisplay.textContent = 'Seleziona rating';
@@ -652,42 +655,129 @@
             }
         });
 
-        // Form submission con EmailJS
-        document.getElementById('suggestion-form').addEventListener('submit', function(e) {
+        // Funzione per inviare a Google Sheets
+        async function sendToGoogleSheets(data) {
+            try {
+                console.log('📊 Sending to Google Sheets:', data);
+                
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('📊 Google Sheets response:', result);
+                
+                return { success: result.success || false, error: result.error };
+                
+            } catch (error) {
+                console.error('❌ Google Sheets error:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Form submission handler
+        formEl.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Validazione aggiuntiva per categoria personalizzata
+            console.log('🚀 Form submission started');
+            
+            // Validazione honeypot
+            if (document.getElementById('bot-field').value) {
+                console.log('🤖 Bot detected');
+                return false;
+            }
+            
+            // Validazione categoria personalizzata
             if (categorySelect.value === '♻️ Other' && !otherCategoryInput.value.trim()) {
                 alert('Per favore, specifica la categoria personalizzata.');
                 otherCategoryInput.focus();
                 return false;
             }
             
-            // Mostra il loading spinner
-            document.getElementById('loadingSpinner').style.display = 'block';
-            document.getElementById('submit-btn').disabled = true;
-            document.getElementById('errorMessage').style.display = 'none';
+            // Mostra loading
+            showLoading(true);
+            hideMessages();
             
-            // Prepara i dati per l'email
+            // Prepara dati
+            const formData = prepareFormData();
+            console.log('📋 Form data:', formData);
+            
+            try {
+                // Invio parallelo a EmailJS e Google Sheets
+                const [emailResult, sheetsResult] = await Promise.allSettled([
+                    emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData),
+                    sendToGoogleSheets(formData)
+                ]);
+                
+                console.log('📧 Email result:', emailResult.status);
+                console.log('📊 Sheets result:', sheetsResult.status, sheetsResult.value);
+                
+                // Controlla se almeno una operazione è riuscita
+                const emailSuccess = emailResult.status === 'fulfilled';
+                const sheetsSuccess = sheetsResult.status === 'fulfilled' && sheetsResult.value.success;
+                
+                showLoading(false);
+                
+                if (emailSuccess || sheetsSuccess) {
+                    console.log('✅ Form submitted successfully');
+                    showSuccess();
+                    
+                    // Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_submit_success', {
+                            'event_category': 'suggestions',
+                            'event_label': 'suggest_tool_form'
+                        });
+                    }
+                    
+                    // Redirect dopo 2 secondi
+                    setTimeout(() => {
+                        window.location.href = 'success.html';
+                    }, 2000);
+                    
+                } else {
+                    console.log('❌ Both operations failed');
+                    showError();
+                    
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_submit_error', {
+                            'event_category': 'suggestions',
+                            'event_label': 'suggest_tool_form'
+                        });
+                    }
+                }
+                
+            } catch (error) {
+                console.error('💥 Unexpected error:', error);
+                showLoading(false);
+                showError();
+            }
+        });
+
+        // Utility functions
+        function prepareFormData() {
             const ratingValue = document.querySelector('input[name="rating"]:checked')?.value || 'Non specificato';
             
-            // Crea le stelle per la valutazione
             let ratingStars = '';
             if (ratingValue !== 'Non specificato') {
-                for (let i = 0; i < 5; i++) {
-                    ratingStars += i < parseInt(ratingValue) ? '⭐' : '';
-                }
+                ratingStars = '⭐'.repeat(parseInt(ratingValue));
             }
             
-            // Gestione categoria personalizzata
-            let fullCategory = document.getElementById('category').value;
-            if (document.getElementById('category').value === '♻️ Other' && 
-                document.getElementById('otherCategoryText').value.trim()) {
-                fullCategory += ' (' + document.getElementById('otherCategoryText').value.trim() + ')';
+            let fullCategory = categorySelect.value;
+            if (categorySelect.value === '♻️ Other' && otherCategoryInput.value.trim()) {
+                fullCategory += ' (' + otherCategoryInput.value.trim() + ')';
             }
             
-            // Raccogli i dati del form
-            const formData = {
+            return {
+                formType: 'suggest-tool',
                 tool_name: document.getElementById('tool-name').value,
                 tool_url: document.getElementById('tool-url').value,
                 category: fullCategory,
@@ -701,36 +791,28 @@
                 additional_notes: document.getElementById('additional-notes').value || 'Nessuna nota aggiuntiva',
                 submission_date: new Date().toLocaleString('it-IT')
             };
-            
-            // Invia l'email usando EmailJS
-            emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    
-                    // Nascondi il loading spinner
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                    
-                    // Mostra messaggio di successo
-                    document.getElementById('successMessage').style.display = 'block';
-                    
-                    // Reindirizza alla pagina di successo dopo 2 secondi
-                    setTimeout(function() {
-                        window.location.href = 'success.html';
-                    }, 2000);
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Nascondi il loading spinner
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                    document.getElementById('submit-btn').disabled = false;
-                    
-                    // Mostra messaggio di errore
-                    document.getElementById('errorMessage').style.display = 'block';
-                    
-                    // Scrolla fino al messaggio di errore
-                    document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
-                });
-        });
+        }
+
+        function showLoading(show) {
+            loadingSpinner.style.display = show ? 'block' : 'none';
+            submitBtn.disabled = show;
+        }
+
+        function hideMessages() {
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+        }
+
+        function showSuccess() {
+            successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showError() {
+            submitBtn.disabled = false;
+            errorMsg.style.display = 'block';
+            errorMsg.scrollIntoView({ behavior: 'smooth' });
+        }
 
         // Service Worker registration for PWA
         if ('serviceWorker' in navigator) {
