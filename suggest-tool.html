@@ -711,40 +711,57 @@
             console.log('📋 Form data:', formData);
             
             try {
-                // Invio parallelo a EmailJS e Google Sheets
-                const [emailResult, sheetsResult] = await Promise.allSettled([
-                    emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData),
-                    sendToGoogleSheets(formData)
-                ]);
+                // Prima prova EmailJS (priorità)
+                console.log('📧 Sending email...');
+                await emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData);
+                console.log('✅ Email sent successfully');
                 
-                console.log('📧 Email result:', emailResult.status);
-                console.log('📊 Sheets result:', sheetsResult.status, sheetsResult.value);
+                // Poi prova Google Sheets (non bloccante)
+                sendToGoogleSheets(formData)
+                    .then(result => {
+                        console.log('📊 Sheets result:', result);
+                    })
+                    .catch(error => {
+                        console.log('📊 Sheets failed (non-critical):', error);
+                    });
                 
-                // Controlla se almeno una operazione è riuscita
-                const emailSuccess = emailResult.status === 'fulfilled';
-                const sheetsSuccess = sheetsResult.status === 'fulfilled' && sheetsResult.value.success;
-                
+                // Mostra successo se EmailJS funziona
                 showLoading(false);
+                showSuccess();
                 
-                if (emailSuccess || sheetsSuccess) {
-                    console.log('✅ Form submitted successfully');
-                    showSuccess();
-                    
-                    // Analytics
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'form_submit_success', {
-                            'event_category': 'suggestions',
-                            'event_label': 'suggest_tool_form'
-                        });
+                // Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit_success', {
+                        'event_category': 'suggestions',
+                        'event_label': 'suggest_tool_form'
+                    });
+                }
+                
+                // Redirect dopo 2 secondi
+                setTimeout(() => {
+                    window.location.href = 'success.html';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('❌ EmailJS failed:', error);
+                
+                // Fallback: prova solo Google Sheets
+                try {
+                    const sheetsResult = await sendToGoogleSheets(formData);
+                    if (sheetsResult.success) {
+                        console.log('✅ Saved to Sheets as fallback');
+                        showLoading(false);
+                        showSuccess();
+                        
+                        setTimeout(() => {
+                            window.location.href = 'success.html';
+                        }, 2000);
+                    } else {
+                        throw new Error('Both EmailJS and Sheets failed');
                     }
-                    
-                    // Redirect dopo 2 secondi
-                    setTimeout(() => {
-                        window.location.href = 'success.html';
-                    }, 2000);
-                    
-                } else {
-                    console.log('❌ Both operations failed');
+                } catch (fallbackError) {
+                    console.error('💥 All methods failed:', fallbackError);
+                    showLoading(false);
                     showError();
                     
                     if (typeof gtag !== 'undefined') {
@@ -754,11 +771,6 @@
                         });
                     }
                 }
-                
-            } catch (error) {
-                console.error('💥 Unexpected error:', error);
-                showLoading(false);
-                showError();
             }
         });
 
