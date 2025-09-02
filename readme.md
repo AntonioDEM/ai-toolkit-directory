@@ -2,53 +2,56 @@
 
 > Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f5fa92f3-4ea9-48b3-9977-f4109d0159ed/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/AntonioDEM/ai-toolkit-directory.svg)](https://github.com/AntonioDEM/ai-toolkit-directory/stargazers)
-[![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)](https://web.dev/progressive-web-apps/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/651852bb-e4bc-4784-aa8d-026c4ee5f531/deploy-status)](https://app.netlify.com/projects/tools-for-ai/deploys) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![GitHub stars](https://img.shields.io/github/stars/AntonioDEM/ai-toolkit-directory.svg)](https://github.com/AntonioDEM/ai-toolkit-directory/stargazers) [![PWA Ready](https://img.shields.io/badge/PWA-Ready-blue.svg)](https://web.dev/progressive-web-apps/)
 
 ## 🚀 Demo Live
 
-**[🔗 Visita AI Toolkit Directory](https://your-site.netlify.app)**
-
+**[🔗 Visita AI Toolkit Directory](https://tools-for-ai.netlify.app/)**
 
 ## ✨ Caratteristiche Principali
 
-- 🎯 **31+ Strumenti AI curati** - Collezione completa organizzata per categoria
+- 🎯 **Strumenti AI curati** - Collezione completa organizzata per categoria
 - 🔍 **Ricerca intelligente** - Trova rapidamente il tool perfetto
 - 🔧 **Filtri avanzati** - Per prezzo, rating, categoria con combinazioni multiple
-- 📝 **Form suggerisci tool** - Contribuisci alla directory con nuovi strumenti
+- 🚀 **Form suggerisci tool** - Sistema integrato con EmailJS per contribuzioni
+- 🐛 **Segnalazione bug** - Sistema di feedback per miglioramenti continui
 - 📱 **PWA installabile** - Funziona offline, installabile su tutti i dispositivi
 - 📊 **Google Analytics 4** - Monitoraggio GDPR compliant con consenso
-- 🔖 **Bookmark system** - Salva i tuoi tool preferiti
+- 📖 **Bookmark system** - Salva i tuoi tool preferiti
 - ⌨️ **Keyboard shortcuts** - Navigazione rapida per power users
 - 📱 **Design responsive** - Perfetto su desktop, tablet e mobile
 - ⚡ **Performance ottimali** - Lighthouse score 95+ con caching intelligente
+- 🔒 **Privacy compliant** - Politiche privacy e gestione consensi
 
 ## 🛠️ Tecnologie e Architettura
 
 ### Frontend
+
 - **HTML5** - Struttura semantica con accessibility
 - **CSS3** - Design system con variabili custom, Grid/Flexbox
 - **Vanilla JavaScript ES6+** - Architettura modulare, nessuna dipendenza
 - **PWA** - Service Worker, Web App Manifest, offline support
 
 ### Backend e Deployment
+
 - **Netlify** - Hosting, CDN globale, build automation
 - **JSON Database** - Dati strutturati senza server database
-- **Netlify Functions** - Serverless per form handling (opzionale)
+- **EmailJS** - Gestione invio email per form suggerimenti e segnalazioni
 
 ### Integrations
+
 - **Clearbit Logo API** - Icone brand automatiche
 - **Google Analytics 4** - Analytics privacy-first
 - **Web Share API** - Condivisione nativa dispositivi
+- **EmailJS Service** - Invio email serverless per form feedback
 
 ## 📂 Struttura del Progetto
 
 ```
 ai-toolkit-directory/
 ├── index.html              # Pagina principale
-├── suggest-tool.html       # Form suggerimenti
+├── suggest-tool.html       # Form suggerimenti con EmailJS
+├── privacy.html            # Pagina privacy policy
 ├── manifest.json          # PWA Manifest
 ├── sw.js                  # Service Worker
 ├── netlify.toml           # Configurazione deployment
@@ -57,7 +60,8 @@ ai-toolkit-directory/
 │   └── enhanced-styles.css # Stili funzionalità avanzate
 ├── js/
 │   ├── enhanced-app.js    # Logica principale
-│   └── analytics.js       # Google Analytics 4
+│   ├── analytics.js       # Google Analytics 4
+│   └── emailjs-config.js  # Configurazione EmailJS
 ├── data/
 │   └── ai-tools.json      # Database strumenti
 ├── icons/                 # Icone PWA
@@ -89,7 +93,7 @@ Visita `http://localhost:8000`
 ### Deploy su Netlify
 
 1. **Fork** questo repository su GitHub
-2. **Connetti** Netlify al tuo account GitHub  
+2. **Connetti** Netlify al tuo account GitHub
 3. **Crea nuovo sito** da Git repository
 4. **Deploy automatico** configurato con `netlify.toml`
 
@@ -100,9 +104,67 @@ Visita `http://localhost:8000`
 this.GA_ID = 'G-XXXXXXXXXX'; // con il tuo Google Analytics ID
 ```
 
-## 📊 Architettura dei Dati
+### Configurazione EmailJS
 
-### Struttura Tool
+```javascript
+// In js/emailjs-config.js, configura:
+const EMAIL_CONFIG = {
+    serviceId: 'YOUR_SERVICE_ID',
+    templateId: 'YOUR_TEMPLATE_ID',
+    publicKey: 'YOUR_PUBLIC_KEY'
+};
+```
+
+## 📊 Categorie Disponibili
+
+Il progetto ora supporta **22 categorie** complete per coprire tutti i settori AI:
+
+| Categoria               | Emoji | Descrizione                             |
+| ----------------------- | ----- | --------------------------------------- |
+| **Chat/Agents**         | 🤖     | Assistenti conversazionali e agenti AI  |
+| **Image**               | 🖼️     | Generazione e editing immagini AI       |
+| **Productivity**        | ⚡     | Strumenti per aumentare la produttività |
+| **Content**             | 📝     | Creazione e editing contenuti           |
+| **Audio/Voice**         | 🎵     | Sintesi vocale e audio AI               |
+| **Marketing**           | 📢     | Digital marketing e advertising         |
+| **PromptAI**            | 💎     | Gestione e ottimizzazione prompt        |
+| **Automation**          | ⚙️     | Automazione processi e workflow         |
+| **Coding**              | 💻     | Sviluppo software e programmazione      |
+| **Business Operations** | 🏢     | Gestione operazioni aziendali           |
+| **Sales**               | 💰     | Vendite e CRM                           |
+| **Finance**             | 📈     | Finanza e analytics finanziarie         |
+| **Design**              | 🎨     | Design grafico e UX/UI                  |
+| **Healthcare**          | 🏥     | Sanità e medicina                       |
+| **Consulting**          | 📊     | Consulenza e advisory                   |
+| **Government**          | 🏛️     | Settore pubblico e governativo          |
+| **Data Analysis**       | 📊     | Analisi dati e business intelligence    |
+| **Project Management**  | 📋     | Gestione progetti e team                |
+| **Legal**               | ⚖️     | Servizi legali e compliance             |
+| **Recruiting / HR**     | 👥     | Risorse umane e recruitment             |
+| **Students**            | 🎓     | Strumenti per studenti e educazione     |
+| **Other**               | ♻️     | Altri strumenti specializzati           |
+
+## 📧 Sistema Feedback e Segnalazioni
+
+### Form Suggerisci Tool
+
+Il nuovo sistema utilizza **EmailJS** per l'invio automatico di email:
+
+- Form completo con rating a stelle funzionante
+- Validazione client-side e server-side
+- Invio email automatico senza server backend
+- Notifiche di successo/errore user-friendly
+
+### Segnalazione Bug
+
+Sistema dedicato per il feedback degli utenti:
+
+- Pulsante "Segnalazione Bug" integrato nel footer
+- Form dedicato per bug report dettagliati
+- Invio tramite EmailJS con template personalizzato
+- Tracciamento segnalazioni per miglioramenti continui
+
+## 🗂️ Struttura Tool Aggiornata
 
 ```json
 {
@@ -120,27 +182,28 @@ this.GA_ID = 'G-XXXXXXXXXX'; // con il tuo Google Analytics ID
 }
 ```
 
-### Categorie Disponibili
+### Piani Supportati
 
-| Categoria | Tools | Esempi Principali |
-|-----------|-------|-------------------|
-| 🤖 **Chat/Agents** | 7 | ChatGPT, Claude, Gemini |
-| 🖼️ **Image** | 3 | Leonardo AI, Midjourney, Stable Diffusion |
-| 💻 **Dev Tools** | 4 | GitHub Copilot, Phind, Replit |
-| 📊 **Data/Analytics** | 4 | Perplexity AI, Elicit, Consensus |
-| ⚡ **Productivity** | 3 | NotebookLM, Notion AI, Otter.ai |
-| 📝 **Content** | 4 | Grammarly, DeepL Write, Rytr |
-| 🎵 **Audio/Voice** | 3 | Whisper, Suno AI, AIVA |
-| 🎓 **Education** | 2 | Quizlet, Khanmigo |
-| 📢 **Marketing** | 1 | Buffer |
+- `"Free"` - Completamente gratuito
+- `"Freemium"` - Piano base gratuito + features premium
+- `"Paid"` - Solo a pagamento
 
 ## 🔧 Come Aggiungere Nuovi AI Tools
 
-### Metodo 1: Modifica data/ai-tools.json
+### Metodo 1: Form Suggerimenti (Raccomandato)
+
+Usa il form integrato su `/suggest-tool.html`:
+
+- Rating interattivo con stelle funzionanti
+- Validazione completa dei campi
+- Invio automatico tramite EmailJS
+- Notifica di conferma all'utente
+
+### Metodo 2: Modifica Diretta JSON
 
 ```json
 {
-  "id": 32,
+  "id": 999,
   "name": "Nuovo AI Tool",
   "category": "🤖 Chat/Agents",
   "description": "Descrizione completa del tool...",
@@ -150,51 +213,52 @@ this.GA_ID = 'G-XXXXXXXXXX'; // con il tuo Google Analytics ID
   "domain": "nuovo-tool.com",
   "tags": ["tag1", "tag2", "tag3"],
   "featured": false,
-  "dateAdded": "2024-08-25"
+  "dateAdded": "2024-12-01"
 }
 ```
 
-### Metodo 2: Form Suggerimenti
+## 🔒 Privacy e Sicurezza
 
-Usa il form integrato su `/suggest-tool.html` per proporre nuovi strumenti.
+- **GDPR Compliant** - Banner consenso cookie e privacy policy dedicata
+- **Headers sicurezza** - CSP, X-Frame-Options, etc.
+- **IP Anonimizzazione** - Google Analytics configurato per privacy
+- **Nessun tracking** - Senza consenso utente
+- **Dati locali** - Bookmarks salvati solo localmente
+- **EmailJS Security** - Invio email senza esposizione credenziali
+- **Form Protection** - Validazione e sanitizzazione input
 
-### Piani Supportati
-- `"Free"` - Completamente gratuito
-- `"Freemium"` - Piano base gratuito + features premium
-- `"Paid"` - Solo a pagamento
+## 🧹 Gestione Cache Browser
 
-## 🎨 Personalizzazione
+Per una migliore esperienza d'uso, si consiglia di **svuotare la cache del browser** dopo gli aggiornamenti:
 
-### Colori del Tema
+### Chrome (Windows/Mac/Linux)
 
-```css
-:root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  --text-primary: #1a202c;
-  --text-secondary: #4a5568;
-}
-```
+- `Ctrl + Shift + Delete` (Windows/Linux)
+- `Cmd + Shift + Delete` (Mac)
+- Seleziona "Immagini e file nella cache"
 
-### Aggiungere Nuove Categorie
+### Firefox (Windows/Mac/Linux)
 
-1. Modifica `data/ai-tools.json` sezione `categories`
-2. Aggiungi emoji e descrizione consistenti
-3. I filtri si aggiornano automaticamente
+- `Ctrl + Shift + Delete` (Windows/Linux)
+- `Cmd + Shift + Delete` (Mac)
+- Seleziona "Cache"
 
-## 📈 Performance e Analytics
+### Safari (Mac)
 
-### Metriche Performance
-- **Lighthouse Score**: 95+ su tutte le metriche
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
+- `Cmd + Option + E` per svuotare cache
+- Oppure: Develop > Empty Caches
 
-### Analytics Implementate
-- **Google Analytics 4** - Con consenso GDPR
-- **Click tracking** - Su tutti i tool links
-- **Search analytics** - Query più popolari
-- **Performance monitoring** - Core Web Vitals
+### Edge (Windows/Mac)
+
+- `Ctrl + Shift + Delete`
+- Seleziona "Immagini e file memorizzati nella cache"
+
+### Mobile (iOS/Android)
+
+- **iOS Safari**: Impostazioni > Safari > Cancella dati siti web
+- **Android Chrome**: Impostazioni > Privacy > Cancella dati di navigazione
+
+💡 **Tip**: Usa `Ctrl + F5` (Windows) o `Cmd + Shift + R` (Mac) per ricaricare forzatamente la pagina bypassando la cache.
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -202,14 +266,26 @@ Usa il form integrato su `/suggest-tool.html` per proporre nuovi strumenti.
 - `Ctrl + F` - Mostra/nascondi filtri avanzati
 - `Esc` - Pulisci ricerca
 - `Ctrl + H` - Mostra guida shortcuts
+- `F5` - Ricarica pagina
+- `Ctrl + F5` - Ricarica ignorando cache
 
-## 🔒 Privacy e Sicurezza
+## 📈 Performance e Analytics
 
-- **GDPR Compliant** - Banner consenso cookie
-- **Headers sicurezza** - CSP, X-Frame-Options, etc.
-- **IP Anonimizzazione** - Google Analytics configurato per privacy
-- **Nessun tracking** - Senza consenso utente
-- **Dati locali** - Bookmarks salvati solo localmente
+### Metriche Performance
+
+- **Lighthouse Score**: 95+ su tutte le metriche
+- **First Contentful Paint**: < 1.5s
+- **Largest Contentful Paint**: < 2.5s
+- **Cumulative Layout Shift**: < 0.1
+- **Progressive Enhancement**: Funziona anche senza JavaScript
+
+### Analytics Implementate
+
+- **Google Analytics 4** - Con consenso GDPR
+- **Click tracking** - Su tutti i tool links
+- **Search analytics** - Query più popolari
+- **Form submissions** - Tracciamento suggerimenti e segnalazioni
+- **Performance monitoring** - Core Web Vitals
 
 ## 🤝 Contribuire
 
@@ -231,6 +307,8 @@ Le contribuzioni sono benvenute! Segui queste linee guida:
 - ✅ **Performance** - Ottimizzazioni velocità
 - ✅ **Documentazione** - README, commenti codice
 - ✅ **Traduzioni** - Supporto multilingua
+- ✅ **Nuove categorie** - Espansione tassonomia
+- ✅ **Integrazioni** - Nuovi servizi esterni
 
 ### Linee Guida
 
@@ -239,15 +317,20 @@ Le contribuzioni sono benvenute! Segui queste linee guida:
 - Verifica che icone e link funzionino
 - Rispetta la struttura dati esistente
 - Includi screenshot per modifiche UI
+- Testa il form suggerimenti e segnalazioni
+- Verifica funzionamento su mobile
 
 ## 📊 Statistiche Progetto
 
 - **🚀 Performance**: Lighthouse 95+ su tutte le metriche
 - **📱 Mobile**: Fully responsive design
-- **♿ Accessibility**: WCAG 2.1 AA compliant  
+- **♿ Accessibility**: WCAG 2.1 AA compliant
 - **🔍 SEO**: Structured data, meta tags ottimizzati
 - **⚡ Speed**: < 2s first contentful paint
 - **💾 Size**: Bundle totale < 500KB
+- **🗂️ Categorie**: 22 categorie complete
+- **📧 Forms**: Sistema EmailJS integrato
+- **🔒 Privacy**: GDPR compliant con policy dedicata
 
 ## 📄 Licenza
 
@@ -257,7 +340,8 @@ Questo progetto è sotto licenza MIT - vedi il file [LICENSE](LICENSE) per detta
 
 - **Design ispirazione** - Directory AI moderne
 - **Icone tool** - [Clearbit Logo API](https://clearbit.com/logo)
-- **Hosting gratuito** - [Netlify](https://netlify.com)
+- **Hosting gratuito** - [Netlify](https://netlify.com/)
+- **Email service** - [EmailJS](https://emailjs.com/)
 - **Icona app** - Design custom con gradiente blu-viola
 - **Performance** - Ottimizzazioni Lighthouse
 
@@ -266,8 +350,10 @@ Questo progetto è sotto licenza MIT - vedi il file [LICENSE](LICENSE) per detta
 - **Developer**: [Antonio DEM](https://github.com/AntonioDEM)
 - **GitHub Issues**: [Segnala problemi](https://github.com/AntonioDEM/ai-toolkit-directory/issues)
 - **Pull Requests**: [Contribuisci](https://github.com/AntonioDEM/ai-toolkit-directory/pulls)
+- **Segnala Bug**: Usa il pulsante integrato nel sito
+- **Suggerisci Tool**: Usa il form dedicato `/suggest-tool.html`
 
----
+------
 
 <div align="center">
 
@@ -276,3 +362,4 @@ Questo progetto è sotto licenza MIT - vedi il file [LICENSE](LICENSE) per detta
 [![GitHub stars](https://img.shields.io/github/stars/AntonioDEM/ai-toolkit-directory.svg?style=social&label=Star)](https://github.com/AntonioDEM/ai-toolkit-directory/stargazers)
 
 **Made with ❤️ for the AI community**
+
