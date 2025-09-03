@@ -656,6 +656,7 @@
         });
 
         // Funzione per inviare a Google Sheets
+        // NUOVA FUNZIONE CON DEBUG ESTESO
         async function sendToGoogleSheets(data) {
             try {
                 console.log('📊 Sending to Google Sheets:', data);
@@ -668,17 +669,26 @@
                     body: JSON.stringify(data)
                 });
                 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                console.log('📊 Google Sheets response status:', response.status);
+                console.log('📊 Google Sheets response ok:', response.ok);
                 
-                const result = await response.json();
-                console.log('📊 Google Sheets response:', result);
+                const responseText = await response.text();
+                console.log('📊 Google Sheets response text:', responseText);
+                
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                    console.log('📊 Google Sheets parsed response:', result);
+                } catch (parseError) {
+                    console.error('❌ Failed to parse JSON response:', parseError);
+                    console.log('📊 Raw response:', responseText);
+                    return { success: false, error: 'Invalid JSON response' };
+                }
                 
                 return { success: result.success || false, error: result.error };
                 
             } catch (error) {
-                console.error('❌ Google Sheets error:', error);
+                console.error('❌ Google Sheets fetch error:', error);
                 return { success: false, error: error.message };
             }
         }
@@ -711,10 +721,16 @@
             console.log('📋 Form data:', formData);
             
             try {
-                // Prima prova EmailJS (priorità)
-                console.log('📧 Sending email...');
-                await emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData);
-                console.log('✅ Email sent successfully');
+                        // Prima prova EmailJS (priorità)
+                console.log('📧 Attempting to send email...');
+                try {
+                    await emailjs.send('service_8bt9oa5', 'template_0cgbs3y', formData);
+                    console.log('✅ Email sent successfully');
+                } catch (emailError) {
+                    console.error('❌ Email error:', emailError);
+                    // Continua con Google Sheets come fallback
+                    throw emailError; // Rilancia l'errore per il catch esterno
+                }
                 
                 // Poi prova Google Sheets (non bloccante)
                 sendToGoogleSheets(formData)
