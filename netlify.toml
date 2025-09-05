@@ -8,45 +8,100 @@
   # Versione Node.js (per compatibilità)
   NODE_VERSION = "18"
 
-# Configurazione Headers per sicurezza e performance
+# ⭐ HEADERS CRITICI PER SERVICE WORKER - IMPEDISCE CACHE AGGRESSIVA
 [[headers]]
-  for = "/*"
+  for = "/sw.js"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Cache-Control = "max-age=0, no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
+    # Headers aggiuntivi per forza refresh
+    Last-Modified = "Thu, 01 Jan 1970 00:00:00 GMT"
+    ETag = ""
 
+# Headers per Manifest PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Content-Type = "application/manifest+json"
+
+# ⭐ HTML PAGES - NO CACHE per aggiornamenti immediati
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    # Impedisce cache del browser
+    Pragma = "no-cache"
 
+# ⭐ JSON DATA - Cache breve per aggiornamenti frequenti
 [[headers]]
-  for = "/css/*"
+  for = "/data/*.json"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=1800"  # 30 minuti
+    Content-Type = "application/json"
 
+# CSS - Cache media con revalidation
 [[headers]]
-  for = "/js/*"
+  for = "/css/*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"  # 1 giorno
+    Content-Type = "text/css"
 
+# JavaScript - Cache media con revalidation  
+[[headers]]
+  for = "/js/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"  # 1 giorno
+    Content-Type = "application/javascript"
+
+# Icons - Cache lunga (cambiano raramente)
 [[headers]]
   for = "/icons/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=2592000, immutable"  # 30 giorni
 
+# Screenshots - Cache lunga
 [[headers]]
-  for = "/data/*"
+  for = "/screenshots/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=2592000, immutable"  # 30 giorni
 
-# Redirect rules (backup per _redirects)
+# Immagini generiche - Cache media
+[[headers]]
+  for = "/*.{png,jpg,jpeg,gif,webp,svg,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"  # 7 giorni
+
+# Fonts - Cache lunga
+[[headers]]
+  for = "/*.{woff,woff2,ttf,eot}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"  # 1 anno
+
+# ⭐ HEADERS DI SICUREZZA per tutte le pagine
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    
+    # PWA headers
+    X-UA-Compatible = "IE=edge"
+    
+    # Performance headers
+    X-DNS-Prefetch-Control = "on"
+
+# ⭐ REDIRECT RULES ottimizzate
 [[redirects]]
   from = "/app/*"
   to = "/index.html"
   status = 200
+  force = false
 
 [[redirects]]
   from = "/success"
@@ -63,20 +118,52 @@
   to = "/suggest-tool.html"
   status = 200
 
-# Gestione 404 personalizzata
+[[redirects]]
+  from = "/tools"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/directory"
+  to = "/index.html"
+  status = 200
+
+# ⭐ GESTIONE 404 personalizzata (deve essere ULTIMO)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Configurazione PWA
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
-    Content-Type = "application/manifest+json"
+# ⭐ CONFIGURAZIONE PWA AVANZATA
 
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+# Plugin Analytics (se necessario)
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  
+  [plugins.inputs]
+    buildDir = "."
+    exclude = [
+      "!/suggest-tool.html",
+      "!/success.html",
+      "!/privacy.html"
+    ]
+
+# Edge functions (per future implementazioni)
+# [[edge_functions]]
+#   function = "analytics"
+#   path = "/*"
+
+# Configurazione Build (per future automazioni)
+[build.processing]
+  skip_processing = false
+  
+[build.processing.css]
+  bundle = false
+  minify = true
+  
+[build.processing.js] 
+  bundle = false
+  minify = true
+  
+[build.processing.html]
+  pretty_urls = true
