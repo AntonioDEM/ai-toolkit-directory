@@ -517,29 +517,30 @@
     <script src="./js/enhanced-app.js"></script>
     <script src="./js/analytics.js"></script>
     
-    <!-- PWA Service Worker Registration -->
+    <!-- PWA Service Worker Registration on Auto-Update Intelligente -->
     <script>
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-        try {
-            const registration = await navigator.serviceWorker.register('./sw.js');
-            console.log('[PWA] Service Worker registered successfully');
-            
-            // Handle updates
-            registration.addEventListener('updatefound', () => {
-                const newWorker = registration.installing;
-                newWorker.addEventListener('statechange', () => {
-                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // Show update available notification
-                        showUpdateNotification();
-                    }
-                });
+        let updatePending = false;
+        let registration = null;
+
+        // Configurazione anti-cache
+        const swConfig = {
+            updateViaCache: 'none', // Impedisce cache del SW stesso
+            scope: '/'
+        };
+
+        // Registra Service Worker
+        navigator.serviceWorker.register('/sw.js', swConfig)
+            .then(reg => {
+                registration = reg;
+                console.log('✅ SW registrato:', reg.scope);
+                
+                // ... tutto il resto del nuovo codice ...
+            })
+            .catch(error => {
+                console.error('❌ SW registration failed:', error);
             });
-        } catch (error) {
-            console.log('[PWA] Service Worker registration failed:', error);
-        }
-    });
 }
 
         // PWA Install Prompt
