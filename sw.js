@@ -1,8 +1,8 @@
 // sw.js - Service Worker migliorato per AI Toolkit Directory PWA
 
-const CACHE_NAME = 'ai-tools-v1.4.4'; // Aggiorna la versione
-const STATIC_CACHE = 'static-v1.4.4';
-const DYNAMIC_CACHE = 'dynamic-v1.4.4';
+const CACHE_NAME = 'ai-tools-v1.4.5'; // ⬅️ INCREMENTA SEMPRE QUESTA VERSIONE
+const STATIC_CACHE = 'static-v1.4.5';
+const DYNAMIC_CACHE = 'dynamic-v1.4.5';
 
 const STATIC_FILES = [
   '/',
@@ -11,12 +11,12 @@ const STATIC_FILES = [
   '/suggest-bug.html',
   '/success.html',
   '/privacy.html',
-  '/offline.html', // Nuova pagina offline
+  '/offline.html',
   '/css/styles.css',
-  '/css/offline.css', // Nuovi stili offline
+  '/css/offline.css',
   '/js/app.js',
   '/js/enhanced-app.js',
-  '/js/offline.js', // Nuovo script offline
+  '/js/offline.js',
   '/js/rating-system.js',
   '/data/ai-tools.json',
   '/manifest.json',
@@ -54,45 +54,64 @@ const CACHE_STRATEGIES = {
 };
 
 self.addEventListener('install', (event) => {
-  console.log('[SW] Install event - versione:', CACHE_NAME);
+  console.log('🚀 [SW] Install event - versione:', CACHE_NAME);
   
   event.waitUntil(
     (async () => {
       const staticCache = await caches.open(STATIC_CACHE);
-      await staticCache.addAll(STATIC_FILES);
       
-      // Precaching non bloccante di risorse aggiuntive
-      const additionalResources = [
-        '/offline.html',
-        '/css/offline.css',
-        '/js/offline.js'
-      ];
+      try {
+        await staticCache.addAll(STATIC_FILES);
+        console.log('✅ [SW] Cache statica creata con successo');
+      } catch (error) {
+        console.error('❌ [SW] Errore cache statica:', error);
+        // Prova a cachare file uno per uno per identificare problemi
+        for (const file of STATIC_FILES) {
+          try {
+            await staticCache.add(file);
+          } catch (e) {
+            console.warn(`⚠️ [SW] Impossibile cachare: ${file}`, e);
+          }
+        }
+      }
       
-      staticCache.addAll(additionalResources).catch(err => {
-        console.log('[SW] Precaching risorse aggiuntive fallito:', err);
-      });
-      
+      // ⭐ FORZA ATTIVAZIONE IMMEDIATA DEL NUOVO SW
+      console.log('🔄 [SW] Forzando skipWaiting per attivazione immediata');
       await self.skipWaiting();
     })()
   );
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('[SW] Activate event - versione:', CACHE_NAME);
+  console.log('🔥 [SW] Activate event - versione:', CACHE_NAME);
   
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (![STATIC_CACHE, DYNAMIC_CACHE, CACHE_NAME].includes(cacheName)) {
-            console.log('[SW] Rimozione cache obsoleta:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => {
-      return self.clients.claim();
-    })
+    (async () => {
+      // Elimina tutte le cache vecchie
+      const cacheNames = await caches.keys();
+      const deletePromises = cacheNames.map((cacheName) => {
+        if (![STATIC_CACHE, DYNAMIC_CACHE, CACHE_NAME].includes(cacheName)) {
+          console.log('🗑️ [SW] Rimozione cache obsoleta:', cacheName);
+          return caches.delete(cacheName);
+        }
+      });
+      
+      await Promise.all(deletePromises);
+      
+      // ⭐ PRENDI CONTROLLO IMMEDIATO DI TUTTE LE PAGINE
+      await self.clients.claim();
+      console.log('✅ [SW] Nuovo SW attivo e in controllo');
+      
+      // ⭐ NOTIFICA TUTTI I CLIENT DEL NUOVO AGGIORNAMENTO
+      const allClients = await self.clients.matchAll();
+      allClients.forEach(client => {
+        client.postMessage({
+          type: 'SW_ACTIVATED',
+          version: CACHE_NAME,
+          message: '🎉 Nuova versione installata!'
+        });
+      });
+    })()
   );
 });
 
@@ -286,6 +305,51 @@ async function handleFetchError(request) {
   });
 }
 
+// ⭐ GESTIONE MESSAGGI PER AGGIORNAMENTI
+self.addEventListener('message', (event) => {
+  console.log('📨 [SW] Messaggio ricevuto:', event.data);
+  
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    console.log('⏭️ [SW] Skip waiting richiesto');
+    self.skipWaiting();
+  }
+  
+  if (event.data && event.data.type === 'GET_VERSION') {
+    event.ports[0].postMessage({
+      version: CACHE_NAME,
+      updated: new Date().toISOString()
+    });
+  }
+  
+  if (event.data && event.data.type === 'FORCE_UPDATE') {
+    console.log('🔄 [SW] Aggiornamento forzato richiesto');
+    event.waitUntil(
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => caches.delete(cacheName))
+        );
+      }).then(() => {
+        return self.clients.claim();
+      })
+    );
+  }
+});
+
+// ⭐ NOTIFICA QUANDO UN NUOVO SW È IN ATTESA
+self.addEventListener('waiting', () => {
+  console.log('⏳ [SW] Nuovo service worker in attesa');
+  
+  self.clients.matchAll().then(clients => {
+    clients.forEach(client => {
+      client.postMessage({
+        type: 'SW_UPDATE_WAITING',
+        version: CACHE_NAME,
+        message: '🔄 Nuova versione pronta!'
+      });
+    });
+  });
+});
+
 // Background Sync per future implementazioni
 self.addEventListener('sync', (event) => {
   console.log('[SW] Background sync:', event.tag);
@@ -296,7 +360,6 @@ self.addEventListener('sync', (event) => {
 });
 
 async function syncSuggestedTools() {
-  // Implementazione futura per sincronizzare suggerimenti offline
   console.log('[SW] Syncing suggested tools...');
 }
 
@@ -369,18 +432,4 @@ async function updateToolsData() {
   }
 }
 
-// Performance monitoring
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-  
-  if (event.data && event.data.type === 'GET_VERSION') {
-    event.ports[0].postMessage({
-      version: CACHE_NAME,
-      updated: new Date().toISOString()
-    });
-  }
-});
-
-console.log('[SW] Service Worker inizializzato:', CACHE_NAME);
+console.log('🚀 [SW] Service Worker inizializzato:', CACHE_NAME);
