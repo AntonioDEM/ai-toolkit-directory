@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "1.2.1",
-    "lastUpdated": "2025-08-31T14:19:22.630236Z",
-    "totalTools": 34,
+    "version": "1.2.0",
+    "lastUpdated": "2025-09-05T10:14:17.852962Z",
+    "totalTools": 38,
     "categories": 12
   },
   "tools": [
@@ -618,169 +618,237 @@
       ],
       "featured": false,
       "dateAdded": "2025-08-31"
+    },
+    {
+      "id": 35,
+      "name": "CHAT POE",
+      "category": "🤖 Chat/Agents",
+      "description": "POE da accesso alle migliori intelligenze artificiali, tutta in un unico posto. Esplora GPT-5, Claude Opus 4.1, DeepSeek-R1, Veo 3, ElevenLabs e milioni di altri.",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://poe.com",
+      "domain": "poe.com",
+      "tags": [
+        "Assistant",
+        "Web-Search",
+        "Bot"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-05"
+    },
+    {
+      "id": 36,
+      "name": "DeepSeek",
+      "category": "🤖 Chat/Agents",
+      "description": "DeepSeek è un sistema di Intelligenza Artificiale generativa progettato per comprendere, generare e manipolare linguaggio naturale e codice con un livello di competenza paragonabile ai migliori modelli disponibili a livello globale.",
+      "plan": "Free",
+      "rating": 5,
+      "url": "https://chat.deepseek.com",
+      "domain": "chat.deepseek.com",
+      "tags": [
+        "Coding",
+        "Prompt",
+        "Code"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-05"
+    },
+    {
+      "id": 37,
+      "name": "Grok",
+      "category": "🤖 Chat/Agents",
+      "description": "Grok è l'AI chatbot di xAI (Elon Musk) integrato in X (Twitter). Si distingue per risposte dirette, tono informale e accesso a dati real-time. Compete con ChatGPT offrendo un approccio meno \"filtrato\" e più provocatorio.",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://grok.com",
+      "domain": "grok.com",
+      "tags": [
+        "finding",
+        "real-time",
+        "social media"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-05"
+    },
+    {
+      "id": 38,
+      "name": "Vindoz",
+      "category": "🎵 Audio/Voice",
+      "description": "Vidnoz sintetizzatore vocale AI trasforma il testo in audio gratis in oltre 140 lingue. Crea narrazioni professionali online per video, podcast e audiolibri con il miglior lettore vocale. 100% gratuito, illimitato e facile da usare!",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://it.vidnoz.com/sintetizzatore-vocale.html",
+      "domain": "it.vidnoz.com",
+      "tags": [
+        "testo",
+        "audio",
+        "clone-voice"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-05"
     }
   ],
   "categories": [
     {
-        "id": "all",
-        "name": "🌟 Tutti",
-        "emoji": "🌟",
-        "description": "Tutti i tool disponibili",
-        "count": 34
+      "id": "all",
+      "name": "🌟 Tutti",
+      "emoji": "🌟",
+      "description": "Tutti i tool disponibili",
+      "count": 38
     },
     {
-        "id": "coding",
-        "name": "💻 Coding",
-        "emoji": "💻",
-        "description": "Strumenti per sviluppo e programmazione",
-        "count": 4
+      "id": "coding",
+      "name": "💻 Coding",
+      "emoji": "💻",
+      "description": "Strumenti per sviluppo e programmazione",
+      "count": 0
     },
     {
-        "id": "business-operations",
-        "name": "🏢 Business Operations",
-        "emoji": "🏢",
-        "description": "Strumenti per operazioni aziendali",
-        "count": 0
+      "id": "business-operations",
+      "name": "🏢 Business Operations",
+      "emoji": "🏢",
+      "description": "Strumenti per operazioni aziendali",
+      "count": 0
     },
     {
-        "id": "sales",
-        "name": "💰 Sales",
-        "emoji": "💰",
-        "description": "Strumenti per vendite e CRM",
-        "count": 0
+      "id": "sales",
+      "name": "💰 Sales",
+      "emoji": "💰",
+      "description": "Strumenti per vendite e CRM",
+      "count": 0
     },
     {
-        "id": "finance",
-        "name": "📈 Finance",
-        "emoji": "📈",
-        "description": "Strumenti per finanza e contabilità",
-        "count": 0
+      "id": "finance",
+      "name": "📈 Finance",
+      "emoji": "📈",
+      "description": "Strumenti per finanza e contabilità",
+      "count": 0
     },
     {
-        "id": "design",
-        "name": "🎨 Design",
-        "emoji": "🎨",
-        "description": "Strumenti per design e creatività",
-        "count": 0
+      "id": "design",
+      "name": "🎨 Design",
+      "emoji": "🎨",
+      "description": "Strumenti per design e creatività",
+      "count": 0
     },
     {
-        "id": "healthcare",
-        "name": "🏥 Healthcare",
-        "emoji": "🏥",
-        "description": "Strumenti per healthcare e medicina",
-        "count": 1
+      "id": "healthcare",
+      "name": "🏥 Healthcare",
+      "emoji": "🏥",
+      "description": "Strumenti per healthcare e medicina",
+      "count": 0
     },
     {
-        "id": "consulting",
-        "name": "📊 Consulting",
-        "emoji": "📊",
-        "description": "Strumenti per consulenza",
-        "count": 0
+      "id": "consulting",
+      "name": "📊 Consulting",
+      "emoji": "📊",
+      "description": "Strumenti per consulenza",
+      "count": 0
     },
     {
-        "id": "government",
-        "name": "🏛️ Government",
-        "emoji": "🏛️",
-        "description": "Strumenti per governo e PA",
-        "count": 0
+      "id": "government",
+      "name": "🏛️ Government",
+      "emoji": "🏛️",
+      "description": "Strumenti per governo e PA",
+      "count": 0
     },
     {
-        "id": "data-analysis",
-        "name": "📊 Data Analysis",
-        "emoji": "📊",
-        "description": "Strumenti per analisi dati",
-        "count": 4
+      "id": "data-analysis",
+      "name": "📊 Data Analysis",
+      "emoji": "📊",
+      "description": "Strumenti per analisi dati",
+      "count": 0
     },
     {
-        "id": "project-management",
-        "name": "📋 Project Management",
-        "emoji": "📋",
-        "description": "Strumenti per gestione progetti",
-        "count": 0
+      "id": "project-management",
+      "name": "📋 Project Management",
+      "emoji": "📋",
+      "description": "Strumenti per gestione progetti",
+      "count": 0
     },
     {
-        "id": "legal",
-        "name": "⚖️ Legal",
-        "emoji": "⚖️",
-        "description": "Strumenti per legale e compliance",
-        "count": 0
+      "id": "legal",
+      "name": "⚖️ Legal",
+      "emoji": "⚖️",
+      "description": "Strumenti per legale e compliance",
+      "count": 0
     },
     {
-        "id": "recruiting-hr",
-        "name": "👥 Recruiting / HR",
-        "emoji": "👥",
-        "description": "Strumenti per HR e recruiting",
-        "count": 0
+      "id": "recruiting-hr",
+      "name": "👥 Recruiting / HR",
+      "emoji": "👥",
+      "description": "Strumenti per HR e recruiting",
+      "count": 0
     },
     {
-        "id": "students",
-        "name": "🎓 Students",
-        "emoji": "🎓",
-        "description": "Strumenti per studenti",
-        "count": 2
+      "id": "students",
+      "name": "🎓 Students",
+      "emoji": "🎓",
+      "description": "Strumenti per studenti",
+      "count": 0
     },
     {
-        "id": "chat-agents",
-        "name": "🤖 Chat/Agents",
-        "emoji": "🤖",
-        "description": "Assistenti AI conversazionali",
-        "count": 7
+      "id": "chat-agents",
+      "name": "🤖 Chat/Agents",
+      "emoji": "🤖",
+      "description": "Assistenti AI conversazionali",
+      "count": 10
     },
     {
-        "id": "image",
-        "name": "🖼️ Image",
-        "emoji": "🖼️",
-        "description": "Generazione immagini AI",
-        "count": 3
+      "id": "image",
+      "name": "🖼️ Image",
+      "emoji": "🖼️",
+      "description": "Generazione immagini AI",
+      "count": 3
     },
     {
-        "id": "productivity",
-        "name": "⚡ Productivity",
-        "emoji": "⚡",
-        "description": "Strumenti per produttività",
-        "count": 3
+      "id": "productivity",
+      "name": "⚡ Productivity",
+      "emoji": "⚡",
+      "description": "Strumenti per produttività",
+      "count": 3
     },
     {
-        "id": "content",
-        "name": "📝 Content",
-        "emoji": "📝",
-        "description": "Creazione contenuti testuali",
-        "count": 4
+      "id": "content",
+      "name": "📝 Content",
+      "emoji": "📝",
+      "description": "Creazione contenuti testuali",
+      "count": 4
     },
     {
-        "id": "audio-voice",
-        "name": "🎵 Audio/Voice",
-        "emoji": "🎵",
-        "description": "Elaborazione audio e voce",
-        "count": 3
+      "id": "audio-voice",
+      "name": "🎵 Audio/Voice",
+      "emoji": "🎵",
+      "description": "Elaborazione audio e voce",
+      "count": 4
     },
     {
-        "id": "marketing",
-        "name": "📢 Marketing",
-        "emoji": "📢",
-        "description": "Marketing digitale",
-        "count": 1
+      "id": "marketing",
+      "name": "📢 Marketing",
+      "emoji": "📢",
+      "description": "Marketing digitale",
+      "count": 1
     },
     {
-        "id": "promptai",
-        "name": "💎 PromptAI",
-        "emoji": "💎",
-        "description": "Comandi per AI creative",
-        "count": 1
+      "id": "promptai",
+      "name": "💎 PromptAI",
+      "emoji": "💎",
+      "description": "Comandi per AI creative",
+      "count": 1
     },
     {
-        "id": "automation",
-        "name": "⚙️ Automation",
-        "emoji": "⚙️",
-        "description": "Automazione workflow",
-        "count": 1
+      "id": "automation",
+      "name": "⚙️ Automation",
+      "emoji": "⚙️",
+      "description": "Automazione workflow",
+      "count": 1
     },
     {
-        "id": "other",
-        "name": "♻️ Other",
-        "emoji": "♻️",
-        "description": "Altre categorie",
-        "count": 1
+      "id": "other",
+      "name": "♻️ Other",
+      "emoji": "♻️",
+      "description": "Altre categorie",
+      "count": 1
     }
   ],
   "filters": {
@@ -788,17 +856,17 @@
       {
         "id": "all",
         "name": "Tutti i piani",
-        "count": 34
+        "count": 38
       },
       {
         "id": "Free",
         "name": "🆓 Solo Gratuiti",
-        "count": 4
+        "count": 5
       },
       {
         "id": "Freemium",
         "name": "🟡 Freemium",
-        "count": 29
+        "count": 32
       },
       {
         "id": "Paid",
@@ -810,22 +878,22 @@
       {
         "id": "all",
         "name": "Tutte le valutazioni",
-        "count": 34
+        "count": 38
       },
       {
         "id": "5",
         "name": "⭐⭐⭐⭐⭐ 5 stelle",
-        "count": 9
+        "count": 12
       },
       {
         "id": "4",
         "name": "⭐⭐⭐⭐ 4+ stelle",
-        "count": 27
+        "count": 31
       },
       {
         "id": "3",
         "name": "⭐⭐⭐ 3+ stelle",
-        "count": 34
+        "count": 38
       }
     ],
     "sorting": [
