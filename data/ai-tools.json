@@ -2,7 +2,7 @@
   "meta": {
     "version": "1.2.0",
     "lastUpdated": "2025-09-05T10:14:17.852962Z",
-    "totalTools": 38,
+    "totalTools": 37,
     "categories": 12
   },
   "tools": [
@@ -621,23 +621,6 @@
     },
     {
       "id": 35,
-      "name": "CHAT POE",
-      "category": "🤖 Chat/Agents",
-      "description": "POE da accesso alle migliori intelligenze artificiali, tutta in un unico posto. Esplora GPT-5, Claude Opus 4.1, DeepSeek-R1, Veo 3, ElevenLabs e milioni di altri.",
-      "plan": "Freemium",
-      "rating": 5,
-      "url": "https://poe.com",
-      "domain": "poe.com",
-      "tags": [
-        "Assistant",
-        "Web-Search",
-        "Bot"
-      ],
-      "featured": false,
-      "dateAdded": "2025-09-05"
-    },
-    {
-      "id": 36,
       "name": "DeepSeek",
       "category": "🤖 Chat/Agents",
       "description": "DeepSeek è un sistema di Intelligenza Artificiale generativa progettato per comprendere, generare e manipolare linguaggio naturale e codice con un livello di competenza paragonabile ai migliori modelli disponibili a livello globale.",
@@ -654,7 +637,7 @@
       "dateAdded": "2025-09-05"
     },
     {
-      "id": 37,
+      "id": 36,
       "name": "Grok",
       "category": "🤖 Chat/Agents",
       "description": "Grok è l'AI chatbot di xAI (Elon Musk) integrato in X (Twitter). Si distingue per risposte dirette, tono informale e accesso a dati real-time. Compete con ChatGPT offrendo un approccio meno \"filtrato\" e più provocatorio.",
@@ -671,7 +654,7 @@
       "dateAdded": "2025-09-05"
     },
     {
-      "id": 38,
+      "id": 37,
       "name": "Vindoz",
       "category": "🎵 Audio/Voice",
       "description": "Vidnoz sintetizzatore vocale AI trasforma il testo in audio gratis in oltre 140 lingue. Crea narrazioni professionali online per video, podcast e audiolibri con il miglior lettore vocale. 100% gratuito, illimitato e facile da usare!",
@@ -694,7 +677,7 @@
       "name": "🌟 Tutti",
       "emoji": "🌟",
       "description": "Tutti i tool disponibili",
-      "count": 38
+      "count": 37
     },
     {
       "id": "coding",
@@ -856,7 +839,7 @@
       {
         "id": "all",
         "name": "Tutti i piani",
-        "count": 38
+        "count": 37
       },
       {
         "id": "Free",
@@ -878,7 +861,7 @@
       {
         "id": "all",
         "name": "Tutte le valutazioni",
-        "count": 38
+        "count": 37
       },
       {
         "id": "5",
@@ -893,7 +876,7 @@
       {
         "id": "3",
         "name": "⭐⭐⭐ 3+ stelle",
-        "count": 38
+        "count": 37
       }
     ],
     "sorting": [
