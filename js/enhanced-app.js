@@ -310,6 +310,15 @@ class AIToolsDirectory {
         if (this.currentFilters.category !== 'all') {
         // Mappa gli ID delle categorie ai nomi completi
         const categoryMap = {
+            'chat-agents': '🤖 Chat/Agents',
+            'image': '🖼️ Image',
+            'productivity': '⚡ Productivity',
+            'data-analysis': '📊 Data/Analytics',
+            'content': '📝 Content',
+            'audio-voice': '🎵 Audio/Voice',
+            'marketing': '📢 Marketing',
+            'promptai': '💎 PromptAI',
+            'automation': '⚙️ Automation',
             'coding': '💻 Coding',
             'business-operations': '🏢 Business Operations',
             'sales': '💰 Sales',
@@ -318,19 +327,10 @@ class AIToolsDirectory {
             'healthcare': '🏥 Healthcare',
             'consulting': '📊 Consulting',
             'government': '🏛️ Government',
-            'data-analysis': '📊 Data Analysis',
             'project-management': '📋 Project Management',
             'legal': '⚖️ Legal',
             'recruiting-hr': '👥 Recruiting / HR',
             'students': '🎓 Students',
-            'chat-agents': '🤖 Chat/Agents',
-            'image': '🖼️ Image',
-            'productivity': '⚡ Productivity',
-            'content': '📝 Content',
-            'audio-voice': '🎵 Audio/Voice',
-            'marketing': '📢 Marketing',
-            'promptai': '💎 PromptAI',
-            'automation': '⚙️ Automation',
             'other': '♻️ Other'
     };
             
