@@ -1,10 +1,11 @@
 // sw.js - Service Worker migliorato per AI Toolkit Directory PWA
+// Versione: 1.4.8 - Aggiornato: 2025-09-07T18:26:27.549Z
 // Versione: 1.4.7 - Aggiornato: 2025-09-06T04:23:21.629Z
 // Versione: 1.4.6 - Aggiornato: 2025-09-05T15:03:50.831Z
 
-const CACHE_NAME = 'ai-tools-v1.4.7'; // ⬅️ INCREMENTA SEMPRE QUESTA VERSIONE
-const STATIC_CACHE = 'static-v1.4.7';
-const DYNAMIC_CACHE = 'dynamic-v1.4.7';
+const CACHE_NAME = 'ai-tools-v1.4.8'; // ⬅️ INCREMENTA SEMPRE QUESTA VERSIONE
+const STATIC_CACHE = 'static-v1.4.8';
+const DYNAMIC_CACHE = 'dynamic-v1.4.8';
 
 const STATIC_FILES = [
   '/',
