@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": "1.2.0",
-    "lastUpdated": "2025-09-05T10:14:17.852962Z",
-    "totalTools": 37,
+    "lastUpdated": "2025-09-07T17:31:54.892149Z",
+    "totalTools": 41,
     "categories": 12
   },
   "tools": [
@@ -83,7 +83,7 @@
     {
       "id": 5,
       "name": "Perplexity AI",
-      "category": "📊 Data/Analytics",
+      "category": "🤖 Chat/Agents",
       "description": "Motore di ricerca AI con citazioni e fonti verificate in tempo reale",
       "plan": "Freemium",
       "rating": 5,
@@ -669,6 +669,75 @@
       ],
       "featured": false,
       "dateAdded": "2025-09-05"
+    },
+    {
+      "id": 38,
+      "name": "Google Ai Studio",
+      "category": "🖼️ Image",
+      "description": "Google AI Studio è una piattaforma per integrare i modelli AI di Google DeepMind, come Gemini, per testo, codice, immagini, audio e video. Offre un'API key gratuita, finestra di contesto da 2M di token e funzionalità come Nano Banana per editing di immagini avanzato.",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://aistudio.google.com",
+      "domain": "aistudio.google.com",
+      "tags": [
+        "Immagini",
+        "Video",
+        "Prompt"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-07"
+    },
+    {
+      "id": 39,
+      "name": "Rows 2.0",
+      "category": "📊 Data/Analytics",
+      "description": "Rows 2.0 è un foglio di calcolo cloud-based per team, con collaborazione in tempo reale, integrazione dati da 50+ piattaforme, analisi AI avanzata e report visivi. Semplifica flussi di lavoro senza codice, ideale per analisi, gestione progetti e reporting. Disponibile anche su mobile!",
+      "plan": "Freemium",
+      "rating": 4,
+      "url": "https://rows.com",
+      "domain": "rows.com",
+      "tags": [
+        "Analisis",
+        "SpreadSheet",
+        "Calculus"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-07"
+    },
+    {
+      "id": 40,
+      "name": "Airtable",
+      "category": "📊 Data/Analytics",
+      "description": "Airtable è una piattaforma no-code con AI nativa per creare app personalizzate, automatizzare flussi di lavoro e gestire dati su larga scala. Utilizzabile come foglio di calcolo simile a Excel, offre infrastrutture sicure e conformità (ISO, HIPAA, SOC 2). Ideale per team.",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://www.airtable.com",
+      "domain": "airtable.com",
+      "tags": [
+        "Productivity",
+        "Automation",
+        "Businnes Operation"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-07"
+    },
+    {
+      "id": 41,
+      "name": "mysheetAi",
+      "category": "📊 Data/Analytics",
+      "description": "mysheetAI è un assistente AI per Excel e Google Sheets che genera formule, istruzioni passo-passo e script di automazione (VBA/App Scripts). Offre una libreria di formule con spiegazioni AI, migliorando produttività e precisione. Interfaccia user-friendly, freemium.",
+      "plan": "Freemium",
+      "rating": 5,
+      "url": "https://mysheetai.com",
+      "domain": "mysheetai.com",
+      "tags": [
+        "Automazione",
+        "Produttività",
+        "Formule AI",
+        "Foglio di Calcolo"
+      ],
+      "featured": false,
+      "dateAdded": "2025-09-07"
     }
   ],
   "categories": [
@@ -677,7 +746,70 @@
       "name": "🌟 Tutti",
       "emoji": "🌟",
       "description": "Tutti i tool disponibili",
-      "count": 37
+      "count": 41
+    },
+    {
+      "id": "chat-agents",
+      "name": "🤖 Chat/Agents",
+      "emoji": "🤖",
+      "description": "Assistenti AI conversazionali",
+      "count": 9
+    },
+    {
+      "id": "image",
+      "name": "🖼️ Image",
+      "emoji": "🖼️",
+      "description": "Generazione immagini AI",
+      "count": 4
+    },
+    {
+      "id": "productivity",
+      "name": "⚡ Productivity",
+      "emoji": "⚡",
+      "description": "Strumenti per produttività",
+      "count": 3
+    },
+    {
+      "id": "data-analysis",
+      "name": "📊 Data/Analytics",
+      "emoji": "📊",
+      "description": "Strumenti per analisi dati",
+      "count": 3
+    },
+    {
+      "id": "content",
+      "name": "📝 Content",
+      "emoji": "📝",
+      "description": "Creazione contenuti testuali",
+      "count": 4
+    },
+    {
+      "id": "audio-voice",
+      "name": "🎵 Audio/Voice",
+      "emoji": "🎵",
+      "description": "Elaborazione audio e voce",
+      "count": 4
+    },
+    {
+      "id": "marketing",
+      "name": "📢 Marketing",
+      "emoji": "📢",
+      "description": "Marketing digitale",
+      "count": 1
+    },
+    {
+      "id": "promptai",
+      "name": "💎 PromptAI",
+      "emoji": "💎",
+      "description": "Comandi per AI creative",
+      "count": 1
+    },
+    {
+      "id": "automation",
+      "name": "⚙️ Automation",
+      "emoji": "⚙️",
+      "description": "Automazione workflow",
+      "count": 1
     },
     {
       "id": "coding",
@@ -736,13 +868,6 @@
       "count": 0
     },
     {
-      "id": "data-analysis",
-      "name": "📊 Data Analysis",
-      "emoji": "📊",
-      "description": "Strumenti per analisi dati",
-      "count": 0
-    },
-    {
       "id": "project-management",
       "name": "📋 Project Management",
       "emoji": "📋",
@@ -771,62 +896,6 @@
       "count": 0
     },
     {
-      "id": "chat-agents",
-      "name": "🤖 Chat/Agents",
-      "emoji": "🤖",
-      "description": "Assistenti AI conversazionali",
-      "count": 10
-    },
-    {
-      "id": "image",
-      "name": "🖼️ Image",
-      "emoji": "🖼️",
-      "description": "Generazione immagini AI",
-      "count": 3
-    },
-    {
-      "id": "productivity",
-      "name": "⚡ Productivity",
-      "emoji": "⚡",
-      "description": "Strumenti per produttività",
-      "count": 3
-    },
-    {
-      "id": "content",
-      "name": "📝 Content",
-      "emoji": "📝",
-      "description": "Creazione contenuti testuali",
-      "count": 4
-    },
-    {
-      "id": "audio-voice",
-      "name": "🎵 Audio/Voice",
-      "emoji": "🎵",
-      "description": "Elaborazione audio e voce",
-      "count": 4
-    },
-    {
-      "id": "marketing",
-      "name": "📢 Marketing",
-      "emoji": "📢",
-      "description": "Marketing digitale",
-      "count": 1
-    },
-    {
-      "id": "promptai",
-      "name": "💎 PromptAI",
-      "emoji": "💎",
-      "description": "Comandi per AI creative",
-      "count": 1
-    },
-    {
-      "id": "automation",
-      "name": "⚙️ Automation",
-      "emoji": "⚙️",
-      "description": "Automazione workflow",
-      "count": 1
-    },
-    {
       "id": "other",
       "name": "♻️ Other",
       "emoji": "♻️",
@@ -839,7 +908,7 @@
       {
         "id": "all",
         "name": "Tutti i piani",
-        "count": 37
+        "count": 41
       },
       {
         "id": "Free",
@@ -849,7 +918,7 @@
       {
         "id": "Freemium",
         "name": "🟡 Freemium",
-        "count": 32
+        "count": 35
       },
       {
         "id": "Paid",
@@ -861,22 +930,22 @@
       {
         "id": "all",
         "name": "Tutte le valutazioni",
-        "count": 37
+        "count": 41
       },
       {
         "id": "5",
         "name": "⭐⭐⭐⭐⭐ 5 stelle",
-        "count": 12
+        "count": 13
       },
       {
         "id": "4",
         "name": "⭐⭐⭐⭐ 4+ stelle",
-        "count": 31
+        "count": 34
       },
       {
         "id": "3",
         "name": "⭐⭐⭐ 3+ stelle",
-        "count": 37
+        "count": 41
       }
     ],
     "sorting": [
