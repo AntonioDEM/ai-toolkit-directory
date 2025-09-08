@@ -227,6 +227,20 @@ Usa il form integrato su `/suggest-tool.html`:
 - **EmailJS Security** - Invio email senza esposizione credenziali
 - **Form Protection** - Validazione e sanitizzazione input
 
+## 📚 Guide e Documentazione
+
+Per workflow avanzati e automazione, consulta le guide dedicate:
+
+- **[🔧 Guida Versioning PWA](GUIDE/Guida_Update_Version.md)** - Automazione aggiornamento versioni e cache
+- **[🚀 Workflow Netlify](GUIDE/Guida_netlify-workflow_V2.md)** - Script cross-platform per testing e deploy
+- **[🔄 Auto-Update System](GUIDE/VERSIONING.md#auto-update-system)** - Sistema di aggiornamento automatico PWA
+
+### Quick Links:
+- [Incremento Versione Manuale](GUIDE/Guida_Update_Version.md#-guida-aggiornamento-versione-manuale)
+- [Script Automazione](GUIDE/Guida_Update_Version.md#-step-5-script-di-automazione-versioning)
+- [Workflow Netlify](GUIDE/Guida_netlify-workflow_V2.md)
+- [Cleanup Automatico](GUIDE/Guida_netlify-workflow_V2.md#-nuova-funzionalità-cleanup-automatico-porta-3999)
+
 ## 🧹 Gestione Cache Browser
 
 Per una migliore esperienza d'uso, si consiglia di **svuotare la cache del browser** dopo gli aggiornamenti:
