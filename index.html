@@ -410,6 +410,33 @@
         allow_ad_personalization_signals: false
       });
     </script>
+
+    <script>
+    // Aggiornamento dinamico del contatore - ESECUZIONE IMMEDIATA
+    (function() {
+        // Imposta subito "Caricamento..." per evitare il flash del valore statico
+        const toolsCountElement = document.getElementById('toolsCount');
+        if (toolsCountElement) {
+            toolsCountElement.textContent = 'Caricamento...';
+        }
+        
+        // Poi carica i dati reali
+        fetch('./ai-tools.json')
+            .then(response => response.json())
+            .then(data => {
+                if (toolsCountElement) {
+                    toolsCountElement.textContent = `${data.meta.totalTools} Tools`;
+                }
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento del contatore:', error);
+                // In caso di errore, mostra un valore di fallback
+                if (toolsCountElement) {
+                    toolsCountElement.textContent = '41 Tools'; // Fallback al valore corretto
+                }
+            });
+    })();
+    </script>
 </head>
 <body>
     <!-- Loading Indicator -->
@@ -458,7 +485,7 @@
         <div class="container">
             <div class="stats">
                 <div class="stats-text">Scopri i migliori strumenti AI</div>
-                <div class="stats-highlight" id="toolsCount">31 Tools</div>
+                <div class="stats-highlight" id="toolsCount">Caricamento...</div>
             </div>
 
             <!-- Category Filters -->
