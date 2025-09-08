@@ -2,7 +2,7 @@
   "name": "AI Toolkit Directory - I Migliori Strumenti AI",
   "short_name": "AI Tools",
   "description": "Directory curata dei migliori strumenti AI, organizzati per categoria. Chat/Agents, Image Generation, Dev Tools e molto altro.",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#667eea",
