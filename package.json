@@ -1,6 +1,6 @@
 {
   "name": "ai-toolkit-directory",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "> Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA",
   "main": "sw.js",
   "scripts": {
