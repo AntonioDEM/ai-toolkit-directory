@@ -1,4 +1,8 @@
-# AI Toolkit Directory
+<div align="center">
+  <h1>
+    <img src="icons/robot_io_2.svg" width="56" height="56" style="vertical-align: middle; margin-right: 12px;">AI Toolkit Directory<img src="icons/robot_io_2.svg" width="56" height="56" style="vertical-align: middle; margin-left: 12px;">
+  </h1>
+</div>
 
 > Directory curata dei migliori strumenti AI organizzati per categoria, con filtri avanzati e funzionalità PWA
 
