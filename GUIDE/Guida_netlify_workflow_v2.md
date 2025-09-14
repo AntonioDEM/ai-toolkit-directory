@@ -4,15 +4,13 @@
 
 Questa guida ti aiuta a gestire il workflow di sviluppo e deploy del progetto `ai-toolkit-directory` con Netlify, utilizzando un ambiente di testing separato e isolato con Miniconda prima del deploy su GitHub.
 
+[Vai alle nuove funzionalità](#-nuove-funzionalità-implementate)
+
 ## 🛠️ Creazione dello Script netlify-workflow.sh 
 
 ### Creazione del File Script per Sistema Operativo 
 
 #### macOS e Linux 
-
-#### 
-
-#### 
 
 ~~~bash
 ```bash 
@@ -645,4 +643,128 @@ which netlify
 
 ------
 
-*Ultimo aggiornamento: Settembre 2025 - Aggiunto cleanup automatico porta 3999*
+## 🆕 Nuove Funzionalità Implementate:
+
+
+
+## 📊 Schema Comparativo Aggiornato
+
+| Funzionalità                  | [netlify-workflow.sh](https://netlify-workflow.sh/) (VECCHIO) | [netlify-workflow.sh](https://netlify-workflow.sh/) (NUOVO) | [banana-workflow.sh](https://banana-workflow.sh/) |
+| :---------------------------- | :----------------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------ |
+| **Pulizia multi-porta**       | ❌ Solo porta 3999                                            | ✅ 13 porte predefinite                                      | ✅ 13 porte predefinite                            |
+| **Pulizia porta specifica**   | ❌                                                            | ✅ Supporto cross-platform                                   | ✅                                                 |
+| **Rilevamento tipo progetto** | ❌                                                            | ✅ Node.js detection                                         | ✅ Node.js detection                               |
+| **Info dimensione progetto**  | ❌                                                            | ✅                                                           | ✅                                                 |
+| **Conteggio backup**          | ❌                                                            | ✅                                                           | ✅                                                 |
+| **Controllo stato porte**     | ❌                                                            | ✅ Dettagliato cross-platform                                | ✅                                                 |
+| **Supporto progetti Python**  | ❌                                                            | ✅ (esclude **pycache**, venv)                               | ✅ (esclude **pycache**, venv)                     |
+| **Deploy Netlify**            | ✅                                                            | ✅                                                           | ❌                                                 |
+| **Sincronizzazione GitHub**   | ✅                                                            | ✅                                                           | ❌                                                 |
+| **Setup automatico**          | ✅                                                            | ✅                                                           | ❌                                                 |
+| **Supporto Windows/macOS**    | ✅                                                            | ✅                                                           | ✅ (macOS/Linux)                                   |
+
+## 🚀 Sintesi dei Comandi Aggiornata
+
+### Comandi Principali:
+
+```bash
+# Setup e configurazione
+./netlify-workflow.sh setup          # Setup iniziale del progetto
+
+# Backup e sincronizzazione
+./netlify-workflow.sh backup         # Crea backup della versione corrente
+./netlify-workflow.sh sync           # Sincronizza REPOTEST → REPOGITH
+
+# Sviluppo e testing
+./netlify-workflow.sh test           # Avvia server di test (rilevamento automatico)
+./netlify-workflow.sh clean-dev      # Avvio con pulizia approfondita (cache+porte)
+
+# Deploy
+./netlify-workflow.sh preview        # Crea deploy di preview su Netlify
+
+# Monitoraggio e utilità
+./netlify-workflow.sh status         # Mostra stato dettagliato dell'ambiente
+./netlify-workflow.sh cleanup        # Pulisci tutte le porte di sviluppo
+./netlify-workflow.sh cleanup 3000   # Pulisci una porta specifica
+```
+
+
+
+### 📋 Dettaglio Comandi:
+
+#### **🛠️ Setup e Configurazione**
+
+- `setup` - Configurazione iniziale con creazione package.json e installazione Netlify CLI
+
+#### **💾 Backup e Sincronizzazione**
+
+- `backup` - Crea backup completo con esclusioni intelligenti (node_modules, .netlify, .git, **pycache**, venv, .env)
+- `sync` - Sincronizza sicura con backup preventivo e esclusioni multiple
+
+#### **🚀 Sviluppo Locale**
+
+- `test` - Avvio intelligente: rileva progetto Node.js → cerca script "dev" → fallback su Netlify Dev
+- `clean-dev` - Pulizia approfondita (porte + cache) prima dell'avvio
+
+#### **🌐 Deploy**
+
+- `preview` - Build e deploy di preview su Netlify con controllo script build
+
+#### **📊 Monitoraggio**
+
+- `status` - Status completo: dimensioni progetto, conteggio backup, stato porte, versioni tools
+- `cleanup` - Pulizia porte di sviluppo (13 porte predefinite o porta specifica)
+
+### 🔧 Funzionalità Avanzate:
+
+- **Rilevamento automatico** del tipo di progetto
+- **Pulizia cross-platform** (macOS, Linux, Windows)
+- **Backup intelligente** con multiple esclusioni
+- **Controllo stato** dettagliato con informazioni complete
+- **Sincronizzazione sicura** con backup preventivo
+
+### 📁 Struttura Directory:
+
+```text
+REPOTEST: ~/Documents/REPOTEST/ai-toolkit-directory    # Sviluppo attivo
+GITHUB:   ~/Documents/REPOGITH/ai-toolkit-directory    # Repository GitHub  
+BACKUP:   ~/Documents/BACKUP/ai-toolkit-directory      # Backup automatici
+```
+
+### 1. **Pulizia Multi-Porta Avanzata**
+
+- Supporto per 13 porte di sviluppo diverse
+- Funzione `cleanup_dev_ports()` per pulizia completa
+
+### 2. **Pulizia Porta Specifica**
+
+- Comando: `./netlify-workflow.sh cleanup 3000`
+- Supporto cross-platform (macOS/Linux/Windows)
+
+### 3. **Rilevamento Automatico Progetto**
+
+- Riconosce progetti Node.js dal package.json
+- Logica intelligente per avviare script appropriati
+
+### 4. **Status Dettagliato**
+
+- Dimensione del progetto
+- Conteggio backup
+- Controllo stato porte dettagliato
+- Informazioni su Netlify CLI, Node.js, npm
+
+### 5. **Backup Migliorato**
+
+- Più esclusioni: `__pycache__`, `venv`, `.env`
+- Supporto cross-platform migliorato
+
+### 6. **Sincronizzazione Migliorata**
+
+- Esclusioni aggiuntive per Python e file ambiente
+
+### 7. **Menu Esteso**
+
+- Nuovo comando `cleanup` con supporto porta specifica
+- Help aggiornato con tutte le nuove funzionalità
+
+*Ultimo aggiornamento: 14 Settembre 2025*
